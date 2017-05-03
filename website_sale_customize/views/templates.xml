@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="assets_stepdemo" name="Assets Stepdemo" inherit_id="website.layout">
+            <xpath expr="//html/head" position="inside">
+                <link href="/website_sale_customize/static/src/css/stepdemo.css" rel="stylesheet"/>
+            </xpath>
+        </template>
+
+        <template id="confirmation_add_mobile" inherit_id="website_sale.confirmation" name="Confirmation Add Mobile's Judgement">
+            <xpath expr="//ul[@class='wizard pull-right']" position="replace">
+                <t t-if="website.get_platform()=='mobile'">
+                    <div style="margin:30px auto" class="ph-steps-content">
+                      <ol class="ui-step ui-step-4">
+                        <li class="step-start step-done">
+                          <div class="ui-step-line"></div>
+                          <div class="ui-step-cont"> <span class="ui-step-cont-number">1</span> <span class="ui-step-cont-text">提交</span> </div>
+                        </li>
+                        <li class="step-active">
+                          <div class="ui-step-line"></div>
+                          <div class="ui-step-cont"> <span class="ui-step-cont-number">2</span> <span class="ui-step-cont-text">付款</span> </div>
+                        </li>
+                        <li>
+                          <div class="ui-step-line"></div>
+                          <div class="ui-step-cont"> <span class="ui-step-cont-number">3</span> <span class="ui-step-cont-text">发货</span> </div>
+                        </li>
+                        <li class="step-end">
+                          <div class="ui-step-line"></div>
+                          <div class="ui-step-cont"> <span class="ui-step-cont-number">4</span> <span class="ui-step-cont-text">完成</span> </div>
+                        </li>
+                      </ol>
+                    </div>
+                </t>
+                <t t-if="website.get_platform()=='pc'" >
+                    <ul class="wizard pull-right">
+                        <li class="text-muted">Review Order<span class="chevron"></span></li>
+                        <li class="text-muted">Shipping &amp; Billing<span class="chevron"></span></li>
+                        <li class="text-muted">Payment<span class="chevron"></span></li>
+                        <li class="text-primary">Confirmation<span class="chevron"></span></li>
+                    </ul>
+                </t>
+            </xpath>
+
+        </template>
+
+    </data>
+</openerp>
