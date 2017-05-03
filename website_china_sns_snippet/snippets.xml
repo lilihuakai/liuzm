@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="sns_js" inherit_id="website.layout">
+            <xpath expr="//html/body" position="inside">
+                <script type="text/javascript"  src="/website_china_sns_snippet/static/src/js/custom.js"></script>
+            </xpath>
+        </template>
+        <template id="china_sns_snippets" inherit_id="website.snippets" name="China Sns Snippets">
+            <xpath expr="//div[@id='snippet_content']" position="inside">
+                <div>
+                    <div class="oe_snippet_thumbnail">
+                        <img class="oe_snippet_thumbnail_img" src="/website/static/src/img/blocks/block_button.png"/>
+                        <span class="oe_snippet_thumbnail_title">Share_china</span>
+                    </div>
+                    <div class="oe_snippet_body oe_share">
+                        <h3>
+                            Share
+                            <a target="_Blank" id="share_qzone_tag" ><i class="fa fa-qq"></i></a>
+                            <a target="_Blank" id="share_weibo_tag"><i class="fa fa-weibo"></i></a>
+                            <a target="_Blank" href="http://widget.renren.com/dialog/share?srcUrl={url}"><i class="fa fa-renren"></i></a>
+                            <a href="mailto:?body={url}&amp;subject={title}"><i class="fa fa-envelope-square"></i></a>
+                        </h3>
+                    </div>
+                </div>
+            </xpath>
+
+        </template>
+    </data>
+</openerp>

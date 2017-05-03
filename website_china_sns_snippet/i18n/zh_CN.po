@@ -1,0 +1,118 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_china_sns_snippet
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-20160612\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-17 08:20+0000\n"
+"PO-Revision-Date: 2017-04-19 11:01+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 1.8.8\n"
+
+#. module: website_china_sns_snippet
+#: field:website,social_mail:0 field:website.config.settings,social_mail:0
+msgid "Mail Account"
+msgstr "邮件地址"
+
+#. module: website_china_sns_snippet
+#: field:website,social_phone:0 field:website.config.settings,social_phone:0
+msgid "Phone Account"
+msgstr "联系电话"
+
+#. module: website_china_sns_snippet
+#: field:website,social_qq:0 field:website.config.settings,social_qq:0
+msgid "QQ Account"
+msgstr "QQ 号码"
+
+#. module: website_china_sns_snippet
+#: field:website,social_renren:0 field:website.config.settings,social_renren:0
+msgid "Renren Account"
+msgstr "人人网账号"
+
+#. module: website_china_sns_snippet
+#: view:website:website.snippets
+msgid "Share"
+msgstr "分享"
+
+#. module: website_china_sns_snippet
+#: view:website:website.snippets
+msgid "Share_china"
+msgstr "分享按钮"
+
+#. module: website_china_sns_snippet
+#: model:ir.model,name:website_china_sns_snippet.model_website
+msgid "Website"
+msgstr "网站"
+
+#. module: website_china_sns_snippet
+#: field:website,social_beian:0 field:website.config.settings,social_beian:0
+msgid "Website Beian Number"
+msgstr "网站备案号"
+
+#. module: website_china_sns_snippet
+#: help:website,social_beian:0
+msgid "Website Beian Number （China only）."
+msgstr "网站备案号（中国专用）"
+
+#. module: website_china_sns_snippet
+#: field:website,social_statis:0 field:website.config.settings,social_statis:0
+msgid "Website Statistics Account"
+msgstr "网站统计账号（cnzz）"
+
+#. module: website_china_sns_snippet
+#: help:website,social_statis:0
+msgid "Website Statistics Account, like cnzz.com"
+msgstr "网站统计账号，注册 cnzz.com 获取"
+
+#. module: website_china_sns_snippet
+#: field:website,social_weibo:0 field:website.config.settings,social_weibo:0
+msgid "Weibo Account"
+msgstr "微博账号"
+
+#. module: website_china_sns_snippet
+#: field:website,social_weixin:0 field:website.config.settings,social_weixin:0
+msgid "Weixin Account"
+msgstr "微信账号"
+
+#. module: website_china_sns_snippet
+#: view:website.config.settings:website_china_sns_snippet.view_website_config_settings_sns
+msgid "cnzz website code e.g. 1000172658"
+msgstr "CNZZ 网站代码，例如： 1000172658"
+
+#. module: website_china_sns_snippet
+#: view:website.config.settings:website_china_sns_snippet.view_website_config_settings_sns
+msgid "http://weibo.com/sunlightsoft"
+msgstr "http://weibo.com/sunlightsoft"
+
+#. module: website_china_sns_snippet
+#: view:website.config.settings:website_china_sns_snippet.view_website_config_settings_sns
+msgid "http://wpa.qq.com/msgrd?v=3&uin=2848445291&site=qq&menu=yes"
+msgstr "http://wpa.qq.com/msgrd?v=3&uin=2848445291&site=qq&menu=yes"
+
+#. module: website_china_sns_snippet
+#: view:website.config.settings:website_china_sns_snippet.view_website_config_settings_sns
+msgid "http://www.renren.com/343594878/profile"
+msgstr "http://www.renren.com/343594878/profile"
+
+#. module: website_china_sns_snippet
+#: view:website.config.settings:website_china_sns_snippet.view_website_config_settings_sns
+msgid "mailto:sales@zhsunlight.cn"
+msgstr "mailto:sales@zhsunlight.cn"
+
+#. module: website_china_sns_snippet
+#: view:website.config.settings:website_china_sns_snippet.view_website_config_settings_sns
+msgid "tel:18675626598"
+msgstr "tel:18675626598"
+
+#. module: website_china_sns_snippet
+#: view:website.config.settings:website_china_sns_snippet.view_website_config_settings_sns
+msgid "粤ICP备15011094号"
+msgstr "粤ICP备15011094号"
