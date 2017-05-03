@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="public_mobile_order_btn_extend">
+            <field name="name">Public Mobile Order Btn Extend</field>
+            <field name="inherit_id" ref="website_myaccount_base.public_mobile_order_btn"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='public_mobile_order_btn']" position="inside">
+                    <t t-if="flag == 'waitting_claim'">
+                        <t t-call="rma.public_mobile_order_btn_waitting_claim"/>
+                    </t>
+                    <t t-if="flag == 'already_claimed'">
+                        <t t-call="rma.public_mobile_order_btn_already_claimed"/>
+                    </t>
+                </xpath>
+            </field>
+        </record>
+        <template id="public_mobile_order_btn_waitting_claim">
+            <a target="_blank" t-att-href="'/m/myaccount/order/after_sale/%s' % order.id">
+                <button>申请售后</button>
+            </a>
+        </template>
+        <template id="public_mobile_order_btn_already_claimed">
+            <a target="_blank" t-att-href="'/m/myaccount/order/after_sale/claim_view/%s' % order.id">
+                <button>进度查询</button>
+            </a>
+        </template>
+    </data>
+</openerp>

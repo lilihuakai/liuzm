@@ -1,0 +1,602 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* rma
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-20160612\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-17 02:45+0000\n"
+"PO-Revision-Date: 2017-04-17 16:57+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 1.8.8\n"
+
+#. module: rma
+#: code:addons/rma/models/sale.py:336
+#, python-format
+msgid "%s's quantity %s can't be use!"
+msgstr "%s 的数量 %s 不正确！"
+
+#. module: rma
+#: field:sale.order,advance_id:0
+msgid "Advance Rma Claim"
+msgstr "售后申请前置数据"
+
+#. module: rma
+#: field:sale.advance.rma.claim_items,claimed_qty:0
+msgid "Caimed Quantity"
+msgstr "已申请的数量"
+
+#. module: rma
+#: view:account.invoice.refund:rma.view_claim_invoice_refund
+#: view:sale.advance.rma.claim:rma.view_stock_enter_claim_details
+msgid "Cancel"
+msgstr "取消"
+
+#. module: rma
+#: selection:crm.claim,state:0
+msgid "Cancelled"
+msgstr "已取消"
+
+#. module: rma
+#: code:addons/rma/models/account_invoice_refund.py:57
+#, python-format
+msgid "Cannot %s invoice now, You can only refund this claim."
+msgstr "现在 %s 不能开具发票，你只能退还这项索赔。"
+
+#. module: rma
+#: model:ir.model,name:rma.model_crm_claim
+msgid "Claim"
+msgstr "索赔"
+
+#. module: rma
+#: field:sale.order,partner_claim_id:0
+msgid "Claim Address"
+msgstr "售后客户"
+
+#. module: rma
+#: field:sale.order.line,claim_lines:0
+msgid "Claim Lines"
+msgstr "售后明细行"
+
+#. module: rma
+#: model:ir.actions.act_window,name:rma.action_view_stock_enter_claim_details
+msgid "Claim Order"
+msgstr "售后申请单"
+
+#. module: rma
+#: model:ir.actions.act_window,name:rma.action_claim_invoice_refund
+msgid "Claim Refund Invoice"
+msgstr "售后退款发票"
+
+#. module: rma
+#: view:sale.advance.rma.claim:rma.view_stock_enter_claim_details
+msgid "Claim Sales Order"
+msgstr "售后申请"
+
+#. module: rma
+#: help:sale.order,partner_claim_id:0
+msgid "Claim address for current sales order."
+msgstr "对应当前销售订单的售后客户"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,advance_payment_method:0
+msgid "Claim the whole sales order"
+msgstr "对订单所有商品申请售后"
+
+#. module: rma
+#: field:sale.order,claim_exists:0 field:sale.order,claimed:0
+#: field:sale.order.line,claimed:0
+msgid "Claimed"
+msgstr "已申请售后"
+
+#. module: rma
+#: field:sale.order,claim_ids:0
+msgid "Claims"
+msgstr "售后"
+
+#. module: rma
+#: view:sale.advance.rma.claim:rma.view_stock_enter_claim_details
+#: view:sale.order:rma.view_order_form_inherit
+msgid "Create Claim"
+msgstr "申请售后"
+
+#. module: rma
+#: view:account.invoice.refund:rma.view_claim_invoice_refund
+msgid "Create Refund"
+msgstr "创建退款"
+
+#. module: rma
+#: view:sale.advance.rma.claim:rma.view_stock_enter_claim_details
+msgid "Create and View Claim"
+msgstr "创建并查看售后单"
+
+#. module: rma
+#: field:sale.advance.rma.claim,create_uid:0
+#: field:sale.advance.rma.claim_items,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: rma
+#: field:sale.advance.rma.claim,create_date:0
+#: field:sale.advance.rma.claim_items,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: rma
+#: view:account.invoice.refund:rma.view_claim_invoice_refund
+msgid "Credit Note"
+msgstr "冲销发票"
+
+#. module: rma
+#: code:addons/rma/models/sale.py:180
+#, python-format
+msgid "Customer Claims"
+msgstr "用户售后单"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,claim_origin:0
+msgid "Damaged delivered product"
+msgstr "商品损坏"
+
+#. module: rma
+#: field:sale.advance.rma.claim,description:0
+#: field:sale.advance.rma.claim_items,name:0
+msgid "Description"
+msgstr "描述"
+
+#. module: rma
+#: field:sale.advance.rma.claim_items,discount:0
+msgid "Discount (%)"
+msgstr "折扣 (%)"
+
+#. module: rma
+#: field:sale.advance.rma.claim,display_name:0
+#: field:sale.advance.rma.claim_items,display_name:0
+msgid "Display Name"
+msgstr "展示用名"
+
+#. module: rma
+#: selection:crm.claim,state:0
+msgid "Draft"
+msgstr "草稿"
+
+#. module: rma
+#: code:addons/rma/wizard/sale_make_claim_advance.py:132
+#, python-format
+msgid "Enter claim details"
+msgstr "售后申请明细"
+
+#. module: rma
+#: code:addons/rma/models/account_invoice.py:106
+#: code:addons/rma/models/account_invoice_refund.py:57
+#: code:addons/rma/models/sale.py:230
+#, python-format
+msgid "Error!"
+msgstr "错误！"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,claim_origin:0
+msgid "Exchange request"
+msgstr "换货"
+
+#. module: rma
+#: field:sale.advance.rma.claim,id:0 field:sale.advance.rma.claim_items,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: rma
+#: field:sale.advance.rma.claim_items,line_id:0
+msgid "ID of sale.order.line"
+msgstr "销售单明细 ID"
+
+#. module: rma
+#: help:sale.advance.rma.claim_items,is_claim:0
+msgid "If it is true, the product will be claimed"
+msgstr "当值为 true，表示该产品被要求申请售后"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,claim_origin:0
+msgid "Imperfection"
+msgstr "存在缺陷"
+
+#. module: rma
+#: code:addons/rma/models/account_invoice_refund.py:81
+#, python-format
+msgid "Insufficient Data!"
+msgstr "数量不足！"
+
+#. module: rma
+#: model:ir.model,name:rma.model_account_invoice
+msgid "Invoice"
+msgstr "发票"
+
+#. module: rma
+#: model:ir.model,name:rma.model_account_invoice_refund
+msgid "Invoice Refund"
+msgstr "红字发票"
+
+#. module: rma
+#: field:sale.advance.rma.claim_items,is_claim:0
+msgid "Is Claim"
+msgstr "是否申请售后"
+
+#. module: rma
+#: help:sale.order,claimed:0
+msgid "It indicates that an claim has been claimed completely."
+msgstr "表示销售订单已经全部进行了售后申请"
+
+#. module: rma
+#: help:sale.order,claim_exists:0
+msgid "It indicates that crm claim has at least one claim."
+msgstr "表示销售订单已经做过售后申请"
+
+#. module: rma
+#: field:sale.advance.rma.claim_items,item_id:0
+msgid "Item"
+msgstr "项目"
+
+#. module: rma
+#: field:sale.advance.rma.claim,item_ids:0
+msgid "Items"
+msgstr "项目"
+
+#. module: rma
+#: field:sale.advance.rma.claim,__last_update:0
+#: field:sale.advance.rma.claim_items,__last_update:0
+msgid "Last Modified on"
+msgstr "最后一次修改在"
+
+#. module: rma
+#: field:sale.advance.rma.claim,write_uid:0
+#: field:sale.advance.rma.claim_items,write_uid:0
+msgid "Last Updated by"
+msgstr "最后一次更新由"
+
+#. module: rma
+#: field:sale.advance.rma.claim,write_date:0
+#: field:sale.advance.rma.claim_items,write_date:0
+msgid "Last Updated on"
+msgstr "最后一次更新在"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,claim_origin:0
+msgid "Legal retractation"
+msgstr "不合法的"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,claim_origin:0
+msgid "Lost during transport"
+msgstr "在运输过程中丢失"
+
+#. module: rma
+#: view:crm.claim:rma.crm_claim_rma_form_view
+msgid "New Claim Refund"
+msgstr "新建售后退款"
+
+#. module: rma
+#: code:addons/rma/models/account_invoice_refund.py:82
+#, python-format
+msgid "No period found on the claim."
+msgstr "售后申请单缺少“会计期间”"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,claim_origin:0
+msgid "Not specified"
+msgstr "沒特殊原因"
+
+#. module: rma
+#: selection:crm.claim,state:0
+msgid "Open"
+msgstr "打开"
+
+#. module: rma
+#: field:sale.advance.rma.claim,order_id:0
+msgid "Order Reference"
+msgstr "订单引用"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,claim_origin:0
+msgid "Order cancellation"
+msgstr "订单取消"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,claim_origin:0
+msgid "Other"
+msgstr "其他"
+
+#. module: rma
+#: selection:crm.claim,state:0
+msgid "Paid"
+msgstr "已支付"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,claim_origin:0
+msgid "Perfect Conditions"
+msgstr "完美的条件"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,claim_origin:0
+msgid "Physical Damage by Client"
+msgstr "用户损坏"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,claim_origin:0
+msgid "Physical Damage by Company"
+msgstr "公司损坏"
+
+#. module: rma
+#: selection:crm.claim,state:0
+msgid "Pro-forma"
+msgstr "外形"
+
+#. module: rma
+#: field:sale.advance.rma.claim_items,product_id:0
+msgid "Product"
+msgstr "商品"
+
+#. module: rma
+#: field:sale.advance.rma.claim_items,product_uom_qty:0
+msgid "Quantity"
+msgstr "数量"
+
+#. module: rma
+#: model:ir.model,name:rma.model_sale_advance_rma_claim
+msgid "Sales Advance Rma Claim"
+msgstr "销售预售后申请"
+
+#. module: rma
+#: model:ir.model,name:rma.model_sale_advance_rma_claim_items
+msgid "Sales Advance Rma Claim Items"
+msgstr "销售预售后申请明细"
+
+#. module: rma
+#: model:ir.model,name:rma.model_sale_order
+msgid "Sales Order"
+msgstr "销售订单"
+
+#. module: rma
+#: model:ir.model,name:rma.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "销售订单行"
+
+#. module: rma
+#: view:sale.advance.rma.claim:rma.view_stock_enter_claim_details
+msgid "Sales Order Lines"
+msgstr "销售订单行"
+
+#. module: rma
+#: view:sale.advance.rma.claim:rma.view_stock_enter_claim_details
+msgid ""
+"Select how you want to claim this order. This\n"
+"                        will create a draft claim that can be modified\n"
+"                        before validation."
+msgstr ""
+"选择你想要售后申请的方式。\n"
+"                       然后将创建一张新的未验证的售后申请单草稿。"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,claim_origin:0
+msgid "Shipping error"
+msgstr "发货错误"
+
+#. module: rma
+#: selection:sale.advance.rma.claim,advance_payment_method:0
+msgid "Some order lines"
+msgstr "对部分商品申请售后"
+
+#. module: rma
+#: field:crm.claim,state:0
+msgid "Status"
+msgstr "状态"
+
+#. module: rma
+#: field:sale.advance.rma.claim,claim_origin:0
+msgid "Subject"
+msgstr "主题"
+
+#. module: rma
+#: field:sale.advance.rma.claim_items,price_subtotal:0
+msgid "Subtotal"
+msgstr "总计"
+
+#. module: rma
+#: code:addons/rma/models/account_invoice.py:106
+#, python-format
+msgid "The %s is empty!"
+msgstr "%s 是空的！"
+
+#. module: rma
+#: help:sale.order,claim_ids:0
+msgid "This is the list of claims that have been generated for this sales order.             The same sales order may have been claimd in several times (by line for example)."
+msgstr "这是根据销售订单生成的售后清单。一张售后订单可生成多张售后订单。"
+
+#. module: rma
+#: help:sale.advance.rma.claim,claim_origin:0
+msgid "To describe the line product problem"
+msgstr "描述产品问题"
+
+#. module: rma
+#: field:sale.advance.rma.claim_items,price_unit:0
+msgid "Unit Price"
+msgstr "单价"
+
+#. module: rma
+#: field:sale.advance.rma.claim_items,product_uom:0
+msgid "Unit of Measure "
+msgstr "单位"
+
+#. module: rma
+#: field:sale.advance.rma.claim_items,unclaimed_qty:0
+msgid "Unlaimed Quantity"
+msgstr "未申请数量"
+
+#. module: rma
+#: help:sale.advance.rma.claim,advance_payment_method:0
+msgid ""
+"Use Claim the whole sale order to create the final claim.\n"
+"                Use Some Order Lines to claim a selection of the sales order lines."
+msgstr ""
+"将所有商品申请售后并创建售后申请单 \n"
+"                将部分商品申请售后而且生成销售订单行。"
+
+#. module: rma
+#: view:account.invoice.refund:rma.view_claim_invoice_refund
+msgid ""
+"Use this option if you want to cancel an invoice and create a new\n"
+"                                    one. The credit note will be created, validated and reconciled\n"
+"                                    with the current invoice. A new, draft, invoice will be created \n"
+"                                    so that you can edit it."
+msgstr ""
+"用此选项删除发票并创建一张新的\n"
+"                                    信用证将会创建、生效、并与当前发票关联，\n"
+"                                    将人创建一张新的发票草稿，\n"
+"                                    以便你可以编缉它。"
+
+#. module: rma
+#: view:account.invoice.refund:rma.view_claim_invoice_refund
+msgid ""
+"Use this option if you want to cancel an invoice you should not\n"
+"                                    have issued. The credit note will be created, validated and reconciled\n"
+"                                    with the invoice. You will not be able to modify the credit note."
+msgstr ""
+"删除一张不应有的发票用此选项\n"
+"                                    已发布，信用证会与发票一起开出、生效和关联\n"
+"                                    不可修改信用证."
+
+#. module: rma
+#: view:sale.order:rma.view_order_form_inherit
+msgid "View Claim"
+msgstr "查看售后单"
+
+#. module: rma
+#: code:addons/rma/models/sale.py:336
+#: code:addons/rma/wizard/sale_make_claim_advance.py:119
+#, python-format
+msgid "Warnning!"
+msgstr "警告！"
+
+#. module: rma
+#: model:ir.model,name:rma.model_website
+msgid "Website"
+msgstr "网站"
+
+#. module: rma
+#: field:sale.advance.rma.claim,advance_payment_method:0
+msgid "What do you want to claim?"
+msgstr "你想要如何申请售后？"
+
+#. module: rma
+#: code:addons/rma/models/sale.py:231
+#, python-format
+msgid "You cannot group sales having different currencies for the same partner."
+msgstr "不能将具有不同货币的销售分组给同一个客户。"
+
+#. module: rma
+#: code:addons/rma/wizard/sale_make_claim_advance.py:119
+#, python-format
+msgid "You have to choice one of them to claim!"
+msgstr "你必须选择至少一件商品进行售后申请！"
+
+#. module: rma
+#: view:account.invoice.refund:rma.view_claim_invoice_refund
+msgid ""
+"You will be able to edit and validate this\n"
+"                                    credit note directly or keep it draft,\n"
+"                                    waiting for the document to be issued by\n"
+"                                    your supplier/customer."
+msgstr ""
+"你可以编缉这一红字发票并直接记账，\n"
+"                                    或保持在草稿状态,\n"
+"                                    以等待你的供应商\n"
+"                                    或客户同意这个文档。"
+
+#. module: rma
+#: view:account.invoice.refund:rma.view_claim_invoice_refund
+#: view:sale.advance.rma.claim:rma.view_stock_enter_claim_details
+msgid "or"
+msgstr "或"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_checkout
+msgid "上门取货"
+msgstr "上门取货"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_created
+msgid "售后服务单申请成功"
+msgstr "售后服务单申请成功"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "售后申请服务"
+msgstr "售后申请服务"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_created
+msgid "售后首页"
+msgstr "售后首页"
+
+#. module: rma
+#: view:website:rma.mobile_myaccount_order_after_sale
+msgid "我的售后"
+msgstr "我的售后"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "提交申请"
+msgstr "提交申请"
+
+#. module: rma
+#: view:website:rma.mobile_myaccount_order_after_sale_list_tab
+#: view:website:rma.public_mobile_order_btn_waitting_claim
+msgid "申请售后"
+msgstr "申请售后"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "申请描述："
+msgstr "申请描述："
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_created
+msgid "申请时间:"
+msgstr "申请时间:"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_created
+msgid "申请类型:"
+msgstr "申请类型:"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_checkout
+msgid "确认售后申请"
+msgstr "确认售后申请"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "返回商城"
+msgstr "返回商城"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_created
+#: view:website:rma.mobile_myaccount_order_after_sale_list_tab
+#: view:website:rma.public_mobile_order_btn_already_claimed
+msgid "进度查询"
+msgstr "进度查询"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_checkout
+msgid "邮寄到商家"
+msgstr "邮寄到商家"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_checkout
+msgid "配送方式"
+msgstr "配送方式"

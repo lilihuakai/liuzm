@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="layout" inherit_id="website_myaccount_base.mobile_layout">
+            <xpath expr="//html/head" position="inside">
+                <link href="/website_cart/static/src/css/ordersubmit.css" rel="stylesheet"/>
+                <!-- <link href="/web/static/lib/bootstrap/css/bootstrap.css" rel="stylesheet"/> -->
+                <!-- <link href="/website_myaccount_base/static/src/css/mobile_admin.css" rel="stylesheet"/> -->
+                <link href="/website_myaccount_base/static/src/css/myaccount.css" rel="stylesheet"/>
+                <!-- <link href="/website_myaccount_base/static/src/css/cityLayout.css" rel="stylesheet"/> -->
+                <link href="/website_myaccount_base/static/src/css/wechatcustomer.css" rel="stylesheet"/>
+                <!-- <link href="/website_myaccount_base/static/src/css/promanagement.css" rel="stylesheet"/> -->
+                <link href="/rma/static/src/css/audit.css" rel="stylesheet"/>
+            </xpath>
+
+            <xpath expr="//html/body" position="inside">
+                <!-- <script type="text/javascript" src="/website_myaccount_base/static/src/js/cityselect.js" /> -->
+                <!-- <script type="text/javascript" src="/website_cart/static/src/js/area.js"/> -->
+                <!-- <script type="text/javascript" src="/website_myaccount_base/static/src/js/m_myaccount.js" />
+                <script type="text/javascript" src="/website_myaccount_base/static/src/js/promanagement.js" />
+                <script type="text/javascript" src="/website_myaccount_base/static/src/js/wechatcustomer.js" />
+                <script type="text/javascript" src="/website_myaccount_base/static/src/js/order_search.js" /> -->
+                <script type="text/javascript" src="/rma/static/src/js/claimsubmit.js"/>
+            </xpath>
+        </template>
+
+        <!-- 售后申请主界面 -->
+        <template id="mobile_myaccount_order_after_sale">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">我的售后</t>
+                <t t-call="rma.mobile_myaccount_order_after_sale_list"/>
+            </t>
+            <xpath expr="//html/body" position="inside">
+                <script type="text/javascript" src="/website_myaccount_base/static/src/js/orderlist_scroll_loading.js"/>
+            </xpath>
+        </template>
+        <template id="mobile_myaccount_order_after_sale_list">
+            <t t-if="not flag"><t t-set="flag" t-value="value.get('flag')"/></t>
+            <t t-if="not orders">
+                <t t-set="orders_dict" t-value="website.get_order_match_for_field(value.get('fields_list'),value.get('limit'),value.get('offset'))"/>
+                <t t-set="orders" t-value="orders_dict.get('orders')"/>
+            </t>
+            <div class="moblie-order-management mobile_after_sale_tag">
+                <input type="hidden" name="tmp_orderlist_flag" t-att-value="value.get('flag')" />
+                <!-- <t t-call="website_myaccount_base.public_mobile_order_top_menu"/> -->
+
+                <div class="om-choice-status">
+                    <t t-call="rma.mobile_myaccount_order_after_sale_list_tab"/>
+                </div>
+
+                <div class="mo-order-pd-list om-choice-1 mopl-active after_sale_foreach_tag">
+                    <t t-call="website_myaccount_base.public_mobile_foreach_productList"/>
+                </div>
+
+                <!-- <t t-call="website_cart.acquirer_list"/> -->
+
+                <!-- 上拉或下拉加载菊花圈,内容加载完后,菊花圈消失 -->
+                <t t-call="common_code.public_scroll_calling_loader"/>
+
+            </div>
+        </template>
+        <template id="mobile_myaccount_order_after_sale_list_tab">
+            <t t-if="not flag"><t t-set="flag" t-value="value.get('flag')"/></t>
+            <a href="#">
+                <div id="om-choice-1" t-att-class="(flag == 'waitting_claim') and 'om-choice om-active' or 'om-choice'">
+                    <span>申请售后</span>
+                </div>
+            </a>
+            <a href="#">
+                <div id="om-choice-2" t-att-class="(flag == 'already_claimed') and 'om-choice om-active' or 'om-choice'" >
+                    <span>进度查询</span>
+                </div>
+            </a>
+            <div class="clear"></div>
+        </template>
+
+        <!-- 售后申请详情页 -->
+        <template id="mobile_order_activist_service_page">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">售后申请服务</t>
+
+                <t t-if="orders and orders.order_line">
+                    <div class="shopping-cart-page">
+                        <div class="sc-product-list">
+                            <t t-call="rma.mobile_after_sale_product_line" />
+                            <p class="end-cart-product" />
+                            申请描述：<textarea t-att-data-description="claims.description"></textarea>
+                        </div>
+                        <div class="sc-go-checkout" >
+                            <p><a href="/shop"><span class="pi-addtocart">返回商城</span></a>
+                                <a href="'/m/myaccount/order/after_sale/checkout/%s' % line.id">
+                                    <span class="go-checkout-button">提交申请</span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </t>
+                <div class="submit-create-claim-page">
+                    <a t-att-href="'/m/myaccount/order/after_sale/checkout/%s' % orders.id"><input type="button" value="确认"/></a>
+                </div>
+            </t>
+        </template>
+        <template id="mobile_after_sale_product_line">
+            <t t-if="orders">
+                <t t-foreach="orders.order_line" t-as="line">
+                    <t t-foreach="claims.item_ids" t-as="item">
+                        <t t-if="line.product_id.id == item.product_id.id and item.is_claim">
+                            <table>
+                                <tr>
+                                    <td rowspan="3" class="product-img">
+                                        <span t-field="line.product_id.image" t-field-options='{"widget": "image"}'/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_id.with_context(display_default_code=False).display_name"/>
+                                        <!-- <span t-field="line.product_id.name"/> -->
+                                    </td>
+                                    <td><b><a href="#" class="after_sale_delete_line" t-att-data-order_id="orders.id" t-att-data-item-id="item.id">删除</a></b></td>
+                                </tr>
+                                <tr>
+                                    <td class="sc-pd-price">
+                                        <span t-field="line.product_id.list_price"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="input-group oe_website_spinner">
+                                            <span class="input-group-addon">
+                                                <a t-attf-href="#" class="mb8 js_add_cart_json" data-no-instant="">
+                                                    <i class="fa fa-minus"></i>
+                                                </a>
+                                            </span>
+                                            <input type="text" class="js_quantity form-control"
+                                                   t-att-data-line-id="item.id"
+                                                   t-att-data-product-id="item.product_id.id"
+                                                   t-att-value="int(item.unclaimed_qty)"/>
+                                            <span class="input-group-addon">
+                                                <a t-attf-href="#" class="mb8 float_left js_add_cart_json" data-no-instant="">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <!-- 售后申请确认页 -->
+        <template id="mobile_after_sale_checkout" name="mobile after sale checkout">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">确认售后申请</t>
+
+                <t t-if="not website_sale_address"><t t-set="website_sale_address" t-value="website.sale_get_address()"/></t>
+                <t t-if="not website_sale_order"><t t-set="website_sale_order" t-value="website.sale_get_order()"/></t>
+                <t t-if="not default_shipto"><t t-set="default_shipto" t-value="website_sale_order and website_sale_order.partner_id.get_default_shipto_obj(website_sale_order.partner_id.id)" /></t>
+                <t t-if="website_sale_order and website_sale_order.partner_shipping_id and website_sale_address['shippings']">
+                    <t t-if="not using_shipto"><t t-set="using_shipto" t-value="website_sale_order.partner_shipping_id" /></t>
+                    <t t-if="not using_address"><t t-set="using_address" t-value="using_shipto.address_id.get_address()"/></t>
+                </t>
+                
+                <div class="order-submit-page">
+                    <div class="os-shipping-info">
+                        <p class="shipping-choose">配送方式<span t-att-class="(website_sale_order and website_sale_order.ship_type == 'delivery') and 'shipping-type os-active' or 'shipping-type' " id="os-st-1"  t-att-data-ship-type="'delivery'">上门取货</span>
+                        <span  t-att-class="(website_sale_order and website_sale_order.ship_type == 'pickup') and 'shipping-type os-active' or 'shipping-type' " id="os-st-2" t-att-data-ship-type="'pickup'">邮寄到商家</span></p>
+                        <p class="address-change">
+                            <t t-call="website_cart.checkout_using_shipto"/>
+                        </p>
+                    </div>
+                    <!-- <div class="os-shopping-cart">
+                        <p><b class="glyphicon glyphicon-list-alt"></b>推广商品</p>
+                    
+                        <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                            <a class="product-images" title="" t-attf-href="/shop/product/#{ slug(line.product_id.product_tmpl_id) }">
+                                <table>
+                                    <tr>
+                                        <td rowspan="3" class="product-img"><span t-field="line.product_id.image" t-field-options='{"widget": "image"}'/></td>
+                                        <td><span t-esc="line.product_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span t-esc="line.product_id.with_context(display_default_code=False).display_name"/>/数量<span t-esc="int(line.product_uom_qty)"/></td>
+                                    </tr>
+                                    <tr>
+                    
+                                        <td class="product-price"><span t-field="line.product_id.list_price"/></td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </t>
+                        <p class="shipping-type-show">运送方式<span class="os-shipping-detail">快递 免运费</span></p>
+                        <p class="os-message"><input id="wcname" type="text" value="给卖家留言" onfocus="if(value=='给卖家留言') {value=''}" onblur="if (value=='') {value='给卖家留言'}" /><span t-esc="website_sale_order.buyer_note"/></p>
+                        <p class="os-sp-total">共<span class="os-total-amount"><t t-esc="website_sale_order.product_count" /></span>件商品     合计<span class="os-total-price"><span t-esc="website_sale_order.amount_total"/></span></p>
+                        <p class="clear"></p>
+                    </div>
+                    <div class="os-payment-type">
+                        <p>支付方式<span class="os-py-detail">在线支付</span></p>
+                    </div>
+                    <div class="os-promotion">
+                        <p>活动促销<span class="os-promotion-detail">两件包邮: 包邮</span></p>
+                    </div>
+                    
+                    <div class="os-promotion checkout_person_coupon_tag">
+                        <t t-call="website_cart.checkout_using_coupon"/>
+                    </div>
+                    
+                    <t t-if="not website_sale_coupons"><t t-set="website_sale_coupons" t-value="website.sale_get_coupons()"/></t>
+                    <div class="os-promotion ">
+                        <p>积分 <span></span> 共<t t-esc="website_sale_coupons and website_sale_coupons.get('available_points')" />积分, 可用<t t-esc="website_sale_coupons and website_sale_coupons.get('available_points')" />积分,抵<t t-esc="website_sale_coupons and website_sale_coupons.get('available_points')" />  
+                            <input type="checkbox" id="checkbox-10-1" class="cart_person_integral_tag"  t-att-data-available-points ="website_sale_coupons and website_sale_coupons.get('available_points','')"/>
+                            <label for="checkbox-10-1"></label>
+                        </p>
+                        <p class="cart_person_integral_display" style="display:none"><t t-call="website_cart.cart_person_integral" /></p>
+                    </div>
+                    </t>
+                    
+                    <div class="os-alltotal-price">
+                        商品金额, 运费, 优惠卷, points
+                        <t t-call="website_cart.checkout_calculate_item_by_product_total"/>
+                        <t t-call="website_cart.checkout_calculate_item_by_freight"/>
+                        <div class="checkout_calculate_item_by_coupon_tag">
+                            <t t-call="website_cart.checkout_calculate_item_by_coupon"/>
+                        </div>
+                        <div class="checkout_calculate_item_by_points_tag">
+                            <t t-call="website_cart.checkout_calculate_item_by_points"/>
+                        </div>
+                    </div>
+                    
+                    <div class="os-submit-orders">
+                        <p>实付:<span class="os-oeder-pcount"><span t-esc="website_sale_order.cash_amount"/></span>     <span class="submit-orders-button"><button>提交订单</button></span></p>
+                        <p class="clear"></p>
+                    </div>
+                    
+                    +begin:  by jinchao ====================description: all shipto_template
+                    这里全放展开,隐藏的窗口
+                    <t t-call="website_cart.cart_shipto_window"/>
+                    <t t-call="website_cart.acquirer_list"/>
+                    <div class="cart_address_edit_tag">
+                        <t t-call="website_cart.cart_address_edit_window"/>
+                    </div>
+                    <div class="checkout_coupon_output_html_tag">
+                        <t t-call="website_cart.checkout_person_coupon_window"/>
+                    </div>
+                    <div id="myModal" class="modal-pop"></div>
+                    +end: by jinchao -->
+                </div>
+                <div id="shclDefault"></div>
+                <a t-att-href="'/m/myaccount/order/after_sale/claim_create/%s' % orders.id"><input type="button" value="确认"/></a>
+            </t>
+        </template>
+
+        <!-- 售后申请完成页 -->
+        <template id="mobile_after_sale_created" name="mobile after sale created">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <div class="submit-successful">
+                    <div class="ss-img"><img src="/rma/static/src/images/submits-s.png" /></div>
+                    <div class="ss-title">售后服务单申请成功</div>
+                    <div class="ss-detail">
+                        <p>申请时间: <span t-esc="claims.date"/></p>
+                        <p>申请类型: </p>
+                    </div>
+                    <div class="ss-button">
+                        <a href="#"><p>进度查询</p></a><a href="#"><p>售后首页</p></a>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</openerp>

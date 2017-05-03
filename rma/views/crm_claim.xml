@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="crm_claim_rma_form_view">
+            <field name="name">CRM - Claim product return Form</field>
+            <field name="model">crm.claim</field>
+            <field name="inherit_id" ref="crm_claim.crm_case_claims_form_view"/>
+            <field name="arch" type="xml">
+                <!-- Header/workflow Buttons -->
+                <xpath expr="//field[@name='stage_id']" position="before">
+                    <button name="%(rma.action_claim_invoice_refund)d" class="oe_inline" type='action' string='New Claim Refund'/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

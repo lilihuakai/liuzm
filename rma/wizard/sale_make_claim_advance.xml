@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_stock_enter_claim_details" model="ir.ui.view">
+            <field name="name">Claim Order</field>
+            <field name="model">sale.advance.rma.claim</field>
+            <field name="arch" type="xml">
+                <form string="Claim Sales Order">
+                    <p class="oe_grey">
+                        Select how you want to claim this order. This
+                        will create a draft claim that can be modified
+                        before validation.
+                    </p>
+                    <group>
+                        <field name="advance_payment_method" class="oe_inline" />
+                        <field name="claim_origin"/>
+                        <field name="description"/>
+                    </group>
+                    <group>
+                        <field name="item_ids" nolabel="1" attrs="{'invisible': [('advance_payment_method', '!=', 'lines')]}">
+                            <tree string="Sales Order Lines" create="false" delete="false" editable="bottom">
+                                <field name="is_claim"/>
+                                <field name="product_id"/>
+                                <field name="name"/>
+                                <field name="product_uom_qty"/>
+                                <field name="unclaimed_qty"/>
+                                <field name="price_unit"/>
+                                <field name="discount"/>
+                                <field name="price_subtotal"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="create_claims" string="Create and View Claim" type="object" context="{'is_open_claims': True}" 
+                            class="oe_highlight"/>
+                        <button name="create_claims" string="Create Claim" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_stock_enter_claim_details" model="ir.actions.act_window">
+            <field name="name">Claim Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.advance.rma.claim</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</openerp>
