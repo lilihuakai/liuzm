@@ -1,0 +1,512 @@
+body{
+    margin:0;
+}
+a{
+    text-decoration:none;
+	color:#424a54;
+}
+a:hover{
+    text-decoration:none;
+}
+p{
+    margin:0;
+    padding:0;
+}
+
+.moblie-wechat-cus-page table,
+.wm-income table,
+.wm-withdrawal table{
+    width:100%;
+	text-align:center;
+}
+
+.moblie-wechat-cus-page,
+.moblie-ws-information,
+.moblie-cus-management,
+.moblie-ws-myaccount,
+.moblie-ws-faq,
+.moblie-wd-account,
+.moblie-my-qrcode,
+.moblie-order-management{
+    max-width:750px;
+    margin:0 auto;
+    background:#eeeff4;
+    width:100%;
+	color:#a4a4a4;
+	min-height:500px;
+}
+.cus-personal-information{
+    background:url(../images/distribution-information-bg.png) repeat-x;
+    padding:2% 5px 2% 20px;
+}
+.cus-personal-information .head{
+    width: 20%;
+}
+.cus-personal-information .head img{
+    border-radius:50%;
+    width:100%;
+    max-width: 130px;
+}
+.cus-personal-information .information .name{
+    font-size:22px;
+    padding-left:10%;
+    line-height:30px;
+}
+.cus-personal-information .information .tel{
+    padding-left:11%;
+    line-height:20px;
+}
+.cus-personal-information .information .integral{
+    text-align:right;
+    padding-right:10%;
+}
+.cus-personal-information .arrows{
+    width:38px;
+}
+.icon-arrows-right{
+    display: inline-block;
+    width: 2.2em;
+    height: 2.2em;
+    background: url(http://res.vmall.com/nwap/20150605/images/echannelWap/icon/arrows.png) no-repeat;
+    background-size: 3.2em 7.3em;
+    background-position: 0 0;
+	z-index:99999;
+	cursor:pointer;
+}
+.cus-personal-information a{
+    color:#fff;
+}
+.trade-information{
+    padding:10px;
+	background:#fff;
+	-moz-box-shadow:3px 2px 3px #e4e4e7;
+    -webkit-box-shadow:3px 2px 3px #e4e4e7;
+    box-shadow:3px 2px 3px #e4e4e7;
+}
+.trade-information td{
+    padding:5px;
+	width:50%;
+}
+.trade-information span{
+    color:#ff8522;
+	padding-left:5px;
+	font-weight:bold;
+}
+.account-money,
+.wechat-cus-list{
+    background:#fff;
+	margin-top:15px;
+	padding:0 10px;
+	-moz-box-shadow:3px 2px 3px #e4e4e7;
+    -webkit-box-shadow:3px 2px 3px #e4e4e7;
+    box-shadow:3px 2px 3px #e4e4e7;
+	position:relative;
+	line-height:22px;
+}
+.account-money a,
+.wechat-cus-list a,
+.moblie-ws-information a,
+.moblie-ws-myaccount a{
+    color:#a4a4a4;
+}
+.account-money span,
+.wm-income span,
+.wm-withdrawal span{
+    color:#ff8522;
+	padding-left:5px;
+	font-weight:bold;
+	font-size:20px;
+	line-height:25px;
+}
+.account-money .m-arrows,
+.wechat-cus-list .m-arrows{
+    position: absolute;
+    top: 10%;
+    right: .8em;
+}
+.wc-myaccount,
+.wc-commission{
+    padding:10px;
+	position:relative;
+	border-bottom:1px solid #e6e6e5;
+}
+.wc-myaccount .wc-to-account{
+    position: absolute;
+    top: 20%;
+    right: 2.8em;
+}
+.wc-order-customer{
+    padding:10px;
+	position:relative;
+}
+.wc-order-customer td,
+.wc-commission td,
+.wm-income td,
+.wm-withdrawal td{
+    text-align:left;
+	width:50%;
+}
+
+.glyphicon {
+    font-size: 18px;
+    padding-right: 15px;
+    top: 4px;
+}
+.wechat-cus-list ul,
+.moblie-ws-information ul{
+    margin:0;
+	padding:0;
+}
+.wechat-cus-list li,
+.moblie-ws-information li{
+    list-style:none;
+	position:relative;
+	background:#fff;
+}
+.wechat-cus-list .m-title,
+.moblie-ws-information .m-title{
+    line-height: 3;
+    margin-left: 1.6em;
+    vertical-align: middle;
+    border-bottom: 1px solid #d9d9d9;
+}
+.moblie-ws-information{
+    padding-top:20px;
+	position:relative;
+}
+.moblie-ws-information .head-img{
+    line-height:5.6;
+}
+.moblie-ws-information .title-img img{
+    border-radius:50%;
+    width:100%;
+    max-width: 50px;
+}
+.moblie-ws-information .title-img{
+    position: absolute;
+    top: 40%;
+    right: 1.8em;
+    margin-top: -1.6em;
+}
+.moblie-ws-information .title-value{
+    position: absolute;
+    top: 83%;
+    right: 1.8em;
+    margin-top: -1.6em;
+}
+.moblie-ws-information .pd-bottom{
+    margin-bottom:20px;
+    -moz-box-shadow:0px 3px 0px #e4e4e7;
+    -webkit-box-shadow:0px 3px 0px #e4e4e7; 
+    box-shadow:0px 3px 0px #e4e4e7;
+}
+.moblie-ws-information .pd-bottom .m-title{
+    border:none;
+}
+.moblie-ws-information b{
+    font-weight:normal;
+}
+.customer-count{
+    background:#fd6d48;
+	color:#fff;
+	padding:10px;
+	text-align:center;
+}
+.customer-count span{
+    padding:0px 10px;
+}
+.moblie-cus-management table{
+    width:100%;
+	background:#fff;
+	padding:10px;
+	border-bottom: 1px solid #d9d9d9;
+	-moz-box-shadow:3px 2px 3px #e4e4e7;
+    -webkit-box-shadow:3px 2px 3px #e4e4e7;
+    box-shadow:3px 2px 3px #e4e4e7;
+}
+.moblie-cus-management .head,
+.my-qr-code .head{
+    width: 30%;
+    padding: 10px;
+    text-align: center;
+}
+.moblie-cus-management img,
+.my-qr-code .head img{
+    border-radius:50%;
+    width:100%;
+    max-width: 130px;
+}
+.moblie-cus-management p{
+    line-height:20px;
+}
+.moblie-cus-management .cm-name{
+    position:relative;
+	color:#333;
+}
+.cm-name .cm-type{
+    padding:1px 5px;
+	border-radius:8px;
+	border:1px solid #fd6d48;
+	color:#fd6d48;
+	font-size:.8em;
+	margin-left:10px;
+}
+.cm-name .join-date{
+    position:absolute;
+    right:0;
+}
+.pay-order span,
+.pay-total span,
+.cm-source span{
+    padding:0px 5px;
+}
+.moblie-ws-myaccount .wm-head{
+    background:#fb6242;
+	text-align:center;
+	color:#fff;
+	padding:5%;
+}
+.moblie-ws-myaccount .wm-head p{
+    line-height:25px;
+}
+.moblie-ws-myaccount .wm-head a{
+    color:#fff;
+}
+.moblie-ws-myaccount .wm-head .ac-balance{
+    padding:5px 0 15px;
+	font-size:22px;
+}
+.moblie-ws-myaccount .wm-head .ac-balance:first-letter{
+    font-size: 1.4em;
+}
+.wm-income{
+    background:#fff;
+	padding:10px;
+	margin-top: 10px;
+	border-bottom: 1px solid #d9d9d9;
+}
+.wm-withdrawal{
+    background:#fff;
+    padding:10px;
+}
+.moblie-ws-faq .m-title{
+    margin:0 0.6em;
+	cursor: pointer;
+}
+.moblie-ws-faq .icon-arrows-right{
+    background-size: 2.2em 7.3em;
+    background-position: 0 -60px;
+}
+.moblie-ws-faq .show-answer{
+    line-height:18px;
+	font-size:13px;
+	display:none;
+}
+.wa-payment-type,
+.wechat-payment,
+.alipay-payment{
+    background:#fff;
+	-moz-box-shadow:3px 2px 3px #e4e4e7;
+    -webkit-box-shadow:3px 2px 3px #e4e4e7;
+    box-shadow:3px 2px 3px #e4e4e7;
+}
+.wa-payment-type .payment-type{
+    position:relative;
+}
+.wa-payment-type img{
+    width:100%;
+	max-width:30px;
+}
+.wa-payment-type p{
+    line-height:30px;
+	padding: 15px;
+	border-bottom: 1px solid #d9d9d9;
+}
+.pa-alipay p{
+    border:none;
+}
+.wa-payment-type .wa-img{
+    float:left;
+}
+.wa-payment-type input{
+    position:absolute;
+	right: 20px;
+    top: 20px;
+}
+.wa-prompt{
+    padding:15px;
+}
+.wechat-payment p,
+.alipay-payment p{
+	padding: 10px;
+    border-bottom: 1px solid #e6e6e5;
+}
+.wechat-payment input,
+.alipay-payment input{
+    padding-left:15px;
+    border: none;
+    outline: none;
+	line-height:30px;
+	font-size: 16px;
+}
+.alipay-payment{
+    display:none;
+}
+.moblie-wd-account .wa-save-button{
+    text-align:center;
+	margin-top: 20px;
+}
+.moblie-wd-account .wa-save-button button{
+    background: #fb6242;
+    margin: 0px 10%;
+    color: #fff;
+    border: none;
+    border-radius: 8px 8px;
+    font-weight: bold;
+	width:80%;
+	padding:15px 0;
+	font-size:16px;
+	cursor:pointer;
+}
+.moblie-my-qrcode{
+    background:#2e3132;
+}
+.moblie-my-qrcode .mq-head{
+    padding:10px;
+	text-align:center;
+	line-height:24px;
+}
+.my-qr-code{
+    background:#fff;
+	margin:0 10%;
+	border-radius: 8px 8px ;
+}
+.my-qr-code table{
+    width:100%;
+	padding:10px;
+}
+.my-qr-code p{
+    line-height:24px;
+	color:#000;
+	text-align:center;
+}
+.my-qr-code td p{
+	text-align:left;
+}
+.my-qr-code span{
+    color:#ff0e0e;
+	padding:0px 10px;
+}
+.my-qr-code .qr-detail{
+    background:url(../images/qrcode-bg.png) repeat-x;
+	border-radius: 0 0 7px 7px;
+}
+.qr-detail .qr-advertising{
+    padding:20px;
+	color:#fff;
+}
+.qr-detail img{
+    width:100%;
+	max-width:250px;
+	margin: 0 auto;
+}
+.moblie-my-qrcode .return-button{
+    padding:5% 10%;
+	text-align:right;
+	line-height:30px;
+}
+.moblie-my-qrcode .return-button a{
+    color:#fff;
+}
+.clear{
+    clear:both;
+}
+.om-choice-status{
+	background:#fff;
+}
+.om-choice-status #om-choice-1,
+.om-choice-status #om-choice-2,
+.om-choice-status #om-choice-3,
+.om-choice-status #om-choice-4,
+.om-choice-status #om-choice-5{
+    float:left;
+    width:20%;
+    text-align:center;
+    line-height:22px;
+}
+.om-choice-status .om-active span{
+    border-bottom: 1px solid;
+    color:#ff8522;
+}
+.om-choice-status span{
+    line-height: 36px;
+    cursor:pointer;
+    
+    padding: 10px 5px;
+    position:relative;
+}
+#om-choice-2 .trading-in{
+    position:relative;
+}
+.om-choice-status .om-tab-sub{
+    position: absolute;
+    z-index: 3;
+    right: -10px;
+    top: 1px;
+    height: 12px;
+    padding: 0px 0px;
+    /*border: 1px solid #ff8522;*/
+    overflow: hidden;
+    color: #FFF !important;
+    font: 11px/11px verdana;
+    text-align: center;
+    min-width: 15px;
+    border-radius: 10px;
+    background-color: #ff8522;
+    background-image: linear-gradient(to bottom, #ff8522 0px, #ff8522 100%);
+}
+.mo-order-pd-list{
+    background:#fff;
+    margin-top:15px;
+    display:none;
+}
+.mo-order-pd-list.mopl-active{
+    display:block;
+}
+.mo-order-pd-list .od-pd-detail p{
+    padding:10px;
+    
+}
+.od-pd-detail{
+    border-bottom:15px solid #eeeff4;
+}
+.mo-order-pd-list .od-pd-detail td p{
+    padding:5px 0;
+}
+.mo-order-pd-list .od-pd-detail table{
+    width:100%;
+    padding:10px;
+    background:#f5f5f5;
+    margin-bottom:5px;
+}
+.mo-order-pd-list .od-pd-detail .od-pd-status{
+    float:right;
+    color:#ff8522;
+}
+.od-pd-detail .product-img{
+    width: 30%;
+    max-width: 150px;
+    text-align: center;
+}
+.od-pd-detail .product-img img{
+    width:80%;
+}
+.float-right{
+    float:right;
+}
+.commission-total{
+    color:#ff8522;
+    padding:0 5px;
+}
+
+

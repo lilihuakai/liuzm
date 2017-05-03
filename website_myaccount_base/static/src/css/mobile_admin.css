@@ -1,0 +1,151 @@
+body{
+  margin:0;
+}
+a{
+  text-decoration:none;
+}
+p{
+  margin:0;
+  padding:0;
+}
+
+.moblie-myaccount-page{
+  max-width:750px;
+  margin:0 auto;
+  background:#eeeff4;
+  width:100%;
+}
+.myaccount-personal-information{
+  background:url(../images/information-bg.png) repeat-x;
+  padding:4% 5px 4% 30px;
+}
+.myaccount-personal-information a{
+  color:#fff;
+}
+.myaccount-personal-information .head{
+  width: 20%;
+}
+.myaccount-personal-information .head img{
+  border-radius:50%;
+  width:100%;
+  max-width: 130px;
+}
+.information .name{
+  font-size:22px;
+  padding-left:10%;
+}
+.information .integral{
+  text-align:right;
+  padding-right:10%;
+}
+.myaccount-personal-information .arrows{
+  width:45px;
+}
+.icon-arrows-right{
+    display: inline-block;
+    width: 3.2em;
+    height: 2.2em;
+    background: url(http://res.vmall.com/nwap/20150605/images/echannelWap/icon/arrows.png) no-repeat;
+    background-size: 3.2em 7.3em;
+    background-position: 0 0;
+	z-index:99999;
+	cursor:pointer;
+}
+.myaccount-order-information{
+  padding:25px 0;
+  background:#fff;
+  margin-bottom:25px;
+  clear:both;
+}
+.myaccount-order-information table td{
+  text-align:center;
+  width:20%;
+}
+.myaccount-order-information a{
+  color:#424a54;
+}
+.myaccount-order-information img{
+  width:100%;
+  max-width:80px;
+  padding:0 10px 10px;
+}
+.myaccount-list{
+  position:relative;
+}
+.myaccount-list ul{
+  margin:0;
+  padding:0;
+}
+.myaccount-list li{
+  list-style:none;
+  background:#fff;
+  position:relative;
+}
+.myaccount-list .m-title{
+    line-height: 3.6;
+    margin-left: 1.6em;
+    vertical-align: middle;
+    border-bottom:1px solid #d9d9d9;
+}
+.myaccount-list .m-arrows{
+    position: absolute;
+    top: 60%;
+    right: .8em;
+    margin-top: -1.6em;
+}
+.myaccount-list .pd-bottom{
+   margin-bottom:20px;
+   -moz-box-shadow:0px 3px 0px #e4e4e7;
+   -webkit-box-shadow:0px 3px 0px #e4e4e7; 
+   box-shadow:0px 3px 0px #e4e4e7;
+}
+.myaccount-list .pd-bottom .m-title{
+   border:none;
+}
+.myaccount-list a{
+  color:#424a54;
+  font-size:16px;
+}
+.myaccount-list .glyphicon{
+  color:#424a54;
+  font-size:18px;
+  padding-right:15px;
+  top: 4px;
+}
+
+/* +begin append by jinchao------------------------------ */
+/* #footer { */
+/*     display:none; */
+/* } */
+/* .col-md-1-5 { */
+/* width: 20%; */
+/* float: left; */
+/* } */
+/* .col-xs-1-5,.col-sm-1-5,.col-md-1-5,.col-lg-1-5 { */
+/* min-height: 1px; */
+/* padding-left: 15px; */
+/* padding-right: 15px; */
+/* position: relative; */
+/* } */
+
+/* @media (min-width: 768px) { */
+/* .col-sm-1-5 { */
+/* width: 20%; */
+/* float: left; */
+/* } */
+/* } */
+/* @media (min-width: 992px) { */
+/* .col-md-1-5 { */
+/* width: 20%; */
+/* float: left; */
+/* } */
+/* } */
+/* @media (min-width: 1200px) { */
+/* .col-lg-1-5 { */
+/* width: 20%; */
+/* float: left; */
+/* } */
+/* } */
+
+.col-xs-1-5, .col-sm-1-5, .col-md-1-5, .col-lg-1-5 { position: relative; min-height: 1px; padding-right: 10px; padding-left: 10px; } .col-xs-1-5 { width: 20%; float: left; } @media (min-width: 768px) { .col-sm-1-5 { width: 20%; float: left; } } @media (min-width: 992px) { .col-md-1-5 { width: 20%; float: left; } } @media (min-width: 1200px) { .col-lg-1-5 { width: 20%; float: left; } }
+/* +end append by jinchao------------------------------ */

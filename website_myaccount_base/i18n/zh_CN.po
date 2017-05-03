@@ -1,0 +1,1163 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_myaccount_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-20160612\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-17 08:21+0000\n"
+"PO-Revision-Date: 2017-04-19 10:54+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 1.8.8\n"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_coupon_foreach_list
+msgid "(5张可领)更多好券, 去领券中心看看 ->"
+msgstr "(5张可领)更多好券, 去领券中心看看 ->"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_orderlist
+msgid "(买家已付款)"
+msgstr "(买家已付款)"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.public_mobile_foreach_productList
+msgid "(含运费"
+msgstr "(含运费"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_orderlist
+msgid "(未支付)"
+msgstr "(未支付)"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+#: view:website:website_myaccount_base.mobile_admin_orderlist
+msgid "/ x"
+msgstr "/ x"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_address_list
+msgid "13812345678"
+msgstr "13812345678"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.orders
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Actions"
+msgstr "操作"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Address:"
+msgstr "地址："
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Amount Total:"
+msgstr "总计："
+
+#. module: website_myaccount_base
+#: field:website_myaccount_base.distribution.faq,faq_anwser:0
+msgid "Anwser"
+msgstr "回答："
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Birthday (yyyy-mm-dd)"
+msgstr "生日 (yyyy-mm-dd)"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.addresses
+msgid "City"
+msgstr "城市"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Confirm email address"
+msgstr "确认电子邮件地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Confirm password"
+msgstr "确认密码"
+
+#. module: website_myaccount_base
+#: field:website_myaccount_base.distribution.faq,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: website_myaccount_base
+#: field:website_myaccount_base.distribution.faq,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Dear Customer, Product has shipping to you, please ready to accept."
+msgstr "尊敬的客户，产品已出货给您，请准备收货。"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.addresses
+msgid "Default address"
+msgstr "默认地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Desposit Date: Any Time."
+msgstr "Desposit Date: Any Time."
+
+#. module: website_myaccount_base
+#: field:website_myaccount_base.distribution.faq,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: website_myaccount_base
+#: model:ir.actions.act_window,name:website_myaccount_base.website_myaccount_base_distribution_faq
+#: model:ir.ui.menu,name:website_myaccount_base.sale_distribution_faq
+msgid "Distribution FAQ"
+msgstr "常见问题"
+
+#. module: website_myaccount_base
+#: view:website_myaccount_base.distribution.faq:website_myaccount_base.distribution_faq_form
+msgid "Distribution FAQ Form"
+msgstr "常见问题"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Email"
+msgstr "邮箱"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Email address"
+msgstr "电子邮件地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Freight:0.00"
+msgstr "Freight:0.00"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Full name"
+msgstr "全称"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mypeople
+msgid "Head Image"
+msgstr "头像"
+
+#. module: website_myaccount_base
+#: field:website_myaccount_base.distribution.faq,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Image"
+msgstr "图像"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.menu
+msgid "Information"
+msgstr "信息"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Invoice"
+msgstr "发票"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Invoice Company: Personal"
+msgstr "Invoice Company: Personal"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Invoice Content: Daily used."
+msgstr "Invoice Content: Daily used."
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Invoice Type: Normal"
+msgstr "Invoice Type: Normal"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mypeople
+msgid "Join Date"
+msgstr "关注时间"
+
+#. module: website_myaccount_base
+#: field:website_myaccount_base.distribution.faq,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: website_myaccount_base
+#: field:website_myaccount_base.distribution.faq,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: website_myaccount_base
+#: field:website_myaccount_base.distribution.faq,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Mobile"
+msgstr "手机"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Mobile:"
+msgstr "手机号："
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "My Records"
+msgstr "我的订单"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.menu
+msgid "MyPeople"
+msgstr "我的粉丝"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.menu
+msgid "MyProfile"
+msgstr "账户信息"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.menu
+msgid "MyRecord"
+msgstr "我的订单"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.menu
+msgid "MyTag"
+msgstr "送货地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mypeople
+#: view:website:website_myaccount_base.profile
+msgid "Name"
+msgstr "名称"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.dashboard
+msgid "News"
+msgstr "最新消息"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Order Detail:"
+msgstr "订单明细："
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.orders
+msgid "Order Details"
+msgstr "订单"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Order Information"
+msgstr "Order Information"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.orders
+msgid "Order No.:"
+msgstr "订单编号："
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Order No.："
+msgstr "Order No.："
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Order has completed, Thank you."
+msgstr "Order has completed, Thank you."
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Password"
+msgstr "密码"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Payment and Delivery Method"
+msgstr "Payment and Delivery Method"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Payment: Pay immedialate"
+msgstr "Payment: Pay immedialate"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Price"
+msgstr "价格"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Product List"
+msgstr "Product List"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Product Name"
+msgstr "产品名称"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Product Quantity"
+msgstr "Product Quantity"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Product SKU"
+msgstr "Product SKU"
+
+#. module: website_myaccount_base
+#: field:website_myaccount_base.distribution.faq,faq_question:0
+msgid "Question"
+msgstr "问题"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.orders
+msgid "Real Pay:"
+msgstr "实际支付："
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.orders
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Receive"
+msgstr "收货人"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Receive:"
+msgstr "Receive:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Return/Repair"
+msgstr "Return/Repair"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "SHOP"
+msgstr "SHOP"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.addresses
+msgid "Street"
+msgstr "街道"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.addresses
+msgid "Street2"
+msgstr "街道2"
+
+#. module: website_myaccount_base
+#: code:addons/website_myaccount_base/controllers/myaccount.py:99
+#, python-format
+msgid "The email %s has alread exists"
+msgstr "电子邮件 %s 已经存在。"
+
+#. module: website_myaccount_base
+#: code:addons/website_myaccount_base/controllers/myaccount.py:103
+#, python-format
+msgid "The mobile %s has alread exists"
+msgstr "手机号码 %s 已经存在"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Total:"
+msgstr "合计："
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.addresses
+msgid "Update address"
+msgstr "更新地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Update profile"
+msgstr "更新账号"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.orders
+msgid "View Logistics"
+msgstr "View Logistics"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.orders
+msgid "View Order"
+msgstr "查看订单"
+
+#. module: website_myaccount_base
+#: model:ir.model,name:website_myaccount_base.model_website
+msgid "Website"
+msgstr "网站"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "Write a comment"
+msgstr "Write a comment"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.addresses
+msgid "Zip / Postal Code"
+msgstr "邮政编码"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account_WithdrawalAccount
+msgid "alipay"
+msgstr "alipay"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "e.g. 2015-06-22"
+msgstr "例如： 2015-06-22"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_orderlist_activist_page
+msgid "order.activist_state"
+msgstr "order.activist_state"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+#: view:website:website_myaccount_base.mobile_orderlist_activist_page
+msgid "product_name"
+msgstr "product_name"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+#: view:website:website_myaccount_base.mobile_orderlist_activist_page
+msgid "product_pic"
+msgstr "product_pic"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+msgid "product_price    product_count"
+msgstr "product_price    product_count"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+msgid "service_type:"
+msgstr "service_type:"
+
+#. module: website_myaccount_base
+#: code:addons/website_myaccount_base/controllers/myaccount.py:106
+#, python-format
+msgid "update successfully"
+msgstr "更新成功"
+
+#. module: website_myaccount_base
+#: view:website_myaccount_base.distribution.faq:website_myaccount_base.distribution_faq_tree
+msgid "website_myaccount_base.distribution.faq"
+msgstr "website_myaccount_base.distribution.faq"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account_WithdrawalAccount
+msgid "wechat"
+msgstr "微信"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+msgid "上传照片"
+msgstr "上传照片"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_orderlist
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_ordersManager_list
+#: view:website:website_myaccount_base.public_mobile_foreach_productList
+msgid "下单时间:"
+msgstr "下单时间:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution
+msgid "下线会员"
+msgstr "下线会员"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_myqrcode
+msgid "专属二维码"
+msgstr "专属二维码"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_infor
+msgid "个人信息"
+msgstr "个人信息"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_customer
+#: view:website:website_myaccount_base.mobile_admin_distribution_myqrcode
+#: view:website:website_myaccount_base.mobile_admin_index
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_share_qrcode
+msgid "个人头像"
+msgstr "个人头像"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_customer
+msgid "二维码【微客:"
+msgstr "二维码【微客:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_ordersManager
+msgid "交易中"
+msgstr "交易中"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution
+msgid "交易量:"
+msgstr "交易量:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution
+msgid "交易额:"
+msgstr "交易额:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution
+msgid "今日付款佣金"
+msgstr "今日付款佣金"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_customer
+msgid "付款订单:"
+msgstr "付款订单:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_customer
+msgid "付款金额:"
+msgstr "付款金额:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_show_order_logistics_detail_top
+msgid "件商品"
+msgstr "件商品"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.public_mobile_foreach_productList
+msgid "件商品, 合计:"
+msgstr "件商品, 合计:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_coupon_foreach_list
+msgid "优惠券"
+msgstr "优惠券"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_orderlist_activist_page
+msgid "你的服务单11111111已完成, 如有疑问请留言反馈, 谢谢~"
+msgstr "你的服务单11111111已完成, 如有疑问请留言反馈, 谢谢~"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_ordersManager_list
+msgid "佣金总额:"
+msgstr "佣金总额:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_ordersManager_list
+msgid "佣金比率:"
+msgstr "佣金比率:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_coupon_tab
+msgid "使用记录(0)"
+msgstr "使用记录(0)"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_customer
+msgid "供货商"
+msgstr "供货商"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_coupon_foreach_list
+msgid "元可用"
+msgstr "元可用"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_index
+msgid "全部订单"
+msgstr "全部订单"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution
+#: view:website:website_myaccount_base.mobile_admin_index
+msgid "分销中心"
+msgstr "分销中心"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_myqrcode
+msgid "分销中心 >"
+msgstr "分销中心 >"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_distribution_productPromotion_list
+msgid "列表为空"
+msgstr "列表为空"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "创建时间:"
+msgstr "创建时间:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_distribution_info
+msgid "加入时间"
+msgstr "加入时间"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+msgid "原支付反还"
+msgstr "原支付反还"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_orderlist_activist_page
+msgid "去评价"
+msgstr "去评价"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_red_envelopes
+msgid "发放记录"
+msgstr "发放记录"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+#: view:website:website_myaccount_base.public_mobile_order_btn_draft
+msgid "取消订单"
+msgstr "取消订单"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_ordersManager
+msgid "可提现"
+msgstr "可提现"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account
+msgid "可提现佣金(元)"
+msgstr "可提现佣金(元)"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_red_envelopes
+msgid "可提现金额:"
+msgstr "可提现金额:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account
+msgid "可结算的佣金(元)"
+msgstr "可结算的佣金(元)"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account
+msgid "可结算的佣金退款(元)"
+msgstr "可结算的佣金退款(元)"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_orderlist_activist_page
+msgid "售后申请,进度查询"
+msgstr "售后申请,进度查询"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+msgid "售后申请服务"
+msgstr "售后申请服务"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "商品金额"
+msgstr "商品金额"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "在线支付"
+msgstr "在线支付"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_ordersManager_list
+msgid "实付款:"
+msgstr "实付款:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_customer
+msgid "客户总数:"
+msgstr "客户总数:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_customer
+msgid "客户来源:"
+msgstr "客户来源:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_ordersManager
+msgid "已提现"
+msgstr "已提现"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_coupon_tab
+msgid "已过期(0)"
+msgstr "已过期(0)"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution
+#: view:website:website_myaccount_base.mobile_admin_distribution_account
+#: view:website:website_myaccount_base.mobile_distribution_FAQ
+msgid "常见问题"
+msgstr "常见问题"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_address_list
+msgid "广东省 珠海市 香洲区 吉大"
+msgstr "广东省 珠海市 香洲区 吉大"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_distribution_info
+msgid "店铺信息"
+msgstr "店铺信息"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_distribution_info
+msgid "店铺名称"
+msgstr "店铺名称"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_distribution_info
+msgid "店铺头像"
+msgstr "店铺头像"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.public_mobile_order_category_tab
+msgid "待付款"
+msgstr "待付款"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_index
+#: view:website:website_myaccount_base.public_mobile_order_category_tab
+msgid "待发货"
+msgstr "待发货"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_index
+msgid "待支付"
+msgstr "待支付"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_index
+#: view:website:website_myaccount_base.public_mobile_order_category_tab
+msgid "待收货"
+msgstr "待收货"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_index
+#: view:website:website_myaccount_base.public_mobile_order_category_tab
+msgid "待评价"
+msgstr "待评价"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account_WithdrawalAccount
+msgid "微信昵称"
+msgstr "微信昵称"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account_WithdrawalAccount
+msgid "微信零钱"
+msgstr "微信零钱"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_productPromotion
+msgid "总佣金"
+msgstr "总佣金"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_distribution_productPromotion_list
+msgid "总佣金:"
+msgstr "总佣金:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_customer
+msgid "您没有客户~"
+msgstr "您没有客户~"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_coupon_html
+msgid "您的优惠券"
+msgstr "您的优惠券"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_coupon_foreach_list
+msgid "您的优惠卷为空~"
+msgstr "您的优惠卷为空~"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_customer
+msgid "您的客户"
+msgstr "您的客户"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+#: view:website:website_myaccount_base.mobile_admin_orderlist
+msgid "您的订单空空的, 立刻去首页看看自己喜欢的商品!"
+msgstr "您的订单空空的, 立刻去首页看看自己喜欢的商品!"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.public_mobile_foreach_productList
+msgid "您还没有相关的订单, 可以去看看有哪些想买的"
+msgstr "您还没有相关的订单, 可以去看看有哪些想买的"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_index
+msgid "我的优惠券"
+msgstr "我的优惠券"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_infor
+msgid "我的收货地址"
+msgstr "我的收货地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_index
+#: view:website:website_myaccount_base.mobile_myaccount_red_envelopes
+msgid "我的红包"
+msgstr "我的红包"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_orderlist
+#: view:website:website_myaccount_base.mobile_myaccount_user_orderlist
+msgid "我的订单"
+msgstr "我的订单"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution
+#: view:website:website_myaccount_base.mobile_admin_distribution_account
+msgid "我的账户"
+msgstr "我的账户"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_index
+msgid "我的购物车"
+msgstr "我的购物车"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_show_order_logistics_detail_top
+msgid "承运公司:"
+msgstr "承运公司:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution
+#: view:website:website_myaccount_base.mobile_admin_distribution_myqrcode
+msgid "推广二维码"
+msgstr "推广二维码"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_productPromotion
+msgid "推广商品"
+msgstr "推广商品"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_red_envelopes
+msgid "提现记录"
+msgstr "提现记录"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account
+#: view:website:website_myaccount_base.mobile_admin_distribution_account_WithdrawalAccount
+msgid "提现账户"
+msgstr "提现账户"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account_WithdrawalAccount
+msgid "支付宝"
+msgstr "支付宝"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account_WithdrawalAccount
+msgid "支付宝账号"
+msgstr "支付宝账号"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "支付方式"
+msgstr "支付方式"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "支付金额"
+msgstr "支付金额"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "收货人"
+msgstr "收货人"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "收货地址"
+msgstr "收货地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_address_list
+msgid "新增收货地址"
+msgstr "新增收货地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_show_order_logistics_page
+#: view:website:website_myaccount_base.public_mobile_order_logistics_top1
+msgid "暂无物流信息"
+msgstr "暂无物流信息"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+msgid "最多上传5张"
+msgstr "最多上传5张"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_orderlist_activist_page
+msgid "服务单号: 12345"
+msgstr "服务单号: 12345"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_coupon_tab
+msgid "未使用("
+msgstr "未使用("
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.public_mobile_order_btn_undelivered
+#: view:website:website_myaccount_base.public_mobile_order_btn_wait_comment
+#: view:website:website_myaccount_base.public_mobile_order_btn_wait_delivery
+msgid "查看物流"
+msgstr "查看物流"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_red_envelopes
+msgid "没有发放记录"
+msgstr "没有发放记录"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_red_envelopes
+msgid "没有提现记录"
+msgstr "没有提现记录"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+msgid "点击上传"
+msgstr "点击上传"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_orderlist_activist_page
+msgid "点击反馈"
+msgstr "点击反馈"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_show_order_logistics_detail_top
+msgid "物流状态:"
+msgstr "物流状态:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_show_order_logistics_page
+msgid "物流详情"
+msgstr "物流详情"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.sale_order_detail
+msgid "状态："
+msgstr "状态："
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_index
+msgid "用户中心"
+msgstr "用户中心"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.public_mobile_order_btn_activist
+msgid "申请售后"
+msgstr "申请售后"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account
+msgid "申请提现"
+msgstr "申请提现"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+msgid "申请数量"
+msgstr "申请数量"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_orderlist_activist_page
+msgid "申请时间: 2017-01-01"
+msgstr "申请时间: 2017-01-01"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_coupon_foreach_list
+msgid "立即使用"
+msgstr "立即使用"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "等待买家付款"
+msgstr "等待买家付款"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution
+#: view:website:website_myaccount_base.mobile_admin_distribution_account
+msgid "累计佣金(元)"
+msgstr "累计佣金(元)"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_ordersManager
+msgid "维权单"
+msgstr "维权单"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "联系电话"
+msgstr "联系电话"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_ordersManager_list
+msgid "订单为空"
+msgstr "订单为空"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "订单状态:"
+msgstr "订单状态:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_ordersManager_list
+msgid "订单编号:"
+msgstr "订单编号:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "订单详情"
+msgstr "订单详情"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account_WithdrawalAccount
+msgid "认证姓名"
+msgstr "认证姓名"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_address_edit
+msgid "设为默认收货地址"
+msgstr "设为默认收货地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.public_mobile_order_top_menu
+msgid "请输入搜索关键字"
+msgstr "请输入搜索关键字"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_address_edit
+msgid "请输入用户名"
+msgstr "请输入用户名"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_address_edit
+msgid "请输入电话号码"
+msgstr "请输入电话号码"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_address_edit
+msgid "请输入详细地址"
+msgstr "请输入详细地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_address_edit
+msgid "请输入邮编"
+msgstr "请输入邮编"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account_WithdrawalAccount
+msgid "请选择已完成实名认证的提现方式,以免打款失败."
+msgstr "请选择已完成实名认证的提现方式,以免打款失败."
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_account
+msgid "账户余额(元)"
+msgstr "账户余额(元)"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "购物清单"
+msgstr "购物清单"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "购物清单为空~"
+msgstr "购物清单为空~"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_show_order_logistics_detail_top
+msgid "运单编号:"
+msgstr "运单编号:"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_ordersManager_list
+msgid "运费: 0 元"
+msgstr "运费: 0 元"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution
+#: view:website:website_myaccount_base.mobile_myaccount_distribution_ordersManager
+msgid "返佣订单"
+msgstr "返佣订单"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_orderlist_activist_page
+msgid "进度查询"
+msgstr "进度查询"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+msgid "退款方式"
+msgstr "退款方式"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+msgid "退款方案描述.........."
+msgstr "退款方案描述.........."
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "配送信息"
+msgstr "配送信息"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.m_sale_order_detail
+msgid "配送方式"
+msgstr "配送方式"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_myqrcode
+msgid "长按保存图片,分享此图赚钱"
+msgstr "长按保存图片,分享此图赚钱"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_admin_distribution_myqrcode
+msgid "长按识别图中二维码"
+msgstr "长按识别图中二维码"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_order_activist_service_page
+msgid "问题描述"
+msgstr "问题描述"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.mobile_address_list
+msgid "雅蠛蝶"
+msgstr "雅蠛蝶"

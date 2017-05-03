@@ -1,0 +1,285 @@
+.order-tb {
+  width: 100%;
+  max-width: 100%;
+  border-collapse:collapse;
+/*  border: 1px solid;
+  padding: 5px;*/
+}
+
+.order-tb .tr-th{
+  height: 31px;
+  line-height:31px;
+  color:#AAA;
+  background:#F5F5F5 none repeat scroll 0% 0%;
+  overflow:hidden;
+}
+
+.order-tb thead th{
+  height:32px;
+  line-height:32px;
+  text-align:center;
+  background:#f5f5f5;
+  color:#666;
+  font-weight:400
+}
+
+.order-tb .sep-row td{
+  border:0px none;
+}
+
+.order-tb .tr-th td{
+  border-bottom-color:#F5F5F5;
+}
+
+.order-tb tbody td{
+  border:1px solid #e5e5e5;
+}
+
+.order-tb .tr-th td{
+  border-bottom-color:#F5F5F5;
+}
+
+.order-tb .sep-row{
+  height:20px;
+}
+
+.order-tb .order_detail{
+  width: 60%;
+}
+
+.order-tb .order_receive{
+  width: 20%;
+}
+
+.order-tb .order_action{
+  width: 20%;
+}
+
+.order-tb .tr-bd td{
+  padding:14px 0px;
+}
+
+.order-tb tbody td{
+  border: 1px solid #E5E5E5;
+}
+
+.order-tb .tr-bd{
+  text-align:center;
+}
+
+.order-tb .tr-th .gap{
+  width:14px
+}
+
+.order-tb .tr-th span{
+  padding-right: 20px;
+  padding-left: 0px;
+  /*float:left;
+  height:18px;
+  line-height:18px;
+  padding:2px 0 0;
+  _display:inline*/
+}
+
+.order-tb .tr-th span.oe_currency_value{
+  padding-right: 0px;
+}
+
+.order-tb .goods-item{
+  display:inline-block;
+  display:block;
+  float:left;
+  /*width:255px;*/
+  margin-right:10px
+}
+
+.order-tb .goods-item:after{
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden
+}
+
+* html .order-tb .goods-item{
+  height:1%
+}
+
+*+html .order-tb .goods-item{
+  min-height:1%
+}
+
+.order-tb .goods-item .p-img{
+  float:left;
+  width:84px;
+  height:84px;
+  border:1px solid #efefef;
+  margin:0 14px;
+  _display:inline
+}
+
+.order-tb .goods-item .p-msg{
+  float:left;
+  width:160px
+}
+
+.order-tb .goods-item .p-name{
+  height:36px;
+  line-height:18px;
+  overflow:hidden;
+  color:#333;
+  text-align:left
+}
+
+.order-tb .goods-item .p-name a{
+  color:#333
+}
+
+.order-tb .goods-item .p-name a:hover{
+  color:#e4393c
+}
+
+.order-tb .goods-item .p-extra{
+  color:#aaa;
+  text-align:left
+}
+
+.order-tb .goods-item .o-info{
+  text-align:left;
+  color:#aaa
+}
+
+.order-tb .goods-item a.a-link{
+  color:#333
+}
+
+.order-tb .goods-item a.a-link:hover{
+  color:#e4393c
+}
+
+.order-tb .tr-bd{
+  text-align:center;
+  vertical-align:top
+}
+
+.order-tb .tr-bd td{
+  padding:14px 0
+}
+
+.order-tb .goods-number{
+  float:left;
+  width:40px;
+  text-align:left;
+  color:#aaa;
+  font-family:verdana
+}
+
+.clear, .clr {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    height: 0px;
+    line-height: 0;
+    font-size: 0px;
+}
+
+
+
+/*Order Detail*/
+#odlist,#orderstate,#process,#ordertrack,#orderinfo{color:#333}
+#orderstate{border:1px solid #EED97C;padding:0 5px;background:#FFFCEB;}
+#orderstate .mt{padding:4px 8px;height:38px;line-height:25px;border-bottom:1px dotted #EED97C;}
+#orderstate .mt strong{float:left;font-size:14px;}
+#orderstate .mt .fl{font-size:14px;font-weight:bold;}
+#orderstate .mc{padding:10px 8px;}
+#orderstate .mc p{margin-bottom:8px;}
+#orderstate .btn{width:46px;height:26px;margin:0 0 0 4px;background:url(i/btn0330.jpg) no-repeat 0 0;color:#fff;padding:4px;}
+#orderstate .btn-zt{width:63px;height:25px;margin:0 4px;background:url(i/btn0330.jpg) no-repeat 0 -25px;color:#fff;}
+#orderstate .btn-pay:link,#orderstate .btn-pay:visited{float:left;text-align:center;line-height:25px;}
+#orderstate .btn-vote{width:80px;height:25px;background:url(i/btn0330.jpg) no-repeat 0 -50px;color:#fff;}
+#orderstate .btn-inst{width:89px;height:27px;background:url(i/btn0330.jpg) no-repeat 0 -75px;color:#fff;float:left;}
+*html #orderstate .mt{border-bottom:1px solid #F4E8AC;}
+
+#orderstate .mt strong{float:left;font-size:14px;}
+.ftx14,.flk14 a:link,.flk14 a:visited,a.flk14:link,a.flk14:visited{color:#12A000;}
+.fr {float:right;width:145px;height:30px;font-size:0;line-height:0;margin-right:0px;background:url(i/od-icon.png)}
+.fr s{margin-top:4px}
+.btn-img{border:1px solid #DDDDDD;background-image:none;color:#333;text-decoration: none;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px;background: -webkit-gradient(linear, 0 0, 0 100%, from(#F7F7F7), to(#F2F2F2));background: -moz-linear-gradient(top,#F7F7F7,#F2F2F2);-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorStr=#F7F7F7, endColorStr=#F2F2F2);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#F7F7F7, endColorStr=#F2F2F2);display:inline-block;height:25px;line-height:25px;padding-left:11px;padding-right:11px;font-size:12px;margin-left:5px}
+.btn-img:hover{ text-decoration:none;background: -webkit-gradient(linear, 0 0, 0 100%, from(#F8F8F8), to(#F8F8F8));background: -moz-linear-gradient(top,#F8F8F8, #F8F8F8);-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#F8F8F8, endColorStr=#F8F8F8);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#F8F8F8, endColorStr=#F8F8F8);-webkit-box-shadow:0px 1px 0 0 rgba(7,0,2,.1);-moz-box-shadow:0px 1px 0 0  rgba(7,0,2,.1);box-shadow:0px 1px 0 0 rgba(7,0,2,.1);}
+
+/******* 20150903 *********/
+#orderinfo{background:#f5f5f5;}
+
+#orderinfo .mt{
+  line-height:32px;
+  background:#f5f5f5;
+  color:#666;
+  font-weight:400;
+  margin:15px 0 0;
+  padding:5px;
+  font-size: 16px;
+  padding-left: 15px;	
+}
+#orderinfo .mc .fore{/*margin-top:10px;*/}
+#orderinfo .mc ul{margin:0;}
+#orderinfo .mc dl{
+ background:#fff;
+ margin:0 10px;
+}
+
+#orderinfo .mc dd{
+   margin: 0 10px;
+   border-bottom: 2px #f5f5f5 solid;
+   padding: 0px 0 10px;
+}
+
+#orderinfo .mc dt{
+    line-height: 32px;
+    color: #666;
+    padding-left: 15px;
+    font-size: 14px;
+ } 
+
+#orderinfo .mc .p-list{
+    padding:0 0 10px;
+}
+ 
+#orderinfo .mc .p-list tr th{
+    height: 31px;
+    line-height: 31px;
+    color: #AAA;
+    background: #f5f5f5 none repeat scroll 0% 0%;
+    overflow: hidden;
+	text-align: center;
+}
+#orderinfo .mc .p-list td{
+    border: 1px solid #f5f5f5;
+    padding: 14px 0;
+    text-align: center;
+}
+
+#orderinfo .total,#orderinfo{
+  width:100%;
+  color:#666;
+  font-weight:400;
+}
+ .total .extra{
+  text-align:right;
+  padding: 0px 10px 10px 0px;
+  font-size:18px;
+ }
+ 
+.total .extra .ftx04{
+ color:red;
+}
+
+#orderinfo .total ul{
+  border-bottom: 2px #E5E5E5 solid;
+    padding: 10px 10px 0px 20px;
+    list-style: none;
+	text-align:right;
+} 
+
+
+
+

@@ -1,0 +1,1663 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- +begin:  by jinchao ====================description: add distribution-faq , localhost:8069/web?model=sale.order -->
+        <record model="ir.actions.act_window" id="website_myaccount_base_distribution_faq">
+            <field name="name">Distribution FAQ</field>
+            <field name="res_model">website_myaccount_base.distribution.faq</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="sale_distribution_faq" name="Distribution FAQ" parent="base.menu_sales"
+                  sequence="9" action="website_myaccount_base_distribution_faq"/>
+
+        <record model="ir.ui.view" id="distribution_faq_tree">
+            <field name="name">Distribution FAQ tree</field>
+            <field name="model">website_myaccount_base.distribution.faq</field>
+            <field name="arch" type="xml">
+                <tree string="website_myaccount_base.distribution.faq">
+                    <field name="faq_question" modifiers="{'required': true}"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="distribution_faq_form">
+            <field name="name">Distribution FAQ form</field>
+            <field name="model">website_myaccount_base.distribution.faq</field>
+            <field name="arch" type="xml">
+                <form string="Distribution FAQ Form">
+                    <sheet>
+                        <group>
+                            <field name="faq_question" modifiers="{'required': true}"/>
+                            <field name="faq_anwser"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record> <!-- +end: by jinchao -->
+
+        
+
+        <template id="layout" inherit_id="website_myaccount_base.mobile_layout">
+            <xpath expr="//html/head" position="inside">
+                <link href="/web/static/lib/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+                <link href="/website_myaccount_base/static/src/css/mobile_admin.css" rel="stylesheet"/>
+                <link href="/website_myaccount_base/static/src/css/myaccount.css" rel="stylesheet"/>
+                <!-- <link href="/website_myaccount_base/static/src/css/cityLayout.css" rel="stylesheet"/> -->
+                <link href="/website_myaccount_base/static/src/css/wechatcustomer.css" rel="stylesheet"/>
+                <link href="/website_myaccount_base/static/src/css/promanagement.css" rel="stylesheet"/>
+            </xpath>
+
+            <xpath expr="//html/body" position="inside">
+                <!-- <script type="text/javascript" src="/website_myaccount_base/static/src/js/cityselect.js" /> -->
+                <!-- <script type="text/javascript" src="/website_cart/static/src/js/area.js"/> -->
+                <script type="text/javascript" src="/website_myaccount_base/static/src/js/m_myaccount.js" />
+                <script type="text/javascript" src="/website_myaccount_base/static/src/js/promanagement.js" />
+                <script type="text/javascript" src="/website_myaccount_base/static/src/js/wechatcustomer.js" />
+                <script type="text/javascript" src="/website_myaccount_base/static/src/js/order_search.js" />
+            </xpath>
+        </template>
+
+        <template id="mobile_admin_index">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">用户中心</t>
+                <t t-if="not get_order_count_list"><t t-set="get_order_count_list" t-value="website.get_order_count_list()"/> </t>
+
+                <div class="moblie-myaccount-page">
+                    <div class="myaccount-personal-information">
+                        <a href="/m/myaccount/infor">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td class="head">
+                                        <img t-att-src="website.image_url(user.partner_id, 'image_medium')" alt="" title="个人头像" />                                 </td>
+                                        <td class="information">
+                                            <p class="name"><t t-esc="user.name" /> </p>
+                                            <p class="integral"><t t-esc="user.partner_id.points_balance" />积分</p>
+                                        </td>
+                                        <td class="arrows">
+                                            <i class="icon-arrows-right"></i>
+                                        </td>
+                                </tr>
+                            </table>
+                        </a>
+                    </div>
+                    <div class="myaccount-order-information">
+                        <table style="width:100%;">
+                            <tr>
+                                <td>
+                                    <a href="/m/myaccount/orderlist/draft">
+                                        <img src="/website_myaccount_base/static/src/images/order-1.png" />
+                                        <br />待支付
+                                        <!-- <t t-set="count" t-value="get_order_count_list['draft_count']"/> -->
+                                        <t t-set="count" t-value="get_order_count_list.get('draft_count')"/>
+                                        <t t-if="count != 0">
+                                            <span class="moi-tab-sub"><t t-esc="count"/></span>
+                                        </t>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/m/myaccount/orderlist/undelivered">
+                                        <img src="/website_myaccount_base/static/src/images/order-2.png" />
+                                        <br />待发货
+                                        <!-- <t t-set="count" t-value="get_order_count_list['undelivered_count']"/> -->
+                                        <t t-set="count" t-value="get_order_count_list.get('undelivered_count')"/>
+                                        <t t-if="count != 0">
+                                            <span class="moi-tab-sub"><t t-esc="count"/></span>
+                                        </t>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/m/myaccount/orderlist/wait_delivery">
+                                        <img src="/website_myaccount_base/static/src/images/order-3.png" />
+                                        <br />待收货
+                                        <!-- <t t-set="count" t-value="get_order_count_list['wait_delivery_count']"/> -->
+                                        <t t-set="count" t-value="get_order_count_list.get('wait_delivery_count')"/>
+                                        <t t-if="count != 0">
+                                            <span class="moi-tab-sub"><t t-esc="count"/></span>
+                                        </t>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/m/myaccount/orderlist/wait_comment">
+                                        <img src="/website_myaccount_base/static/src/images/order-4.png" />
+                                        <br />待评价
+                                        <!-- <t t-set="count" t-value="get_order_count_list['wait_comment_count']"/> -->
+                                        <t t-set="count" t-value="get_order_count_list.get('wait_comment_count')"/>
+                                        <t t-if="count != 0">
+                                            <span class="moi-tab-sub"><t t-esc="count"/></span>
+                                        </t>
+
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/m/myaccount/order/after_sale_main/waitting_claim">
+                                        <img src="/website_myaccount_base/static/src/images/order-5.png" />
+                                        <br />维权
+                                        <!-- <t t-set="count" t-value="get_order_count_list['activist_count']"/> -->
+                                        <!-- <t t-set="count" t-value="get_order_count_list.get('activist_count')"/>
+                                             <t t-if="count != 0">
+                                             <span class="moi-tab-sub"><t t-esc="count"/></span>
+                                             </t> -->
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                        <div style="clear:both">
+                        </div>
+                    </div>
+
+                    <div class="myaccount-list">
+                        <ul>
+                            <li class="pd-bottom">
+                                <a href="/m/myaccount/orderlist/all">
+                                    <!--此为旧的,已转用新的界面 <a href="/m/myaccount/orderlist"> -->
+                                    <p class="m-title">
+                                        <b class="glyphicon glyphicon-list-alt">
+                                        </b>全部订单
+                                    </p>
+                                    <s class="m-arrows">
+                                        <i class="icon-arrows-right">
+                                        </i>
+                                    </s>
+                                </a>
+                            </li>
+                            <li class="pd-bottom">
+                                <a href="/m/myaccount/distribution">
+                                    <p class="m-title">
+                                        <b class="glyphicon glyphicon-fullscreen">
+                                        </b>分销中心
+                                    </p>
+                                    <s class="m-arrows">
+                                        <i class="icon-arrows-right">
+                                        </i>
+                                    </s>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/myaccount/coupon">
+                                    <p class="m-title">
+                                        <b class="glyphicon glyphicon-folder-close">
+                                        </b>我的优惠券
+                                    </p>
+                                    <s class="m-arrows">
+                                        <i class="icon-arrows-right">
+                                        </i>
+                                    </s>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/myaccount/red_revelopes">
+                                    <p class="m-title">
+                                        <b class="glyphicon glyphicon-envelope"> </b>我的红包
+                                    </p>
+                                    <s class="m-arrows">
+                                        <i class="icon-arrows-right">
+                                        </i>
+                                    </s>
+                                </a>
+                            </li>
+                            <li class="pd-bottom">
+                                <a href="/shop/cart">
+                                    <p class="m-title">
+                                        <b class="glyphicon glyphicon-shopping-cart">
+                                        </b>我的购物车
+                                    </p>
+                                    <s class="m-arrows">
+                                        <i class="icon-arrows-right">
+                                        </i>
+                                    </s>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </t>
+        </template>
+
+        <!-- in /m/myaacount/coupon , 优惠券窗口 -->
+
+        <template id="mobile_myaccount_coupon_tab">
+            <!-- in 未使用, 底部增加 可领取券按钮 "更多好券,去领券中心看看->" -->
+            <div id="myaccount-od-choice-1" class="od-choice od-active col-xs-4"><span>未使用(<t t-if="multi_result"><t t-esc="len(multi_result)"/></t>)</span></div>
+            <div id="myaccount-od-choice-2" class="od-choice col-xs-4"><span>使用记录(0)</span></div>
+            <div id="myaccount-od-choice-3" class="od-choice col-xs-4"><span>已过期(0)</span></div>
+            <div class="clear"></div>
+        </template>
+
+        <template id="mobile_myaccount_coupon_foreach_list">
+            <t t-if="not multi_result"><p>您的优惠卷为空~</p></t>
+            <t t-foreach="multi_result" t-as="line">
+                <a href="#">
+                    <table>
+                        <tr>
+                            <td rowspan="2" class="coupon-img">
+                                <p class="coupon-value"><span><t t-esc="line.amount" /></span></p>
+                                <p class="coupon-conditions">满<t t-esc="line.limit_amount" />元可用</p>
+                            </td>
+                            <td class="coupon-name"><p><span>优惠券</span><t t-esc="line.notes" /></p></td>
+                        </tr>
+                        <tr>
+                            <td class="coupon-validity"><p><t t-esc="line.start_date" /> - <t t-esc="line.end_date" /> <a href="#"><button>立即使用</button></a></p></td>
+                        </tr>
+                    </table>
+                </a>
+            </t>
+
+            <!-- if 未使用, 底部增加 可领取券按钮 "更多好券,去领券中心看看->" -->
+            <t t-if="flag and (flag == 'wait_use')">(5张可领)更多好券, 去领券中心看看 -></t>
+
+        </template>
+        <template id="mobile_myaccount_coupon_html">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">您的优惠券</t>
+                <t t-set="multi_result" t-value="user.partner_id.get_coupons(user_id.id).get('coupons')"/>
+                <t t-if="multi_result">
+                    <div class="moblie-discount-coupon">
+                        <div class="od-choice-status">
+                            <t t-call="website_myaccount_base.mobile_myaccount_coupon_tab"/>
+                        </div>
+
+                        <div class="od-coupon-list od-choice-1 odol-active">
+                            <t t-call="website_myaccount_base.mobile_myaccount_coupon_foreach_list"/>
+                        </div>
+                    </div>
+                </t>
+
+            </t>
+        </template>
+        <template id="mobile_admin_infor">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">个人信息</t>
+
+                <div class="personal-info">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <p class="m-title haed-img">头像
+                                </p>
+                                <b class="title-img">
+                                    <field t-field="user.image" t-field-options='{"widget": "image"}'/>
+                                </b>
+                                <s class="m-arrows">
+                                    <i class="icon-arrows-right">
+                                    </i>
+                                </s>
+                            </a>
+                        </li>
+                        <li class="pd-bottom">
+                            <a href="#" >
+                                <p class="m-title">昵称
+                                </p>
+                                <span class="address-count" t-esc="user.name"/>
+                                <s class="m-arrows">
+                                    <i class="icon-arrows-right">
+                                    </i>
+                                </s>
+                            </a>
+                        </li>
+                        <li class="pd-bottom m_myaccount_address_edit">
+                            <a href="#">
+                                <!-- <a href="/m/myaccount/address/list"> -->
+                                <p class="m-title">我的收货地址
+                                </p>
+                                <b class="address-count">
+                                    <t t-esc="website.sale_get_address()['shipping_count']"/>
+                                </b>
+                                <s class="m-arrows">
+                                    <i class="icon-arrows-right">
+                                    </i>
+                                </s>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- <t t-call="website_myaccount_base.reference_website_cart_shipto_templates"/> -->
+                </div>
+
+            </t>
+        </template>
+        <template id="mobile_admin_distribution" name="Distribution Center">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">分销中心</t>
+                <t t-if="user">
+                    <div class="moblie-wechat-cus-page">
+                        <div class="cus-personal-information">
+                            <a href="/m/myaccount/distribution/info">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td class="head">
+
+                                            <img t-att-src="website.image_url(user.partner_id, 'image_medium')" title="" alt="" />
+                                        </td>
+                                        <td class="information">
+                                            <p class="name"><t t-esc="user.partner_id.company_id.name" />
+                                            </p>
+                                            <p class="tel"><t t-esc="user.partner_id.mobile" />
+                                            </p>
+                                        </td>
+                                        <td class="arrows">
+                                            <i class="icon-arrows-right">
+                                            </i>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </div>
+                        <div class="trade-information">
+                            <table>
+                                <tr>
+                                    <td style="border-right:1px solid #e6e6e5;">交易量:
+                                        <span>0
+                                        </span>
+                                    </td>
+                                    <td>交易额:
+                                        <span><t t-esc="user.partner_id.total_invoiced" />
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="account-money">
+                            <div class="wc-myaccount">
+                                <span>0.00
+                                </span>
+                                <a href="/m/myaccount/distribution/account">
+                                    <p class="wc-to-account">我的账户
+                                    </p>
+                                    <s class="m-arrows">
+                                        <i class="icon-arrows-right">
+                                        </i>
+                                    </s>
+                                </a>
+                            </div>
+                            <div class="wc-commission">
+                                <table>
+                                    <tr>
+                                        <td style="border-right:1px solid #e6e6e5;">
+                                            <a href="#">今日付款佣金
+                                                <br  />
+                                                <span><t t-esc="user.partner_id.commission_today" />
+                                                </span>
+                                            </a>
+                                        </td>
+                                        <td style="padding-left:10px;">
+                                            <a href="#">累计佣金(元)
+                                                <br  />
+                                                <span><t t-esc="user.partner_id.commission_total" />
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="wc-order-customer">
+                                <table>
+                                    <tr>
+                                        <td style="border-right:1px solid #e6e6e5;">
+                                            <a href="/m/myaccount/distribution/ordersmanager">返佣订单
+                                                <br  />
+                                                <span><t t-esc="user.partner_id.commission_confirmed_count" />
+                                                </span>
+                                            </a>
+                                        </td>
+                                        <td style="padding-left:10px;">
+                                            <a href="/m/myaccount/distribution/customer">下线会员
+                                                <br  />
+                                                <span><t t-esc="user.partner_id.downline_sum" />
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="wechat-cus-list">
+                            <ul>
+                                <li>
+                                    <a href="/m/myaccount/distribution/myqrcode"> 
+                                        <p class="m-title">
+                                            <b class="glyphicon glyphicon-qrcode">
+                                            </b>推广二维码
+                                        </p>
+                                        <s class="m-arrows">
+                                            <i class="icon-arrows-right">
+                                            </i>
+                                        </s>         
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/m/myaccount/distribution/productPromotion">
+                                        <p class="m-title">
+                                            <b class="glyphicon glyphicon-briefcase">
+                                            </b>推广商品
+                                        </p>
+                                        <s class="m-arrows">
+                                            <i class="icon-arrows-right">
+                                            </i>
+                                        </s>
+                                    </a>     
+                                </li>
+                                <!-- <li>
+                                     <a href="#">
+                                     <p class="m-title">
+                                     <b class="glyphicon glyphicon-signal">
+                                     </b>微客排行榜
+                                     </p>
+                                     <s class="m-arrows">
+                                     <i class="icon-arrows-right">
+                                     </i>
+                                     </s>
+                                     </a>      
+                                     </li> -->
+                                <li>
+                                    <a href="/m/myaccount/distribution/faq">
+                                        <p class="m-title" style="border:none;">
+                                            <b class="glyphicon glyphicon-question-sign">
+                                            </b>常见问题
+                                        </p>
+                                        <s class="m-arrows">
+                                            <i class="icon-arrows-right">
+                                            </i>
+                                        </s>
+                                    </a>      
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </t>
+            </t>
+        </template>
+        <template id="mobile_admin_distribution_account">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">我的账户</t>
+
+                <div class="moblie-ws-myaccount">
+                    <div class="wm-head">
+                        <p>账户余额(元)
+                        </p>
+                        <p class="ac-balance"><t t-esc="user.member_balance" />
+                            <br />
+                        </p>
+                        <p>
+                            <a href="#">申请提现
+                            </a>
+                        </p>
+                    </div>
+                    <div class="wm-income">
+                        <table>
+                            <tr>
+                                <td style="border-right:1px solid #e6e6e5;">
+                                    <a href="#">累计佣金(元)
+                                        <br  />
+                                        <span><t t-esc="user.partner_id.commission_total" />
+                                        </span>
+                                    </a>
+                                </td>
+                                <td style="padding-left:10px;">
+                                    <a href="#">可结算的佣金(元)
+                                        <br  />
+                                        <span><t t-esc="user.partner_id.commission_payable" />
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="wm-withdrawal">
+                        <table>
+                            <tr>
+                                <td style="border-right:1px solid #e6e6e5;">
+                                    <a href="#">可提现佣金(元)
+                                        <br  />
+                                        <span><t t-esc="user.partner_id.commission_balance" />
+                                        </span>
+                                    </a>
+                                </td>
+                                <td style="padding-left:10px;">
+                                    <a href="#">可结算的佣金退款(元)
+                                        <br  />
+                                        <span><t t-esc="user.partner_id.commission_returnable" />
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="wechat-cus-list">
+                        <ul>
+                            <li>
+                                <a href="/m/myaccount/distribution/account/WithdrawalAccount"> 
+                                    <p class="m-title">
+                                        <b class="glyphicon glyphicon-credit-card">
+                                        </b>提现账户
+                                    </p>
+                                    <s class="m-arrows">
+                                        <i class="icon-arrows-right">
+                                        </i>
+                                    </s>         
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/m/myaccount/distribution/faq">
+                                    <p class="m-title" style="border:none;">
+                                        <b class="glyphicon glyphicon-question-sign">
+                                        </b>常见问题
+                                    </p>
+                                    <s class="m-arrows">
+                                        <i class="icon-arrows-right">
+                                        </i>
+                                    </s>
+                                </a>     
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="mobile_admin_distribution_account_WithdrawalAccount">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">提现账户</t>
+                <div class="moblie-wd-account">
+                    <div class="wa-payment-type">
+                        <form>
+                            <div class="payment-type">
+                                <p class="wa-img" style="border:none;">
+                                    <img src="/website_myaccount_base/static/src/images/wechat.png" alt="" title="wechat" />
+                                </p>
+                                <p>微信零钱
+                                </p>
+                                <input type="radio" name="pay-type" value="wechat" checked="checked" />
+                            </div>
+                            <div style="clear:both;" />
+                            <div class="payment-type pa-alipay">
+                                <p class="wa-img">
+                                    <img src="/website_myaccount_base/static/src/images/alipay.png" alt="" title="alipay" />
+                                </p>
+                                <p>支付宝
+                                </p>
+                                <input type="radio" name="pay-type" value="alipay" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="wa-prompt">请选择已完成实名认证的提现方式,以免打款失败.
+                    </div>
+                    <div class="wechat-payment">
+                        <p>微信昵称
+                            <input type="text" value="微信名称" readonly="readonly" />
+                        </p>
+                        <p>认证姓名
+                            <input type="text" value="您的真实姓名" onfocus="if(value=='您的真实姓名') {value=''}" onblur="if (value=='') {value='您的真实姓名'}" />
+                        </p>
+                    </div>
+                    <div class="alipay-payment">
+                        <p>支付宝账号
+                            <input type="text" value="手机号/邮箱" onfocus="if(value=='手机号/邮箱') {value=''}" onblur="if (value=='') {value='手机号/邮箱'}" />
+                        </p>
+                        <p>认证姓名
+                            <input type="text" value="您的真实姓名" onfocus="if(value=='您的真实姓名') {value=''}" onblur="if (value=='') {value='您的真实姓名'}" />
+                        </p>
+                    </div>
+                    <div class="wa-save-button">
+                        <button>保存
+                        </button>
+                    </div> 
+                </div>
+            </t>
+        </template>
+
+        <template id="mobile_admin_distribution_customer">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">您的客户</t>
+
+                <div class="moblie-cus-management">
+                    <div class="customer-count">客户总数:
+                        <span><t t-esc="user.downline_sum" />
+                        </span>
+                    </div>
+                    <t t-if="not user.downline_ids"><p>您没有客户~</p></t>
+                    <t t-foreach="user.downline_ids" t-as="downline">
+                        <table>
+                            <tr>
+                                <td class="head">
+                                    <img t-att-src="website.image_url(downline, 'image')" alt="" title="个人头像" />
+                                </td>
+                                <td>
+                                    <p class="cm-name"><t t-esc="downline.name" />
+                                        <span class="cm-type" t-field="downline.agent_class" />
+                                        
+                                        <span class="join-date"><t t-esc="downline.join_date" />
+                                        </span>
+                                    </p>
+                                    <p class="pay-order">付款订单:
+                                        <span><t t-esc="downline.sale_order_count" />
+                                        </span>笔
+                                    </p>
+                                    <p class="pay-total">付款金额:
+                                        <span>￥ <t t-esc="downline.total_invoiced" />
+                                        </span>
+                                    </p>
+                                    <p class="cm-source">客户来源:
+                                        <span>
+                                            <t t-if="downline.from_spread">
+                                                二维码【微客: <t t-esc="user.name" />】
+                                            </t>
+                                            <t t-if="not downline.from_spread">
+                                                供货商
+                                            </t>
+                                        </span>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </template>
+
+        <template id="mobile_myaccount_distribution_share_qrcode">
+            <t t-if="user">
+                <img t-att-src="website.user_image_url(user, 'image')" alt="" title="个人头像" />
+                <field t-field="user.qrcode" t-field-options='{"widget": "image"}'/>
+                <field t-field="user.image" t-field-options='{"widget": "image"}'/>
+            </t>
+        </template>
+
+
+        <template id="mobile_admin_distribution_myqrcode">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">推广二维码</t>
+                <div class="moblie-my-qrcode">
+                    <div class="mq-head">
+                        <p><span class="mq-name"><span t-field="user.name" /></span>专属二维码</p>
+                        <p>长按保存图片,分享此图赚钱</p>
+                    </div>
+                    <div class="my-qr-code">
+                        <table>
+                            <tr>
+                                <!-- <td class="head"><img t-att-src="website.sudo_image_url(user, 'image')" alt="" title="个人头像" /></td> -->
+                                <td class="head"><img t-att-src="website.image_url(user, 'image')" alt="" title="个人头像" /></td>
+                                <td>
+                                    <p>我是<span class="mq-name"><span t-field="user.name" /></span></p>
+                                    <p>我为<span><t t-esc="website.name"/></span>代言</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="qr-detail">
+                            <p class="qr-advertising"><t t-esc="res_company.rml_header1"/></p>
+                            <p><field t-field="user.qrcode" t-field-options='{"widget": "image"}'/></p>
+                            <!-- <p><field t-field="user.image" t-field-options='{"widget": "image"}'/></p> -->
+                            <p class="qr-advertising">长按识别图中二维码</p>
+                        </div>
+                    </div>
+                    <div class="return-button"><a href="/m/myaccount/distribution/myqrcode/html2image">分销中心 > </a></div>
+                    <!-- <div class="return-button"><a href="/m/myaccount/distribution">分销中心 > </a></div> -->
+                </div>
+            </t>
+        </template>
+        <template id="mobile_admin_orderlist">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">我的订单</t>
+
+                <div class="order-list">
+                    <ul>
+                        <!-- <t t-foreach="orders" t-as="order">
+                             Receive:<span t-field="order.partner_shipping_id.name"/>
+                             date:<span t-field="order.date_order" />
+                             <a target="_blank" t-att-href="'/myaccount/order/detail/%s' % order.id">order_description</a>
+                             active:<span t-field="order.state" />
+                             total:<span t-field="order.amount_total"  t-field-options='{"widget": "monetary", "from_currency": "order.pricelist_id.currency_id", "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"}' />
+                             <t t-foreach="order.order_line" t-as="line">
+                             attr: <strong t-esc="line.product_id.with_context(display_default_code=False).display_name"/>
+                             img: <img t-att-src="website.image_url(line.product_id, 'image_medium', '82x82')" title="" alt="" />
+                             name: <a class="a-link" t-att-href="line.product_id.website_url" target="_blank"><span t-field="line.product_id.name"/></a>
+                             Mobile:<span t-field="order.partner_shipping_id.mobile"/>
+                             count:<span t-esc="int(line.product_uom_qty)" />
+                             price:<span t-field="line.price_unit" style="white-space: nowrap;" t-field-options='{
+                             "widget": "monetary",
+                             "from_currency": "order.pricelist_id.currency_id",
+                             "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"}'/>
+                             <t t-if="order.order_line[0]==line">
+                             recipt:<span t-field="order.partner_shipping_id.name"/> <br />
+                             <button class="" t-att-onclick="'javascript:window.open(\'' + '/myaccount/order/detail/%s' % order.id + '\'); return false;'">View Order</button>
+                             </t>
+                             </t>
+                             </t> -->
+
+
+                        <t t-if="not orders"><p style="text-align:center"><a href="/" style="text-decoration: underline;"><span>您的订单空空的, 立刻去首页看看自己喜欢的商品!</span></a></p> </t>
+                        <t t-foreach="orders" t-as="order">
+                            <li>
+                                <div class="order-head">
+                                    <span class="order-date" >下单时间:
+                                        <span t-esc="order.date_order" />
+                                    </span>
+                                    <span class="order-total">
+                                        <span t-field="order.amount_total"  t-field-options='{"widget": "monetary", "from_currency": "order.pricelist_id.currency_id", "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"}' />
+                                    </span>
+                                </div>
+
+                                <t t-foreach="order.order_line" t-as="line">
+                                    <a target="_blank" t-att-href="'/m/myaccount/order/detail/%s' % order.id">
+                                        <div class="order-detail">
+                                            <table style="width:100%;">
+                                                <tr>
+                                                    <td rowspan="3" class="product-img">
+                                                        <img t-att-src="website.image_url(line.product_id, 'image')" title="" alt="" />
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="line.product_id.name"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="product-price">
+                                                        <span t-field="line.price_unit" style="white-space: nowrap;" t-field-options='{
+                                                                                                                                      "widget": "monetary",
+                                                                                                                                      "from_currency": "order.pricelist_id.currency_id",
+                                                                                                                                      "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                                                                                                                      }'/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="line.product_id.with_context(display_default_code=False).display_name"/> / x
+                                                        <span t-esc="int(line.product_uom_qty)"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </a>
+                                </t>
+                                <div class="order-state">
+                                    <span t-field="order.state" />
+                                    <t t-if="order.state == 'progress'"> <span>(买家已付款)</span></t>
+                                    <t t-if="order.state == 'draft'"> <span>(未支付)</span></t>
+                                </div>
+                            </li>
+                        </t>
+                    </ul>
+                </div>
+            </t>
+        </template>
+
+        <template id="m_sale_order_detail">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">订单详情</t>
+
+                <t t-if="not order"><p style="text-align:center"><a href="/" style="text-decoration: underline;"><span>您的订单空空的, 立刻去首页看看自己喜欢的商品!</span></a></p> </t>
+                <t t-if="order">
+                    <div class="moblie-order-detail">
+                        <div class="countdown">
+                            <b class="glyphicon glyphicon-info-sign">
+                                <strong></strong>
+                            </b>
+                            <!-- </b>请在 -->
+                            <!-- <strong id="time_show"> -->
+                            <!-- </strong>内付款,超时订单将自动取消 -->
+                        </div>
+                        <div class="order-state">订单状态:
+                            <t t-if="order.state != 'draft'">
+                                <span t-field="order.logistics_state" />
+                            </t>
+                            <t t-if="order.state == 'draft'">
+                                <span>等待买家付款</span>
+                            </t>
+
+
+                        </div>
+                        <div class="shipping-information">
+                            <p class="head">配送信息</p>
+                            <div class="shipping-detail">
+                                <p>
+                                    <span>配送方式</span><span t-field="order.ship_type"/>
+                                </p>
+                                <p>
+                                    <span>收货人
+                                    </span>
+                                    <span t-field="order.partner_shipping_id.name" />
+                                </p>
+                                <p>
+                                    <span>联系电话
+                                    </span>
+                                    <span t-field="order.partner_shipping_id.mobile"/>
+                                </p>
+                                <p>
+                                    <span>收货地址
+                                    </span>
+
+                                    <t t-if="not using_shipto"> <t t-set="using_shipto" t-value="order.partner_shipping_id" /> </t>
+                                    <t t-if="not using_address"> <t t-set="using_address" t-value="using_shipto.address_id.get_address()"/> </t>
+                                    <!-- remove zip -->
+                                    <t t-esc="(using_address.get('province') or using_shipto.state_id.name or '') + (using_address.get('city') or using_shipto.city or '') + (using_address.get('county') or '') + (using_shipto.street or '') + (using_shipto.street2 or '')"/>
+                                    <!-- <t t-esc="(using_address.get('province') or using_shipto.state_id.name or '') + (using_address.get('city') or using_shipto.city or '') + (using_address.get('county') or '') + (using_shipto.street or '') + (using_shipto.street2 or '') + ' (' + (using_shipto.zip or '') + ')'"/> -->
+                                </p>
+                            </div>
+                            <div class="logistics-detail">
+                                <a target="_blank" class="goto_logistics_detail" t-att-href="'/m/myaccount/order/logistics_detail/%s' % order.id">
+                                    <p>
+                                        <span class="print_logistics_info">
+                                            <t t-call="website_myaccount_base.public_mobile_order_logistics_top1"/>
+                                        </span>
+                                        <span class="logistics_info_m_arrows">
+                                            <s class="m-arrows"><i class="icon-arrows-right"></i></s>
+                                        </span>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="shopping-information">
+                            <p class="head">购物清单
+                            </p>
+
+                            <div class="order-detail">
+                                <t t-if="not order"><p>购物清单为空~</p></t>
+                                <t t-foreach="order.order_line" t-as="line">
+                                    <a t-att-href="line.product_id.website_url">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td rowspan="3" class="product-img">
+                                                    <img t-att-src="website.image_url(line.product_id, 'image')" title="" alt="" />
+                                                </td>
+                                                <td>
+                                                    <span t-esc="line.product_id.with_context(display_default_code=False).display_name"/> / x<span t-esc="int(line.product_uom_qty)"/>
+
+                                                    <!-- <span t-field="line.product_id.name"/> -->
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-price">
+                                                    <span t-field="line.price_unit" style="white-space: nowrap;" t-field-options='{"widget": "monetary", "from_currency": "order.pricelist_id.currency_id", "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"}'/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="other-information">
+                            <p>
+                                <span style="float:left;">商品金额
+                                </span>
+                                <span style="float:right;">
+                                    <span t-field="order.amount_total"  t-field-options='{"widget": "monetary", "from_currency": "order.pricelist_id.currency_id", "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"}' />
+                                </span>
+                            </p>
+                            <p style="border-color:red;">
+                                <span style="float:left;">运费
+                                </span>
+                                <span style="float:right;">￥ <span t-field="order.freight"/>
+                                </span>
+                            </p>
+                            <p>
+                                <span style="float:left;color:red;">支付方式
+                                </span>
+                                <span style="float:right;">在线支付
+                                </span>
+                            </p>
+                            <p style="border-color:red;">
+                                <span style="float:left;color:red;">支付金额
+                                </span>
+                                <span style="float:right;">
+                                    <span t-field="order.cash_amount"  t-field-options='{"widget": "monetary", "from_currency": "order.pricelist_id.currency_id", "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"}' />
+                                </span>
+                            </p>
+                            <p style="border:none;padding:5px 10px;min-height:25px;">
+                                <span style="float:left;">订单编号:
+                                    <span t-field="order.name"/>
+                                </span>
+                            </p>
+                            <p style="border:none;padding:5px 10px;min-height:25px;">
+                                <span style="float:left;">创建时间:
+                                    <span t-field="order.date_order" />
+                                </span>
+                            </p>
+                            <div style="clear:both;">
+                            </div>
+                        </div>
+
+                        <form id="m_order_cancel" method="post">
+                            <input type="hidden" name="field＿name" value="value" />
+                            <!-- <button type="submit"> -->
+                            <!-- </button> -->
+                            <t t-if="order.state == 'draft'">
+                                <div class="bot-menu">
+                                    <span class="cancel-order">
+                                        <a>取消订单
+                                        </a>
+                                    </span>
+                                    <!-- <span class="to-pay">
+                                         <a>去支付
+                                         </a>
+                                         </span> -->
+                                </div>
+                            </t>
+                        </form>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+        <template id="mobile_address_list">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <div class="moblie-adress-list">
+                    <ul>
+                        <li>
+                            <div>
+                                <span class="adress-lis">雅蠛蝶
+                                </span>
+                                <span class="adress-list-tel">13812345678
+                                </span>
+                            </div>
+                            <div class="adress-detail">广东省 珠海市 香洲区 吉大
+                            </div>
+                            <div class="adress-state">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="border-right:1px solid #e6e6e5;">
+                                            <span class="adress-state-edit">
+                                                <a href="/m/myaccount/address/edit">
+                                                    <b class="glyphicon glyphicon-edit">
+                                                    </b>编辑
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="adress-state-delete">
+                                                <a href="#">
+                                                    <b class="glyphicon glyphicon-trash">
+                                                    </b>删除
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span class="adress-lis">雅蠛蝶
+                                </span>
+                                <span class="adress-list-tel">13812345678
+                                </span>
+                            </div>
+                            <div class="adress-detail">广东省 珠海市 香洲区 吉大
+                            </div>
+                            <div class="adress-state">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="border-right:1px solid #e6e6e5;">
+                                            <span class="adress-state-edit">
+                                                <a href="/m/myaccount/address/edit">
+                                                    <b class="glyphicon glyphicon-edit">
+                                                    </b>编辑
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="adress-state-delete">
+                                                <a href="#">
+                                                    <b class="glyphicon glyphicon-trash">
+                                                    </b>删除
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="add-new-adress">
+                        <a href="/m/myaccount/address/add">
+                            <button>新增收货地址
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+
+        <template id="mobile_address_edit">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <div class="moblie-edit-adress">
+                    <div class="edit-adress-detail">
+                        <p>
+                            <input type="text" id="edit-address-name" class="edit-adress-name" name="" t-att-value="(address) and address.name or ''" placeholder="请输入用户名" required="required" />
+                        </p>
+                        <p>
+                            <input type="text" id="edit-adress-tel" class="edit-adress-tel" name=""  t-att-value="(address) and address.mobile or ''" placeholder="请输入电话号码" required="required"/>
+                        </p>
+                        <p>
+                            <div class="adress_info">
+                                <select id="s_province" name="s_province"></select>
+                                <select id="s_city" name="s_city"></select>
+                                <select id="s_county" name="s_county"></select>
+                            </div>
+                            <button style="display:none;"  onclick="getValue();">获取 </button>
+                            <s class="m-arrows">
+                                <i class="icon-arrows-right">
+                                </i>
+                            </s>
+                        </p>
+                        <p>
+                            <input type="text" id="edit-adress-place" class="edit-adress-place" name="" t-att-value="(address) and address.street or ''" placeholder="请输入详细地址" required="required"/>
+                        </p>
+                        <p style="border:none;">
+                            <input type="text" id="edit-adress-zip" class="edit-adress-postcode" name=""  placeholder="请输入邮编" required="required"/>
+                        </p>
+                    </div>
+                    <div class="default-adress">
+                        <label for="ck1">设为默认收货地址
+                            <input class="adress-ckb" id="ck1" type="checkbox" />
+                        </label>
+                    </div>
+                    <a href="#" >
+                        <div class="edit-adress-save">保存
+                            <!-- <div class="edit-adress-save" t-att-data-shipto-id="address and address.id or 0">保存 -->
+                        </div>
+                    </a>
+                    <div id="myModal" class="modal-pop"></div>
+                    <br />
+                </div>
+            </t>
+        </template>
+
+
+        <template id="mobile_distribution_info">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">店铺信息</t>
+                <div class="moblie-ws-information">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <p class="m-title head-img">店铺头像
+                                </p>
+                                <b class="title-img">
+                                    <field t-field="user.partner_id.company_id.logo" t-field-options='{"widget": "image"}'/>
+                                </b>
+                            </a>
+                        </li>
+                        <li class="pd-bottom">
+                            <a href="#">
+                                <p class="m-title">店铺名称
+                                </p>
+                                <b class="title-value"><t t-esc="user.partner_id.company_id.name" />
+                                </b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <p class="m-title">手机
+                                </p>
+                                <b class="title-value"><t t-esc="user.partner_id.mobile" />
+                                </b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <p class="m-title">上级
+                                </p>
+                                <b class="title-value"><t t-esc="user.partner_id.upline_name" />
+                                </b>
+                            </a>
+                        </li>
+                        <li class="pd-bottom">
+                            <a href="#" >
+                                <p class="m-title">加入时间
+                                </p>
+                                <b class="title-value"><t t-esc="user.partner_id.join_date" />
+                                </b>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </t>
+        </template>
+
+        <template id="mobile_distribution_FAQ">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">常见问题</t>
+                <div class="moblie-ws-faq">
+                    <div class="wechat-cus-list">
+                        <ul>
+                            <t t-set="i" t-value="1"/>
+                            <t t-foreach="faqs" t-as="line">
+                                <li t-att-id="'wl-ansser' + str(i)">
+                                    <!-- <li id="wl-answer1"> -->
+                                    <p class="m-title"><span t-field="line.faq_question"/>
+                                        <span class="show-answer"><span t-field="line.faq_anwser"/></span>
+                                    </p>
+                                    <s class="m-arrows"><i class="icon-arrows-right"></i></s>
+                                </li>
+
+                                <t t-set="i" t-value="i+1"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="mobile_myaccount_distribution_ordersManager">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">返佣订单</t>
+
+                <div class="moblie-order-management distribution_ordersManager_tag">
+                    <div class="om-choice-status">
+                        <div id="om-choice-1" class="om-choice om-active" t-att-data-state="'all'"><span>全部</span></div>
+                        <div id="om-choice-2" class="om-choice" t-att-data-state="'confirmed'"><span class="trading-in">交易中<t t-if="confirmed_order_count"><span class="om-tab-sub"><t t-esc="confirmed_order_count"/>
+                        </span>
+                        </t>
+                        </span></div>
+                        <div id="om-choice-3" class="om-choice" t-att-data-state="'payable'"><span>可提现</span></div>
+                        <div id="om-choice-4" class="om-choice" t-att-data-state="'paid'"><span>已提现</span></div>
+                        <div id="om-choice-5" class="om-choice"><span>维权单</span></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="mo-order-pd-list om-choice-1 mopl-active distribution_ordersManager_list_tag">
+                        <t t-call="website_myaccount_base.mobile_myaccount_distribution_ordersManager_list"/>
+                    </div>
+                </div>
+
+            </t>
+        </template>
+
+        <template id="mobile_myaccount_distribution_ordersManager_list">
+            <t t-if="not commission_lines">订单为空</t>
+            <t t-foreach="commission_lines" t-as="commission_line">
+                <div class="od-pd-detail">
+                    <p>订单编号: <span t-field="commission_line.order_id.name"/><span class="od-pd-status"><span t-field="commission_line.order_id.state" /></span></p>
+                    <t t-foreach="commission_line.order_id.order_line" t-as="line">
+                        <table>
+                            <tr>
+                                <td rowspan="3" class="product-img">
+                                    <img t-att-src="website.image_url(line.product_id, 'image')" title="" alt="" />
+                                </td>
+                                <td><p><span t-esc="line.product_id.with_context(display_default_code=False).display_name"/></p></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>佣金比率: <span t-esc="commission_line.commission_rate"/>%<span  class="float-right float_right_padding_right_5">x<span t-esc="int(line.product_uom_qty)"/></span></p>
+                                    <p>原价: <span t-field="line.price_unit" style="white-space: nowrap;" /><span class="float-right float_right_padding_right_5">实付: <span t-field="line.price_unit" style="white-space: nowrap;" /></span></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </t>
+                    <p>运费: 0 元<span class="float-right">下单时间:<span t-field="commission_line.order_id.date_order" /></span></p>
+                    <p>实付款: <span t-field="commission_line.order_id.amount_total" /><span class="float-right">买家:<span t-field="commission_line.order_id.partner_shipping_id.name" /></span></p>
+                    <p class="float-right">佣金总额:<span class="commission-total"><span t-field="commission_line.amount_commission" /></span></p>
+                    <div class="clear"></div>
+                </div>
+            </t>
+        </template>
+
+
+        <template id="mobile_myaccount_distribution_productPromotion">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">推广商品</t>
+                <t t-if="value">
+                    <t t-set="promotion_lines" t-value="value.get('promotion_lines')"/>
+                    <t t-set="not_enough_data" t-value="value.get('not_enough_data')"/>
+                </t>
+                <div class="product-management-page">
+                    <input type="hidden" name="tmp_promotion_orderlist_flag" value="id desc" />
+                    <div class="pm-order-by">
+                        <div id="po-choice-1" class="po-choice po-active" t-att-data-sort-regexp="'id'"><span>默认</span></div>
+                        <div id="po-choice-2" class="po-choice" t-att-data-sort-regexp="'list_price'"><span>价格<b class="po-up"></b></span></div>
+                        <div id="po-choice-3" class="po-choice" t-att-data-sort-regexp="'sales_count'"><span>销量<b class="po-up"></b></span></div>
+                        <div id="po-choice-4" class="po-choice" t-att-data-sort-regexp="'amount_commission'"><span>总佣金<b class="po-up"></b></span></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="pm-product-list">
+                        <t t-call="website_myaccount_base.mobile_distribution_productPromotion_list"/>
+                    </div>
+
+
+                    <t t-call="common_code.public_scroll_calling_loader"/>
+                </div>
+            </t>
+
+            <xpath expr="//html/body" position="inside">
+                <script type="text/javascript" src="/website_myaccount_base/static/src/js/product_promotion_list_scroll_load.js"/>
+            </xpath>
+        </template>
+
+        <template id="mobile_distribution_productPromotion_list">
+            <t t-if="not promotion_lines">
+                <t t-set="promotion_lines" t-value="value.get('promotion_lines')"/>
+                <t t-set="not_enough_data" t-value="value.get('not_enough_data')"/>
+            </t>
+            <t t-if="not_enough_data  and not_enough_data == 1">
+                <input type="hidden" name="promotion_not_enough_data" t-att-value="1" />
+            </t>
+
+            <t t-if="not promotion_lines">列表为空</t>
+            <t t-if="promotion_lines">
+                <t t-foreach="promotion_lines" t-as="line">
+                    <table>
+                        <tr>
+                            <td rowspan="4" class="product-img">
+                                <img t-att-src="website.image_url(line['product'], 'image')" title="" alt="" />
+                            </td>
+                            <td class="pl-td-padding" ><t t-esc="line['product'].name" /></td>
+                        </tr>
+                        <tr>
+                            <td>销量: <t t-esc="line['product'].sales_count" /></td>
+                        </tr>
+                        <tr>
+                            <td>价格: <t t-esc="line['product'].lst_price" /></td>
+                        </tr>
+                        <tr>
+                            <td>总佣金:<span class="pm-commission-total"><t t-esc="line['amount_commission']" /></span>(<t t-esc="line['product_rate']" />%)</td>
+                        </tr>
+                    </table>
+                </t>
+            </t>
+
+        </template>
+
+        <!-- <template id="reference_website_cart_shipto_templates"> -->
+        <!-- <div class="os-adress-list">
+             <p class="os-al-title">选择收货地址<b class="os-cancel-button">X</b></p>
+             <t t-set="website_sale_address" t-value="website.sale_get_address()"/>
+             <t t-if="not website_sale_address"><p></p></t>
+             <t t-call="website_cart.cart_shipto"/>
+             <div class="add-new-adress"><a href="#" class="add-new-adress_tag"><button>新增收货地址</button></a></div>
+             </div> -->
+        <!-- +begin:  by jinchao ====================description: 这位置放 展开隐藏的窗口 -->
+        <!-- <t t-call="website_cart.cart_address_edit" /> -->
+        <!-- +end: by jinchao -->
+        <!-- <div id="myModal" class="modal-pop"></div> -->
+
+        <!-- </template> -->
+
+        <template id="mobile_myaccount_user_orderlist">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">我的订单</t>
+                <t t-call="website_myaccount_base.public_mobile_orderlist_html"/>
+            </t>
+            <xpath expr="//html/body" position="inside">
+                <script type="text/javascript" src="/website_myaccount_base/static/src/js/orderlist_scroll_loading.js"/>
+            </xpath>
+
+        </template>
+        <!-- <template id="mobile_orderlist_scroll_loading_product" inherit_id="website_myaccount_base.mobile_myaccount_user_orderlist">
+             <xpath expr="//html/body" position="inside">
+             <script type="text/javascript" src="/website_myaccount_base/static/src/js/orderlist_scroll_loading.js"/>
+             </xpath>
+             </template>
+           -->
+
+        <template id="public_mobile_order_top_menu">
+            <div class="public_mobile_order_top_menu">
+                <input type="text"  class="mobile_order_search_input" name="" placeholder="请输入搜索关键字"/>
+                <button class="mobile_order_search_button">搜索</button>
+                <button>...</button>
+            </div>
+        </template>
+
+        <!-- <template id="public_mobile_orderlist_count">
+             <t t-if="not flag"><t t-set="flag" t-value="value.get('flag')"/></t>
+             <t t-if="not fields_list"><t t-set="fields_list" t-value="value.get(flag)"/></t>
+             <t t-esc="website.get_order_count_by_field(fields_list).get('count')"/>
+             </template>
+           -->
+
+        <template id="public_mobile_order_category_tab">
+            <t t-if="not get_order_count_list"><t t-set="get_order_count_list" t-value="website.get_order_count_list()"/> </t>
+            <t t-if="not flag"><t t-set="flag" t-value="value.get('flag')"/></t>
+            <a href="#"><div id="om-choice-1" t-att-class="(flag == 'all') and 'om-choice om-active' or 'om-choice'"><span>全部
+
+                <t t-set="count" t-value="get_order_count_list.get('all_count')"/>
+                <t t-if="count != 0">
+                    <span class="om-tab-sub"><t t-esc="count"/></span>
+                </t>
+                <!-- <t t-if="(flag == 'all')">
+                     <t t-set="fields_list" t-value="value.get('fields_list')"/>
+                     <span class="om-tab-sub"><t t-call="website_myaccount_base.public_mobile_orderlist_count"/></span>
+                     </t> -->
+            </span></div></a>
+            <a href="#"><div id="om-choice-2" t-att-class="(flag == 'draft') and 'om-choice om-active' or 'om-choice'" ><span>待付款
+
+                <t t-set="count" t-value="get_order_count_list.get('draft_count')"/>
+                <t t-if="count != 0">
+                    <span class="om-tab-sub"><t t-esc="count"/></span>
+                </t>
+
+                <!-- <t t-if="(flag == 'draft')">
+                     <t t-set="fields_list" t-value="value.get('fields_list')"/>
+                     <span class="om-tab-sub"><t t-call="website_myaccount_base.public_mobile_orderlist_count"/></span></t> -->
+            </span></div></a>
+            <a href="#"><div id="om-choice-3" t-att-class="(flag == 'undelivered') and 'om-choice om-active' or 'om-choice'"><span>待发货
+
+                <t t-set="count" t-value="get_order_count_list.get('undelivered_count')"/>
+                <t t-if="count != 0">
+                    <span class="om-tab-sub"><t t-esc="count"/></span>
+                </t>
+            </span></div></a>
+            <a href="#"><div id="om-choice-4" t-att-class="(flag == 'wait_delivery') and 'om-choice om-active' or 'om-choice'"><span>待收货
+
+                <t t-set="count" t-value="get_order_count_list.get('wait_delivery_count')"/>
+                <t t-if="count != 0">
+                    <span class="om-tab-sub"><t t-esc="count"/></span>
+                </t>
+            </span></div></a>
+            <a href="#"><div id="om-choice-5" t-att-class="(flag == 'wait_comment') and 'om-choice om-active' or 'om-choice'"><span>待评价
+
+                <t t-set="count" t-value="get_order_count_list.get('wait_comment_count')"/>
+                <t t-if="count != 0">
+                    <span class="om-tab-sub"><t t-esc="count"/></span>
+                </t>
+
+            </span></div></a>
+            <div class="clear"></div>
+        </template>
+
+        <template id="public_mobile_order_logistics_top1">
+            <t t-set="logistics_top1" t-value="website.get_order_logistics_top1(order.id)"/>
+                <!-- <a class="logistics_courier" href="tel://13312341234">13312341234</a> -->
+            <t t-if="not logistics_top1.get('log_context')">暂无物流信息</t>
+            <t t-if="logistics_top1.get('log_context')">
+                <t t-esc="logistics_top1.get('log_context')"/>
+                <br /><t t-esc="logistics_top1.get('log_time')"/>
+            </t>
+
+        </template>
+
+        <template id="public_mobile_order_logistics_info">
+            <!-- wait_delivety 必须是待收货页面才会显示 -->
+            <t t-if="flag == 'wait_delivery'">
+                    <div class="public_mobile_order_logistics_info">
+                        <p>
+                            <t t-call="website_myaccount_base.public_mobile_order_logistics_top1"/>
+                        </p>
+                    </div>
+            </t>
+        </template>
+
+        <template id="public_mobile_foreach_productList">
+            <t t-if="not flag"><t t-set="flag" t-value="value.get('flag')"/></t>
+            <t t-if="not orders and value.get('flag') != 'search'">
+                <t t-set="orders_dict" t-value="website.get_order_match_for_field(value.get('fields_list'),value.get('limit'),value.get('offset'))"/>
+                <t t-set="orders" t-value="orders_dict.get('orders')"/>
+                <t t-set="not_enough_data" t-value="orders_dict.get('not_enough_data')"/>
+            </t>
+
+            <t t-if="not orders">
+                <p style="text-align:center"><a href="/" style="text-decoration: underline;"><span>您还没有相关的订单, 可以去看看有哪些想买的</span></a></p>
+            </t>
+            <t t-if="not_enough_data  and not_enough_data == 1">
+                <input type="hidden" name="not_enough_data" t-att-value="1" />
+            </t>
+
+
+            <t t-if="orders">
+                <t t-set="i" t-value="0"/>
+                <t t-foreach="orders" t-as="order">
+                    <!-- 剔除件数为空的订单 -->
+                    <!-- <t t-if="order.product_count">
+                        <div class="od-pd-detail">
+                            <t t-call="website_myaccount_base.public_mobile_order_logistics_info"/>
+                            <p>下单时间:<span t-field="order.date_order" /><span class="od-pd-status">
+                                <t t-call="website_myaccount_base.tmp_order_state_translate"/></span></p>
+            
+                            <a target="_blank" t-att-href="'/m/myaccount/order/detail/%s' % order.id">
+                                <t t-foreach="order.order_line" t-as="line">
+                                    <table>
+                                        <tr>
+                                            <td rowspan="3" class="product-img">
+                                                <img t-att-src="website.image_url(line.product_id, 'image')" title="" alt="" />
+                                            </td>
+                                            <td><p><span t-esc="line.with_context(display_default_code=False).display_name"/>
+                                                <span class="float_right_padding_right_5">￥<t t-esc="line.price_unit"/></span>
+                                                <br />
+                                                <span class="float_right_padding_right_5">x<span t-esc="int(line.product_uom_qty)"/> </span>
+                                            </p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </t>
+                            </a>
+                            <p>
+            
+                                <span class="od-pd-status">
+                                    共<span style="color:red;" t-field="order.product_count"/>件商品, 合计:<span t-esc="order.cash_amount"/>(含运费<span t-esc="order.freight"/>)</span></p>
+                            <p><t t-call="website_myaccount_base.public_mobile_order_btn"/></p>
+                            <div class="clear"></div>
+                        </div>
+                    </t> -->
+                            <p><t t-call="website_myaccount_base.public_mobile_order_btn"/></p>
+                    <t t-set="i" t-value="i+1"/>
+            
+                </t>
+            </t>
+        </template>
+
+        <template id="public_mobile_orderlist_html">
+            <t t-if="not flag"><t t-set="flag" t-value="value.get('flag')"/></t>
+            <t t-if="not orders">
+                <t t-set="orders_dict" t-value="website.get_order_match_for_field(value.get('fields_list'),value.get('limit'),value.get('offset'))"/>
+                <t t-set="orders" t-value="orders_dict.get('orders')"/>
+            </t>
+            <t t-if="not get_order_count_list"><t t-set="get_order_count_list" t-value="website.get_order_count_list()"/> </t>
+            <div class="moblie-order-management mobile_orderlist_tag">
+                <input type="hidden" name="tmp_orderlist_flag" t-att-value="value.get('flag')" />
+                <t t-call="website_myaccount_base.public_mobile_order_top_menu"/>
+
+                <div class="om-choice-status">
+                    <t t-call="website_myaccount_base.public_mobile_order_category_tab"/>
+                </div>
+
+                <div class="mo-order-pd-list om-choice-1 mopl-active orderlist_foreach_tag">
+                    <t t-call="website_myaccount_base.public_mobile_foreach_productList"/>
+                </div>
+
+                <t t-call="website_cart.acquirer_list"/>
+
+                <!-- 上拉或下拉加载菊花圈,内容加载完后,菊花圈消失 -->
+                <t t-call="common_code.public_scroll_calling_loader"/>
+
+            </div>
+        </template>
+
+
+
+        <template id="public_mobile_order_btn_draft">
+            <!-- 待付款 -->
+            <!-- <a><button>联系卖家</button></a> -->
+            <a class="public_btn_draft_cancel_tag" t-att-data-order-id="order.id"><button>取消订单</button></a>
+            <!-- <a class="public_btn_goto_checkout_tag"><button>去支付</button></a> -->
+            <!-- <div class="row">
+                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><a><button>联系卖家</button></a></div>
+                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><a class="public_btn_draft_cancel_tag" t-att-data-order-id="order.id"><button>取消订单</button></a></div>
+                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><a class="public_btn_goto_checkout_tag"><button>去支付</button></a></div>
+                 </div> -->
+        </template>
+
+        <template id="public_mobile_order_btn_undelivered">
+            <!-- 待卖家发货 -->
+            <!-- <a><button>再次购买</button></a> -->
+            <!-- <a><button>提醒发货</button></a> -->
+            <a target="_blank" t-att-href="'/m/myaccount/order/logistics_detail/%s' % order.id">
+                <button>查看物流</button>
+            </a>
+
+        </template>
+
+        <template id="public_mobile_order_btn_wait_delivery">
+            <!-- 待收货 -->
+            <!-- <a><button>再次购买</button></a> -->
+            <a target="_blank" t-att-href="'/m/myaccount/order/logistics_detail/%s' % order.id">
+                <button>查看物流</button>
+            </a>
+        </template>
+
+        <template id="public_mobile_order_btn_wait_comment">
+            <!-- 待评价 -->
+            <a target="_blank" t-att-href="'/m/myaccount/order/logistics_detail/%s' % order.id">
+                <button>查看物流</button>
+            </a>
+            <!-- <a><button>评价</button></a> -->
+        </template>
+
+        <template id="public_mobile_order_btn_activist">
+            <!-- 维权 -->
+            <a target="_blank" t-att-href="'/m/myaccount/order/after_sale/%s' % order.id">
+                <button>申请售后</button>
+            </a>
+        </template>
+
+
+        <template id="public_mobile_order_btn">
+            <!-- return btn_xxx , btn_xxx -->
+            <div class="public_mobile_order_btn">
+
+                <t t-if="flag == 'all'">
+                    <t t-if="order.client_state == 'waiting_payment'"> <t t-call="website_myaccount_base.public_mobile_order_btn_draft"/> </t>
+                    <t t-if="order.client_state == 'waiting_send'"> <t t-call="website_myaccount_base.public_mobile_order_btn_undelivered"/> </t>
+                    <t t-if="order.client_state == 'waiting_sign'"> <t t-call="website_myaccount_base.public_mobile_order_btn_wait_delivery"/> </t>
+                    <t t-if="order.client_state == 'waiting_comment'"> <t t-call="website_myaccount_base.public_mobile_order_btn_wait_comment"/> </t>
+                </t>
+
+                <t t-if="flag == 'draft'">
+                    <t t-call="website_myaccount_base.public_mobile_order_btn_draft"/>
+                </t>
+
+                <t t-if="flag == 'undelivered'">
+                    <t t-call="website_myaccount_base.public_mobile_order_btn_undelivered"/>
+                </t>
+
+                <t t-if="flag == 'wait_delivery' and order.logistics_state == 'sent'">
+                    <t t-call="website_myaccount_base.public_mobile_order_btn_wait_delivery"/>
+                </t>
+
+                <t t-if="flag == 'wait_comment' and order.logistics_state == 'signed'">
+                    <t t-call="website_myaccount_base.public_mobile_order_btn_wait_comment"/>
+                    <!-- 待评价 -->
+                </t>
+
+                <t t-if="flag == 'activist'">
+                    <t t-call="website_myaccount_base.public_mobile_order_btn_activist"/>
+                    <!-- 维权 -->
+                </t>
+            </div>
+        </template>
+        <template id="tmp_order_state_translate">
+            <span t-field="order.client_state"/>
+            <!-- <t t-if="flag == 'all'">
+                 <t t-if="order.state == 'draft'"> <span>等待买家付款</span></t>
+                 剔除 已签收 ,  目的: 把text改为 交易成功
+                 <t t-if="order.state != 'draft' and order.logistics_state and order.logistics_state != 'signed'"><span t-field="order.logistics_state"/></t>
+                 <t t-if="order.logistics_state == 'signed'"> <span>交易成功</span></t>
+                 </t>
+                 <t t-if="flag == 'draft'">
+                 待付款
+                 <span>等待买家付款</span>
+                 </t>
+
+                 当 flag == draft时, 不使用 此功能
+                 <t t-if="flag != 'all' and flag != 'draft' and order.logistics_state and order.logistics_state != 'signed'">
+                 <span t-field="order.logistics_state"/>
+                 </t>
+                 <t t-if="flag != 'all'and  order.logistics_state == 'signed'"> <span>交易成功</span></t> -->
+        </template>
+
+        <template id="mobile_show_order_logistics_detail_top">
+            <div class="row logistics_detail_top_area">
+                <div calss="col-xs-2 col-sm-2 logistics_detail_product_info">
+                    <t t-if="order.order_line[0].product_id[0]">
+                        <!-- <img t-att-src="website.image_url(order.order_line.product_id, 'image_small')" title="" alt="" /> -->
+                        <div t-att-style="'background:url(' +website.image_url(order.order_line[0].product_id[0], 'image_small') + ') no-repeat'" class="logistic_detail_product_info_img">
+                            <t t-if="order.product_count">
+                                <div class="logistics_packge_product_count">
+                                    <t t-esc="order.product_count"/>件商品
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+
+                <div class="col-xs-9 col-sm-9 logistics_detail_info">
+                    <t t-if="logistics_line.state">物流状态: <span calss="logistics_page_logistics_state" t-field="logistics_line.state"/><br /></t>
+                    <t t-if="logistics_line.number">运单编号: <span t-esc="logistics_line.number"/><br /></t>
+                    <t t-if="logistics_line.carrier_id">承运公司: <span t-field="logistics_line.carrier_id"/></t>
+                </div>
+            </div>
+        </template>
+
+
+        <template id="mobile_show_order_logistics_page">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">物流详情</t>
+                <div class="show_order_logistics_page_tag">
+                <t t-if="not order.logistics_line">暂无物流信息</t>
+                <!-- <t t-if="not order.logistics_line or not order.logistics_line[0]">暂无物流信息</t> -->
+                <t t-if="order.logistics_line">
+                    <t t-foreach="order.logistics_line" t-as="logistics_line">
+                            <t t-set="i" t-value="0"/>
+                            <t t-if="logistics_line">
+                                <t t-call="website_myaccount_base.mobile_show_order_logistics_detail_top"/>
+                                <t t-set="last_time" t-value="len(logistics_line.logistics_line)-1"/>
+                                <ol class="ui-ver-step">
+
+                                    <t t-foreach="logistics_line.logistics_line" t-as="line">
+                                        <!-- <t t-if="i == 0">ver-step-start</t> -->
+                                        <!-- <t t-if="i == last_time">ver-step-end</t> -->
+                                        <!-- <t t-if="i != 0 and i != last_time">ver-step-done</t> -->
+                                        <li t-att-class="(i == 0) and 'ver-step-start ver-step-active' or (i == last_time and 'ver-step-end' or 'ver-step-done')">
+                                            <div class="row">
+                                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                                    <div class="ui-ver-step-cont">
+                                                        <span class="ui-ver-step-cont-number"></span> 
+                                                        <div class="ui-ver-step-line step_line_tag"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 log_context_tag ui-ver-step-cont-text">
+                                                    <!-- <t t-if="i == 2">
+                                                         测测试代码测试代码测试代码测试代码测试代码测试代码测试代码测试代码试代码
+                                                         测试代码测试代码测试代码测试代码测试代码测试代码测试代码测试代码测试代码
+                                                         测试代码测试代码测试代码测试代码测试代码测试代码测试代码测试代码测试代码
+                                                         </t> -->
+                                                    <t t-esc="line.log_context"/><br /><t t-esc="line.log_time"/>
+                                                    <hr class="logistics_line_hr" />
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <t t-set="i" t-value="i+1"/>
+                                    </t>
+                                </ol>
+                            </t>
+                        </t>
+                </t>
+                </div>
+            </t>
+        </template>
+
+        <template id="mobile_myaccount_red_envelopes">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">我的红包</t>
+                <div class="moblie-red-envelopes">
+                    <div class="rd-header">
+                        <div id="provide-record" class="rdh-choice rdh-active">发放记录</div>
+                        <div id="withdrawal-record" class="rdh-choice">提现记录</div>
+                    </div>
+                    <div class="rd-record-list provide-record rdh-active">没有发放记录</div>
+                    <div class="rd-record-list withdrawal-record">没有提现记录</div>
+                    <div class="rd-footer">
+                        <div class="withdrawal-amount">可提现金额:<span>0元</span></div>
+	                    <div class="rdh-employ">使用</div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</openerp>

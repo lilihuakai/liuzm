@@ -1,0 +1,103 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_myaccount_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-20150529\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-06-11 21:26+0000\n"
+"PO-Revision-Date: 2015-06-12 05:28+0800\n"
+"Last-Translator: Kenny <sales@zhsunlight.cn>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_TW\n"
+"X-Generator: Poedit 1.7.1\n"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.addresses
+msgid "Add"
+msgstr "添加"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Confirm email address"
+msgstr "確認郵箱地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Confirm password"
+msgstr "確認密碼"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.addresses
+msgid "Edit"
+msgstr "編輯"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Email"
+msgstr "郵箱"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Email address"
+msgstr "郵箱地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Full name"
+msgstr "全稱"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.menu
+msgid "Information"
+msgstr "資訊"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.addresses
+msgid "Invoice address"
+msgstr "發票地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.menu
+msgid "MyProfile"
+msgstr "賬戶"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.menu
+msgid "MyTag"
+msgstr "標注"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Name"
+msgstr "名稱"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Password"
+msgstr "密碼"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.addresses
+msgid "Remove"
+msgstr "刪除"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.addresses
+msgid "Shipping address"
+msgstr "送貨地址"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.profile
+msgid "Update profile"
+msgstr "更新賬戶"
+
+#. module: website_myaccount_base
+#: view:website:website_myaccount_base.dashboard
+msgid "Welcome to join us."
+msgstr "恭喜您註冊成爲會員！"
