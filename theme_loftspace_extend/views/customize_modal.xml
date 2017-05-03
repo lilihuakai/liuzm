@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="theme_customize" inherit_id="theme_loftspace.theme_customize">
+            <xpath expr="//div[@id='color']/div" position="inside">
+                <div class="col-xs-12">
+                    <p class="text-center">China Red</p>
+                    <label class="color-combi">
+                        <div class="row colorPreset6">
+                            <div class="col-xs-2"></div><div class="col-xs-2"></div><div class="col-xs-2"></div><div class="col-xs-2"></div><div class="col-xs-2"></div>
+                        </div>
+                        <input name="colorvar" type="radio" data-xmlid="theme_loftspace_extend.option_ChinaRed" />
+                    </label>
+                </div>
+            </xpath>
+        </template>
+
+    <!-- ===================== COLOR OPTIONS ======================== -->
+
+        <template id="option_ChinaRed" name="option_ChinaRed" inherit_id="website.theme" active="True">
+            <xpath expr="//link[last()]" position="after">
+                <link href="/theme_loftspace_extend/static/src/less/options/colors/colorChinaRed.less" rel="stylesheet" type="text/less"/>
+            </xpath>
+        </template>
+    </data>
+</openerp>
+
+
+

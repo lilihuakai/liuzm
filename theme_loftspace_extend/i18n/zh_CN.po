@@ -1,0 +1,508 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* theme_loftspace_extend
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-20 09:15+0000\n"
+"PO-Revision-Date: 2017-04-20 09:15+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid ". Choose an image or a color for the background. You can even resize and duplicate the blocks to create your own layout. Add images or icons to customize the blocks."
+msgstr "选择一个图像或者颜色作为背景。甚至可以修改并复制模块来创建你自己的格式。添加图像或图标来自定义模块。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "1 column text"
+msgstr "单列文本"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "1000 Apps"
+msgstr "1000 Apps"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "12:00 AM"
+msgstr "12:00 AM"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "2 column text"
+msgstr "双列文本"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "20.000 Users"
+msgstr "20.000 用户"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "234 Clients"
+msgstr "234 客户"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "2x Color Block"
+msgstr "2个颜色块"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "3 column text"
+msgstr "三列文本"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "30 Countries"
+msgstr "30 个国家"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "4 column text"
+msgstr "四列文本"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "4x Color Block"
+msgstr "4个颜色块"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "75 Partners"
+msgstr "75 合作商"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "A COLOR BLOCK"
+msgstr "一个色块"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "A Great Way to Show Your Numbers"
+msgstr "展示你成员的出色方式"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "A good subtitle"
+msgstr "一个好的副标题"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "A great way to catch your reader's attention is to tell a story. Everything you consider writing can be told as a story."
+msgstr "讲述一个故事是吸引访问者注意力的一个好办法.\n"
+"                                    任何你想写的东西都可以作为一个故事来讲述。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "A timeline is a graphical representation of a period of time, on which important events are marked."
+msgstr "时间表是一个时间段的一个图示，会标记出重要的事件。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "A timeline is a graphical representation of a period of time, on which important events are marked. Use Theme Clean Timeline as a part of your resume or to show your visitors what you've done in the past. You can edit, duplicate or switch the timeline panels to fit your needs."
+msgstr "时间表是一个时间段的一个图示，会标记出重要的事件。使用主题简洁的时间表作为你摘要的一部分给你的访客显示你已经完成的工作。你可以修改，复制或者切换时间表的面板来符合你的需求。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "ALL DAY"
+msgstr "全天"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Add a title to the text"
+msgstr "给文本添加一个题目"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Amazing pages"
+msgstr "惊人页面"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "An Other Color Block"
+msgstr "另外的一个色块"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Beautiful snippets"
+msgstr "漂亮片段"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Big Icon Circle"
+msgstr "大圆图标"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Big picture text"
+msgstr "大图文字"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Button and text"
+msgstr "文字按钮"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "COMPANY NAME"
+msgstr "公司名称"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Color blocks are a simple and effective way to"
+msgstr "色块是一个简单而有效的方式来"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Contact Us Now"
+msgstr "现在联络我们"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Convert your visitors to customers."
+msgstr "将你的访客转变为客户"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Cubes"
+msgstr "立方"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Custom Pages: Have No Limits."
+msgstr "自定义页面：无限制"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Customize Backgrounds"
+msgstr "自定义背景"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "DECISIONS, DECISIONS, AND EVEN MORE DECISIONS"
+msgstr "决策，决策，甚至更多的决策"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "DESIGN, DESIGN, AND EVEN MORE DESIGN"
+msgstr "设计，设计，甚至更多的设计。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "DISCOVER THE PRODUCT"
+msgstr "搜索产品"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Description of the tasks"
+msgstr "任务的描述"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Design expression comes from the combined effect of all elements in a product. Colour tone, shape and size should direct a person's thoughts towards buying the product. Therefore it is in the product designer's best interest to consider the audiences who are most likely to be the product's end consumers. Keeping in mind how consumers will perceive the product during the design process will direct towards the product’s success in the market. However, even within a specific audience, it is challenging to cater to each possible personality within that group."
+msgstr "设计表达来自于一个产品的所有要素的组合效果。色调，形状和尺寸应该将一个人的想法指向购买这个产品。因此，产品设计师最大的兴趣是去考虑观众谁最有可能成为产品的最终消费者。记住，消费者如何在设计过程中感知产品会指向产品在市场中的成功。然而，即使在一个特定观众中，在那个群体中迎合每一个可能的个性都是一种挑战。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Display Your Last Activities"
+msgstr "显示你最后一个活动"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Endless Possibilities"
+msgstr "无限可能"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Event List"
+msgstr "事件表"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Features"
+msgstr "特性"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Features Slideshow"
+msgstr "多功能幻灯片"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Generate customers"
+msgstr "生成客户"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Header text big picture"
+msgstr "上文下图"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Highlight Your Content"
+msgstr "突出你的内容"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "In a systematic approach, product designers conceptualize and evaluate ideas, turning them into tangible inventions and products. The product designer's role is to combine art, science, and technology to create new products that other people can use."
+msgstr "在系统研究法中，产品设计师将想法概念化并评估，将它们转化成有形的发明和产品。产品设计师的规则是结合艺术、科学和科技来创建出其他人能够使用的新产品。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Info"
+msgstr "信息"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Jul"
+msgstr "七月"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Let your visitors know what they said about you."
+msgstr "让你的访客知道他们怎么说的你"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Link"
+msgstr "链接"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Logos Bar"
+msgstr "Logos墙"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "More Details"
+msgstr "更多细节"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Name, Function / Company Inc."
+msgstr "姓名，功能/公司信息"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Nice and Efficient Events List"
+msgstr "不错的有效率的事件列表"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Numbers"
+msgstr "数字"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Our #1 priority is you, the user. We believe in our product and hold ourselves to the highest standards. We truly care about your site as much as you do, which is why we offer amazing support at our dedicated support center. In addition, we offer free updates with new features requested by our users. You can count on us."
+msgstr "我们的第一优先是你们，用户们。我们相信自己的产品并且以最高的标准来要求自己。我们和你一样真诚关心你们的位置，这也是我们在专们支持中心提供顶级支持的原因。另外，我们还提供由我们用户提出是新特性的免费下载。你们可以相信我们。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Outstanding images"
+msgstr "杰出图像"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Parallax Banner"
+msgstr "广告横幅"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Present Your Evolution with this Timeline"
+msgstr "用这个时间表展示你的进展"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Present your products"
+msgstr "展示你的产品"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Present your products online!"
+msgstr "在线展示你的产品"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Product List"
+msgstr "商品展示"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Product design is the process of creating a new product to be sold by a business to its customers. A very broad concept, it is essentially the efficient and effective generation and development of ideas through a process that leads to new products."
+msgstr "产品设计是由一个商家创建一个新产品给它的客户的过程。一个非常初步的概念，本质上是通过一个流程，有效高效的产生和想法的发展，从而通向新产品。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Products Slideshow"
+msgstr "商品幻灯片"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Resize and Duplicate"
+msgstr "调整大小和复制"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Select the Colors"
+msgstr "选择颜色"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Sep"
+msgstr "九月"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Separator"
+msgstr "分隔符"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Slideshow"
+msgstr "幻灯片"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Tell Your Story"
+msgstr "讲述你的故事"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Testimonial SLider"
+msgstr "证书幻灯片"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Text big picture"
+msgstr "文字大图"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Text picture text"
+msgstr "文字图片文字"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "The best approach"
+msgstr "最好的方法"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "The latest technology"
+msgstr "最新科技"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "The only theme you need"
+msgstr "你需要的唯一的主题"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "The product which fits your needs"
+msgstr "符合你需求的产品"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "The solution to that is to create a product that, in its designed appearance and function, expresses a personality or tells a story. Products that carry such attributes are more likely to give off a stronger expression that will attract more consumers. On that note it is important to keep in mind that design expression does not only concern the appearance of a product, but also its function. For example, as humans our appearance as well as our actions are subject to people's judgment when they are making a first impression of us."
+msgstr "对此的解决方案是创建一个产品，在它的设计外观和功能里，表达个性或者讲个故事。带有这个属性的产品更可能给出一个强烈的印象来吸引更多消费者。关于这一点，重要的是记住，设计表达不仅仅关注一个产品的外观，还关注它的功能。例如，当人们定义我们的第一印象时，我们的外貌和我们的行为都是人们判断的标准。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "This Is a Color Block"
+msgstr "这是一个色块"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "This powerful theme along with its unique structure lets you create any design style with just one theme. These simple yet powerful options allow you to create any type of website. No two versions will ever look the same."
+msgstr "这个带有它独特结构的有力主题使你能够只用一个主题就可以创建任何的设计风格。这些简单但又功能强大的选项使你能创建任何类型的网站。从没有两个版本是看起来一样的。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "This theme does not limit you to one setup, we prefer to give you options. From boxed layout to wide, left sidebars to right and multiple headers; we let you decide. That’s right, you can have your cake and eat some too."
+msgstr "这个主题没有限制你一个设置，我们更倾向于给予你选项。从内嵌版式到宽广的，左侧边栏到右和多个标题；我们让你决定。对，你可以拥有你蛋糕，还能吃点。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "This theme gives you limitless potential to build amazing pages. Easily create unique page layouts using the tools we provide. In addition, we have you covered with dozens of beautiful pre-designed pages you can quickly choose from."
+msgstr "这个主题是给你无限的潜能去创建惊人的页面。使用我们的工具轻易地创建独一无二的页面版式。另外，我们还能让你覆盖了很多漂亮的预设页面来给你快速选择。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Timeline"
+msgstr "时间线"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Title"
+msgstr "标题"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Use Theme Clean Timeline as a part of your resume or to show your visitors what you've done in the past. You can edit, duplicate or switch the timeline panels to fit your needs."
+msgstr "使用主题清理时间表作为你摘要的一部分，给您的访客显示你已经在过去所做的一切。您可以编辑，复制或切换时间轴面板，以满足您的需求。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Useful options"
+msgstr "有用选项"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Watch item"
+msgstr "列管项目"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "With Theme Clean you get a list of your events with date, time, description, etc. Select the simple or image mode and edit your content."
+msgstr "通过主题清除，你可以得到一系列带有日期，时间，描述等信息的事件，选择简单或图像模式并编辑你的内容。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Write a description of your event here."
+msgstr "在这写一个你的活动描述"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "You can link your events to your favorite social network."
+msgstr "你可以将你的活动链接到你最喜欢的社交网络。"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Your Event Name"
+msgstr "你的活动名称"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "Your Function"
+msgstr "你的功能"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "from visitors."
+msgstr "来自访客"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "present and highlight your content"
+msgstr "展示并突出你的内容"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "with this Theme."
+msgstr "用这个主题"
+
+#. module: theme_loftspace_extend
+#: view:website:website.snippets
+msgid "with this theme."
+msgstr "用这个主题"
+
