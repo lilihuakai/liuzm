@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="assets_backend" name="web_custom_assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link href="/mobile_share/static/src/css/mobile.css" rel="stylesheet"/>
+            </xpath>
+        </template>
+
+        <template id="mobile_footer" inherit_id="website_mobile_menu.mobile_footer" name="mobile_footer">
+            <xpath expr="//div[@class='mb-focus-us']" position="inside">
+                <a id="show-wechat-qrcode" href="javascript:;">关注我们</a>
+                <div class="wechat-qrcode have-design-bg">
+                    <t t-if="not website.wechat_poster">
+                        <div class="mb-version">
+                            <p>关注我们<b class="os-cancel-button">X</b></p>
+                            <img t-att-src="website.get_spread_qr()" t-att-alt="res_company.name" t-att-title="res_company.name"/>
+                            <p>长按识别图中二维码</p>
+                        </div>
+                    </t>
+                    <t t-if="website.wechat_poster">
+                        <div class="bg-version">
+                            <p><b class="os-cancel-button">X</b></p>
+                            <img class="bv-background" id="qr-code" t-att-src="website.image_url(website, 'wechat_poster')"/>
+                            <img class="bv-qrcode" t-att-src="website.get_spread_qr()" t-att-alt="res_company.name" t-att-title="res_company.name"/>
+                       </div>
+                   </t>
+                </div>
+            </xpath>
+
+        </template>
+
+    </data>
+</openerp>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_website_config_settings_theme" model="ir.ui.view">
+            <field name="name">Website settings theme</field>
+            <field name="model">website.config.settings</field>
+            <field name="inherit_id" ref="website.view_website_config_settings" />
+            <field name="arch" type="xml">
+
+                <xpath expr="//group[@string='Domain']" position="after">
+                    <group string="Wechat Poster Settings">
+                        <label for="wechat_poster"/>
+                        <div name="wechat_poster">
+                            <div>
+                                <div name="wechat_poster" class="oe_inline">
+                                    <field name="wechat_poster" widget="image" class="wechat_poster"/>
+                                </div>
+                            </div>
+                        </div>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
