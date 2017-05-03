@@ -1,0 +1,11 @@
+/*#wrapwrap .navbar > .container {
+	width: auto;
+	display: inline-block;
+}*/
+
+#wrapwrap header > div {
+	text-align: center;
+}
+#top_menu li a span  {
+	font-size: 18px;
+}

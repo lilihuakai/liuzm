@@ -1,0 +1,28 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* theme_beauty_customize
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-20160612\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-14 06:35+0000\n"
+"PO-Revision-Date: 2016-10-14 16:39+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 1.8.9\n"
+
+#. module: theme_beauty_customize
+#: view:website:website_less.theme_customize
+msgid "Arial Unicode MS"
+msgstr "Arial Unicode MS"
+
+#. module: theme_beauty_customize
+#: view:website:website.layout
+msgid "navbar navbar-default navbar-static-top text-center"
+msgstr "导航栏 导航栏-默认 导航栏-顶部静态 文本-中心"

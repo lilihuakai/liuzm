@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    <data>
+
+    <template id="theme_customize" name="theme_loftspace modal thai fonts" inherit_id="theme_loftspace.theme_customize">
+        <xpath expr="//div[@id='font']/div" position="inside">
+            <div class="col-xs-12">
+                <label class="center-block">
+                    <h4 style="font-family: 'Arial Unicode MS-Regular'; font-size: 30px">Arial Unicode MS</h4>
+                    <input name="fontvar" type="radio" data-xmlid="theme_beauty_customize.option_font_arialunicodems"/>
+                </label>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="option_font_arialunicodems" name="option_font_arialunicodems" inherit_id="website.theme" active="True">
+        <xpath expr="//link[last()]" position="after"><link href="/theme_beauty_customize/static/src/less/options/fonts/ArialUnicodeMS.less" rel="stylesheet" type="text/less"/></xpath>
+    </template>
+
+    </data>
+</openerp>
+

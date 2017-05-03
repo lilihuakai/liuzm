@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <template id="assets_frontend" name="Theme common frontend assets" inherit_id="website.assets_frontend">
+        <xpath expr="//script[1]" position="before">
+            <link href="/theme_beauty_customize/static/src/css/common.css" rel="stylesheet"/>
+        </xpath>
+    </template>
+    <!-- <template id="layout" name="Main layout" inherit_id="website.layout">
+        <xpath expr="//div[@id='wrapwrap']/header/div" position="attributes">
+            <attribute name="class">navbar navbar-default navbar-static-top text-center</attribute>
+        </xpath>
+    </template> -->
+
+    <template id="layout" inherit_id="website.layout" name="Main layout">
+        <xpath expr="//ul[@class='dropdown-menu js_usermenu']/li[1]" position="replace">
+            <li><a href="/myaccount" role="menuitem">My Account</a></li>
+        </xpath>
+    </template>
+
+    <template id="show_sign_in" customize_show="True" inherit_id="website.show_sign_in" name="Show Sign In">
+        <xpath expr="//li/a[@t-attf-href='/web/login']" position="replace">
+            <a t-attf-href="/web/login?redirect=/">
+                <b>Sign in</b>
+            </a>
+        </xpath>
+    </template>
+
+    </data>
+</openerp>
+
