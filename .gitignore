@@ -6,7 +6,9 @@
 /.bash_profile
 /.bashrc
 /.gitignore
-*.pyc
-/auth_oauth_extended/models/*.pyc
-/auth_oauth_extended/*.pyc
+
+
+#################
+#  Python File  #
+#################
 *.pyc
