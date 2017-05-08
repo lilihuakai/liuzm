@@ -3,7 +3,7 @@
     'name': 'Loftspace Theme Extend',
     'description': """
     添加插件中文翻译\n
-    添加主题配送方案
+    添加主题配色方案
     """,
     'category': 'Theme/Ecommerce',
     'version': '1.0',
