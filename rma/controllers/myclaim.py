@@ -68,12 +68,15 @@ class MyClaim(http.Controller):
         value = self.get_after_sale_order_and_claim(order_id)
         orders = value.get('orders')
         claims = value.get('claims')
+        _logger.info('========== %s(), <%s>   ==========' % (sys._getframe().f_code.co_name,request.env.user.name))
 
-        # 每次打开售后详情单前，重置is_claim数据用于展示
+        # 每次打开售后详情单前，重置claim数据用于展示
         for o in claims.item_ids:
             for items in registry.get('sale.advance.rma.claim_items').browse(cr, uid, o.id, context=context):
                 if not items.is_claim:
                     registry.get('sale.advance.rma.claim_items').write(cr, uid, [items.id], {'is_claim': True})
+            registry.get('sale.advance.rma.claim').write(cr, uid, [o.id], 
+                {'claim_origin': "none",'deal_method': '','description': ''})
 
         return request.website.render('rma.mobile_order_activist_service_page', {'orders': orders, 'claims': claims})
 
@@ -99,16 +102,36 @@ class MyClaim(http.Controller):
     def m_order_after_checkout(self, order_id=None, **post):
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
         order_id = int(order_id)
+        _logger.info('========== %s(), <%s>   ==========' % (sys._getframe().f_code.co_name,request.env.user.name))
+
         value = self.get_after_sale_order_and_claim(order_id)
         orders = value.get('orders')
         claims = value.get('claims')
         return request.website.render('rma.mobile_after_sale_checkout', {'orders': orders, 'claims': claims})
+
+    @http.route(['/m/myaccount/order/after_sale/set_claim/'], type='json', auth="public", methods=['POST'], website=True)
+    def m_order_after_set_claim(self, order_id, deal_method, claim_origin, description):
+        """由JS触发事件，保存用户界面输入数据"""
+        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
+        res = {}
+        context.update({
+            'deal_method': deal_method,
+            'claim_origin': claim_origin,
+            'description': description,
+            })
+        _logger.info('========== %s(), <%s>   ========== deal_method %s claim_origin %s description %s' % 
+            (sys._getframe().f_code.co_name,request.env.user.name, deal_method, claim_origin, description))
+
+        registry.get('sale.advance.rma.claim').set_claim(cr, uid, [order_id], context=context)
+
+        return res
 
     @http.route(['/m/myaccount/order/after_sale/claim_create/<order_id>'], type='http', auth='user', website=True)
     def m_order_claim_create(self, order_id=None, **post):
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
         order_id = int(order_id)
         crm_claim_id = False
+        _logger.info('========== %s(), <%s>   ==========' % (sys._getframe().f_code.co_name,request.env.user.name))
 
         value = self.get_after_sale_order_and_claim(order_id)
         orders = value.get('orders')
@@ -117,9 +140,17 @@ class MyClaim(http.Controller):
         registry.get('sale.advance.rma.claim').write(cr, uid, claims.id, {'advance_payment_method': 'lines'})
         description = claims.description
         claim_origin = claims.claim_origin
+        deal_method = claims.deal_method
         advance_payment_method = claims.advance_payment_method
-        crm_claim_id = registry.get('sale.order').crm_claim_create(cr, uid, order_id, 
-            claim_origin, description, advance_payment_method, claims.id)
+        context.update({
+            'claim_origin': claim_origin,
+            'description': description,
+            'deal_method': deal_method,
+            'advance_payment_method': advance_payment_method,
+            'item_id': claims.id,
+        })
+
+        crm_claim_id = registry.get('sale.order').crm_claim_create(cr, uid, order_id, context=context)
         if crm_claim_id:
             crm_claim = registry.get('crm.claim').browse(cr,uid,crm_claim_id,context=context)
             return request.website.render('rma.mobile_after_sale_created', {'claims': crm_claim})
@@ -128,4 +159,5 @@ class MyClaim(http.Controller):
     @http.route(['/m/myaccount/order/after_sale/claim_view/<order_id>'], type='http', auth='user', website=True)
     def m_order_claim_view(self, order_id=None, **post):
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
+        _logger.info('========== %s(), <%s>   ==========' % (sys._getframe().f_code.co_name,request.env.user.name))
         return request.website.render('website_myaccount_base.mobile_order_activist_service_page', {})

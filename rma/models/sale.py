@@ -110,7 +110,7 @@ class sale_order(osv.Model):
         'advance_id': fields.one2many('sale.advance.rma.claim', 'order_id', 'Advance Rma Claim', readonly=True),
     }
 
-    def _prepare_claim(self, cr, uid, order, lines, description, context=None):
+    def _prepare_claim(self, cr, uid, order, lines, context=None):
         """Prepare the dict of values to create the new claim for a
            sales order. This method may be overridden to implement custom
            claim generation (making sure to call super() to establish
@@ -123,6 +123,11 @@ class sale_order(osv.Model):
         """
         if context is None:
             context = {}
+        description = context.get('description')
+        deal_method = context.get('deal_method')
+        if not deal_method:
+            deal_method = "RMA"
+
         claim_vals = {
             'claim_line_ids': [(6, 0, lines)], 
             'claim_type': 1,                                                            #暂不考虑供应商
@@ -141,7 +146,7 @@ class sale_order(osv.Model):
             # 'categ_id': False, 
             # 'cause': False, 
             # 'date_action_next': False, 
-            'name': 'RMA', 
+            'name': deal_method, 
             # 'pick': False, 
             # 'ref': False, 
             # 'resolution': False, 
@@ -152,23 +157,25 @@ class sale_order(osv.Model):
             }
         return claim_vals
 
-    def _make_claim(self, cr, uid, order, lines, description, context=None):
+    def _make_claim(self, cr, uid, order, lines, context=None):
         inv_obj = self.pool.get('crm.claim')
         if context is None:
             context = {}
-        inv = self._prepare_claim(cr, uid, order, lines, description, context=context)
+        inv = self._prepare_claim(cr, uid, order, lines, context=context)
         inv_id = inv_obj.create(cr, uid, inv, context=context)
         return inv_id
 
-    def manual_claim(self, cr, uid, ids, claim_origin, description, advance_payment_method, item_ids=False, context=None):
+    def manual_claim(self, cr, uid, ids, context=None):
         """ create claims for the given sales orders (ids), and open the form
             view of one of the newly created claims
         """
+        if not context:
+            context = {}
         mod_obj = self.pool.get('ir.model.data')
         
         # create claims through the sales orders' workflow
         inv_ids0 = set(inv.id for sale in self.browse(cr, uid, ids, context) for inv in sale.claim_ids)
-        self.crm_claim_create(cr, uid, ids, claim_origin, description, advance_payment_method, item_ids)
+        self.crm_claim_create(cr, uid, ids, context=context)
         inv_ids1 = set(inv.id for sale in self.browse(cr, uid, ids, context) for inv in sale.claim_ids)
         # determine newly created claims
         new_inv_ids = list(inv_ids1 - inv_ids0)
@@ -213,7 +220,9 @@ class sale_order(osv.Model):
             result['res_id'] = inv_ids and inv_ids[0] or False
         return result
 
-    def crm_claim_create(self, cr, uid, ids, claim_origin, description, advance_payment_method, item_ids=False, context=None):
+    def crm_claim_create(self, cr, uid, ids, context=None):
+        if not context:
+            context = {}
         claim = self.pool.get('crm.claim')
         obj_sale_order_line = self.pool.get('sale.order.line')
 
@@ -237,8 +246,7 @@ class sale_order(osv.Model):
                     continue
                 elif (line.state in states):
                     lines.append(line.id)
-            created_lines = obj_sale_order_line.claim_line_create(cr, uid, lines, claim_origin, advance_payment_method, 
-                item_ids, context=context)
+            created_lines = obj_sale_order_line.claim_line_create(cr, uid, lines, context=context)
             if created_lines:
                 claims.setdefault(o.partner_claim_id.id or o.partner_id.id, []).append((o, created_lines))
         if not claims:
@@ -248,7 +256,7 @@ class sale_order(osv.Model):
                         return i.id
         for val in claims.values():
             for order, il in val:
-                res = self._make_claim(cr, uid, order, il, description, context=context)
+                res = self._make_claim(cr, uid, order, il, context=context)
                 claim_ids.append(res)
                 cr.execute('insert into sale_order_claim_rel (order_id,claim_id) values (%s,%s)', (order.id, res))
                 # 因为cr在执行 CREATE，UPDATE，DELETE 的 SQL语句之前，清空cache是很有必要的，否则models的调用
@@ -311,7 +319,7 @@ class sale_order_line(osv.Model):
             }),
     }
 
-    def _prepare_order_line_claim_line(self, cr, uid, line, claim_origin, advance_payment_method, item_ids=False, context=None):
+    def _prepare_order_line_claim_line(self, cr, uid, line, context=None):
         """Prepare the dict of values to create the new claim line for a
            sales order line. This method may be overridden to implement custom
            claim generation (making sure to call super() to establish
@@ -320,11 +328,18 @@ class sale_order_line(osv.Model):
            :param browse_record line: sale.order.line record to claim
            :return: dict of values to create() the claim line
         """
+        if context is None:
+            context = {}
+
         line_obj = self.pool.get("claim.line")
         claim_obj = self.pool.get("sale.advance.rma.claim")
         items_obj = self.pool.get("sale.advance.rma.claim_items")
         res = {}
         quantity = 0
+        item_ids = context.get('item_ids')
+        claim_origin = context.get('claim_origin')
+        advance_payment_method = context.get('advance_payment_method')
+
         claim = claim_obj.browse(cr, uid, item_ids, context=context)
         for o in claim.item_ids:
             for items in items_obj.browse(cr, uid, o.id, context=context):
@@ -372,14 +387,14 @@ class sale_order_line(osv.Model):
 
         return res
 
-    def claim_line_create(self, cr, uid, ids, claim_origin, advance_payment_method, item_ids=False, context=None):
+    def claim_line_create(self, cr, uid, ids, context=None):
         if context is None:
             context = {}
 
         create_ids = []
         sales = set()
         for line in self.browse(cr, uid, ids, context=context):
-            vals = self._prepare_order_line_claim_line(cr, uid, line, claim_origin, advance_payment_method, item_ids, context)
+            vals = self._prepare_order_line_claim_line(cr, uid, line, context=context)
             if vals:
                 inv_id = self.pool.get('claim.line').create(cr, uid, vals, context=context)
                 self.write(cr, uid, [line.id], {'claim_lines': [(4, inv_id)]}, context=context)

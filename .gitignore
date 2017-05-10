@@ -12,3 +12,30 @@
 #  Python File  #
 #################
 *.pyc
+
+
+
+#################
+#    Floders    #
+#################
+common_code/
+guideline_page/
+homepage_design/
+html2image/
+kingfisher/
+product_image_multi/
+remove_page_elements/
+share_link/
+snippet_google_map/
+theme_beauty/
+theme_common/
+theme_customize_button/
+theme_loftspace/
+theme_snippets/
+website_animate/
+website_backend/
+website_cart/
+website_less/
+website_mobile_menu/
+website_shop_layout/
+wechat_base-master/

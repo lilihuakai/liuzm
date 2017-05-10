@@ -51,6 +51,7 @@ class sale_advance_rma_claim(osv.osv):
         'claim_origin': fields.selection(SUBJECT_LIST, 'Subject',required=True, 
             help="To describe the line product problem"),
         'description': fields.text('Description'),
+        'deal_method': fields.char('Deal Method', help="How to deal with the claim"),
         'item_ids': fields.one2many('sale.advance.rma.claim_items', 'item_id', 'Items', domain=[('product_id', '!=', False)]),
         'order_id': fields.many2one('sale.order', 'Order Reference'),
     }
@@ -91,16 +92,43 @@ class sale_advance_rma_claim(osv.osv):
         res.update(item_ids=items)
         return res
 
+    # 保存界面数据
+    def set_claim(self, cr, uid, ids, context=None):
+        if not context:
+            context = {}
+
+        deal_method = context.get('deal_method')
+        claim_origin = context.get('claim_origin')
+        description = context.get('description')
+        _logger.info('========== %s(), <%s>   ========== deal_method %s claim_origin %s description %s' % 
+            (sys._getframe().f_code.co_name,request.env.user.name, deal_method, claim_origin, description))
+
+        self.write(cr, uid, ids, 
+            {'deal_method': deal_method, 'claim_origin': claim_origin, 'description': description}, context=context)
+
+        return self
+
     def create_claims(self, cr, uid, ids, context=None):
         """ create claims for the active sales orders """
+        if not context:
+            context = {}
+        else:
+            context = context.copy()
+
         sale_obj = self.pool.get('sale.order')
         items_obj = self.pool.get('sale.advance.rma.claim_items')
         wizard = self.browse(cr, uid, ids[0], context)
         sale_ids = context.get('active_ids', [])
         claim_origin = wizard.claim_origin
         description = wizard.description
-        item_ids = wizard.id
+        item_id = wizard.id
         advance_payment_method = wizard.advance_payment_method
+        context.update({
+            'claim_origin': claim_origin,
+            'description': description,
+            'advance_payment_method': advance_payment_method,
+            'item_id': item_id,
+        })
 
         if advance_payment_method == "all":
             is_claim = True
@@ -117,7 +145,7 @@ class sale_advance_rma_claim(osv.osv):
             # for claims in wizard.item_ids:
             #     items_obj.reset_items(cr, uid, claims.id, context=context)
             raise osv.except_osv(_('Warnning!'), _('You have to choice one of them to claim!'))
-        res = sale_obj.manual_claim(cr, uid, sale_ids, claim_origin, description, advance_payment_method, item_ids, context)
+        res = sale_obj.manual_claim(cr, uid, sale_ids, context=context)
 
         # create the final claims of the active sales orders
         if context.get('is_open_claims', False) and is_claim:

@@ -4,23 +4,18 @@
         <template id="layout" inherit_id="website_myaccount_base.mobile_layout">
             <xpath expr="//html/head" position="inside">
                 <link href="/website_cart/static/src/css/ordersubmit.css" rel="stylesheet"/>
-                <!-- <link href="/web/static/lib/bootstrap/css/bootstrap.css" rel="stylesheet"/> -->
-                <!-- <link href="/website_myaccount_base/static/src/css/mobile_admin.css" rel="stylesheet"/> -->
                 <link href="/website_myaccount_base/static/src/css/myaccount.css" rel="stylesheet"/>
-                <!-- <link href="/website_myaccount_base/static/src/css/cityLayout.css" rel="stylesheet"/> -->
                 <link href="/website_myaccount_base/static/src/css/wechatcustomer.css" rel="stylesheet"/>
-                <!-- <link href="/website_myaccount_base/static/src/css/promanagement.css" rel="stylesheet"/> -->
                 <link href="/rma/static/src/css/audit.css" rel="stylesheet"/>
+                <link href="/rma/static/src/css/after_sales.css" rel="stylesheet"/>
             </xpath>
 
             <xpath expr="//html/body" position="inside">
-                <!-- <script type="text/javascript" src="/website_myaccount_base/static/src/js/cityselect.js" /> -->
-                <!-- <script type="text/javascript" src="/website_cart/static/src/js/area.js"/> -->
-                <!-- <script type="text/javascript" src="/website_myaccount_base/static/src/js/m_myaccount.js" />
-                <script type="text/javascript" src="/website_myaccount_base/static/src/js/promanagement.js" />
-                <script type="text/javascript" src="/website_myaccount_base/static/src/js/wechatcustomer.js" />
-                <script type="text/javascript" src="/website_myaccount_base/static/src/js/order_search.js" /> -->
                 <script type="text/javascript" src="/rma/static/src/js/claimsubmit.js"/>
+                <script type="text/javascript" src="/rma/static/src/js/orderlist_scroll_loading.js"/>
+                <script type="text/javascript" src="/rma/static/src/js/refresh_page_element.js"/>
+                <script type="text/javascript" src="/rma/static/src/js/remove_product.js"/>
+                <script type="text/javascript" src="/rma/static/src/js/after_sales.js"/>
             </xpath>
         </template>
 
@@ -80,19 +75,36 @@
                 <t t-set="additional_title">售后申请服务</t>
 
                 <t t-if="orders and orders.order_line">
-                    <div class="shopping-cart-page">
+                    <div class="shopping-cart-page apply-after-sales">
                         <div class="sc-product-list">
                             <t t-call="rma.mobile_after_sale_product_line" />
                             <p class="end-cart-product" />
-                            申请描述：<textarea t-att-data-description="claims.description"></textarea>
                         </div>
-                        <div class="sc-go-checkout" >
-                            <p><a href="/shop"><span class="pi-addtocart">返回商城</span></a>
-                                <a href="'/m/myaccount/order/after_sale/checkout/%s' % line.id">
-                                    <span class="go-checkout-button">提交申请</span>
-                                </a>
-                            </p>
+                        <div class="service-type">
+                            <h4>服务类型</h4>
+                            <div class="service-list">
+                                <span class="shipping-type sl-active">退货</span>
+                                <span class="shipping-type">换货</span>
+                                <span class="shipping-type">维修</span>
+                            </div>
                         </div>
+                        <div class="select-question">
+                            <h4>请选择问题</h4>
+                            <div class="question-list">
+                                <p><input type="radio" id="rad1" name="rad[]" checked="checked" value="1111111111111111111111" />1111111111111111111111</p>
+                                <p><input type="radio" id="rad2" name="rad[]" value="1222222222222222222222" />1222222222222222222222</p>
+                                <p><input type="radio" id="rad3" name="rad[]" value="3333333333333333333333" />3333333333333333333333</p>
+                                <p><input type="radio" id="rad4" name="rad[]" value="4444444444444444444444" />4444444444444444444444</p>
+                                <p><input type="radio" id="rad5" name="rad[]" value="5555555555555555555555" />5555555555555555555555</p>
+                                <p><input type="radio" id="rad6" name="rad[]" value="6666666666666666666666" />6666666666666666666666</p>
+                            </div>
+                        </div>
+                        <div class="question-describe">
+                            <h4>问题描述</h4>
+                            <p><textarea onfocus="if(value=='请您在此详细描述问题') {value=''}" onblur="if (value=='') {value='请您在此详细描述问题'}">请您在此详细描述问题</textarea></p>
+                        </div>
+
+                        <div class="submit-next-button" t-att-data-order_id="orders.id"><a t-att-href="'/m/myaccount/order/after_sale/checkout/%s' % orders.id"><button>下一步</button></a></div>
                     </div>
                 </t>
                 <div class="submit-create-claim-page">

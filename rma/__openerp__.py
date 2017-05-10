@@ -37,6 +37,7 @@
         "common_code",
     ],
     'data': [
+        "security/ir.model.access.csv",
         'wizard/sale_make_claim_advance.xml',
         'wizard/claim_invoice_refund_view.xml',
         'views/sale_view.xml',
