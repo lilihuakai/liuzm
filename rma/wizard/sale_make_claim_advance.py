@@ -19,10 +19,22 @@
 #
 ##############################################################################
 
+
+# 1: imports of python lib
+import sys
+import logging
+
+# 3: imports of openerp
 from openerp import api
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
+
+# 4: imports from odoo modules
 import openerp.addons.decimal_precision as dp
+
+# 6: Import of unknown third party lib
+_logger = logging.getLogger(__name__)
+
 
 # class sale_advance_rma_claim(osv.osv_memory):
 class sale_advance_rma_claim(osv.osv):

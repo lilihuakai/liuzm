@@ -14,8 +14,6 @@ $(document).ready(function() {
             'deal_method': deal_method,
             'claim_origin': 'none',
             'description': description})
-            .then(function (data) {
-            });
     });
 
 });

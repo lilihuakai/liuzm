@@ -2,19 +2,27 @@
 # License, author and contributors information in:
 # __openerp__.py file at the root folder of this module.
 
-from openerp import http
-from openerp.http import request
-from openerp import SUPERUSER_ID
-from openerp.tools.translate import _
-from openerp.addons.website_sale.controllers.main import website_sale
-from openerp.addons.website_myaccount_base.controllers.myaccount import MyAccount
+# 1: imports of python lib
 import re
 import operator
 import sys
 import logging
+
+# 3: imports of openerp
+from openerp import http
+from openerp.http import request
+from openerp import SUPERUSER_ID
+from openerp.tools.translate import _
+
+# 4: imports from odoo modules
+from openerp.addons.website_sale.controllers.main import website_sale
+
+# 6: Import of unknown third party lib
 _logger = logging.getLogger(__name__)
 
 import werkzeug
+
+
 
 class MyClaim(http.Controller):
 
@@ -75,8 +83,8 @@ class MyClaim(http.Controller):
             for items in registry.get('sale.advance.rma.claim_items').browse(cr, uid, o.id, context=context):
                 if not items.is_claim:
                     registry.get('sale.advance.rma.claim_items').write(cr, uid, [items.id], {'is_claim': True})
-            registry.get('sale.advance.rma.claim').write(cr, uid, [o.id], 
-                {'claim_origin': "none",'deal_method': '','description': ''})
+        registry.get('sale.advance.rma.claim').write(cr, uid, [claims.id], 
+            {'claim_origin': "none",'deal_method': '','description': ''})
 
         return request.website.render('rma.mobile_order_activist_service_page', {'orders': orders, 'claims': claims})
 
@@ -156,8 +164,22 @@ class MyClaim(http.Controller):
             return request.website.render('rma.mobile_after_sale_created', {'claims': crm_claim})
         else:
             return request.website.render('rma.mobile_order_activist_service_page', {'orders': orders, 'claims': claims})
-    @http.route(['/m/myaccount/order/after_sale/claim_view/<order_id>'], type='http', auth='user', website=True)
+
+    @http.route(['/m/myaccount/order/after_sale/claim_view/<int:order_id>',
+                 '/m/myaccount/order/after_sale/claim_view/detail/<int:claim_id>'
+                 ], type='http', auth='user', website=True)
     def m_order_claim_view(self, order_id=None, **post):
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
         _logger.info('========== %s(), <%s>   ==========' % (sys._getframe().f_code.co_name,request.env.user.name))
-        return request.website.render('website_myaccount_base.mobile_order_activist_service_page', {})
+
+        if order_id:
+            claim_ids = []
+            for so in registry.get('sale.order').browse(cr, uid, ids, context=context):
+                claim_ids += [claim.id for claim in so.claim_ids]
+            claims = registry.get('crm.claim').browse(cr,uid,claim_ids,context=context)
+            return request.website.render('rma.mobile_after_sale_schedule_view', {'claims': claims})
+        elif claim_id:
+            claims = registry.get('crm.claim').browse(cr,uid,claim_id,context=context)
+            return request.website.render('rma.mobile_after_sale_detail_view', {'claims': claims})
+        else:
+            raise exceptions.Warning(_('Error'), _('You are opening a claim view that does not exist.'))
