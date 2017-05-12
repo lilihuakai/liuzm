@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="product_sale_comment" inherit_id="website_sale.product" active="True" customize_show="True" name="Sale Comment">
+            <xpath expr="//div[@t-field='product.website_description']" position="after">
+                <hr class="mb32"/>
+                <section class="container">
+                    <div class="row col-md-10 col-md-offset-1">
+                        <div class="text-muted">
+                            <h3 class="fa fa-comment-o">
+                                <a id="comments">
+                                    <t t-if="len(product.sale_comment_ids) &lt;= 1" >
+                                        <t t-esc="len(product.sale_comment_ids)"/> comment
+                                    </t>
+                                    <t t-if="len(product.sale_comment_ids) &gt; 1">
+                                        <t t-esc="len(product.sale_comment_ids)"/> comments
+                                    </t>
+                                </a>
+                            </h3>
+                        </div>
+                        <ul class="media-list" id="comments-list"  t-if="product.sale_comment_ids">
+                            <li t-foreach="product.sale_comment_ids" t-as="comment" class="media">
+                                <div class="media-body oe_msg">
+                                    <img class="media-object pull-left oe_msg_avatar" t-att-src="website.image_url(comment.author_id, 'image_small')" style="width: 50px; margin-right: 10px;"/>
+                                    <div class="media-body oe_msg_content">
+                                        <t t-call="website.publish_short">
+                                            <t t-set="object" t-value="comment"/>
+                                        </t>
+                                        <h5 class="media-heading">
+                                            <span t-field="comment.author_id"/> <small>on <span t-field="comment.comment_date"/></small>
+                                        </h5>
+                                        <div t-field="comment.comment_body"/>
+                                        <div class="row lead pull-right o_rating_star_card">
+                                            <div id="stars" class="starrr stars" t-att-data-rating='comment.rating' style="margin-right: 20px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- <div class="css_editable_mode_hidden" t-if="user_id.login != 'public'">
+                            <form id="comment" t-attf-action="/shop/product/comment/#{product.id}" method="POST">
+                                <img class="img pull-left img-rounded" t-att-src="website.image_url(user_id.partner_id, 'image_small')" style="width: 50px; margin-right: 10px;"/>
+                                <div class="pull-left mb32" style="width: 75%%">
+                                    <textarea rows="3" name="comment" class="form-control" placeholder="Write a comment..."></textarea>
+                                    <a class="btn btn-primary mt8 a-submit">Post</a>
+                                </div>
+                                <div class="container">
+                                    <div class="row lead o_rating_star_card">
+                                        <div id="stars-existing" class="starrr stars" data-rating='3' name="rating"></div>
+                                        <input type="hidden" id="count-existing" name="rating" class="form-control"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div>
+                            <p groups="base.group_public"> You need to be logged in to post comments
+                                <a class='btn btn-primary' t-if="not partner" t-attf-href="/web?redirect=#{ request.httprequest.url }">Sign in</a>
+                            </p>
+                        </div> -->
+                    </div>
+                </section>
+            </xpath>
+        </template>
+    </data>
+</openerp>

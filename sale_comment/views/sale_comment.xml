@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_sale_comment_form">
+            <field name="name">sale.comment.form</field>
+            <field name="model">sale.comment</field>
+            <field name="arch" type="xml">
+                <form string="Course Form">
+                    <sheet>
+                        <group>
+                            <field name="comment_date"/>
+                            <field name="comment_body"/>
+                            <field name="seller_reply_date"/>
+                            <field name="seller_reply_body"/>
+                            <field name="chase_comment_date"/>
+                            <field name="chase_comment_body"/>
+                            <field name="rating"/>
+                            <field name="order_id"/>
+                            <field name="author_id"/>
+                            <field name="product_tmp_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_sale_comment_tree">
+            <field name="name">sale.comment.tree</field>
+            <field name="model">sale.comment</field>
+            <field name="arch" type="xml">
+                <tree string="Sale Comments">
+                    <field name="comment_date"/>
+                    <field name="comment_body"/>
+                    <field name="seller_reply_date"/>
+                    <field name="seller_reply_body"/>
+                    <field name="chase_comment_date"/>
+                    <field name="chase_comment_body"/>
+                    <field name="rating"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_sale_comment">
+            <field name="name">Consumer Comments</field>
+            <field name="res_model">sale.comment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a comment that can be converted into a sale
+                    comment.
+                </p>
+            </field>
+        </record>
+
+        <menuitem action="action_sale_comment" id="menu_sale_comment" parent="base.menu_sales" sequence="7" />
+    </data>
+</openerp>
