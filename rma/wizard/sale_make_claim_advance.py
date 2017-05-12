@@ -27,6 +27,7 @@ import logging
 # 3: imports of openerp
 from openerp import api
 from openerp.osv import fields, osv
+from openerp.http import request
 from openerp.tools.translate import _
 
 # 4: imports from odoo modules

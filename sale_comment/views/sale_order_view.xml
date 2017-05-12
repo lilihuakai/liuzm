@@ -22,7 +22,7 @@
                                 <field name="product_tmp_id"/>
                             </tree>
                         </field>
-                        <button name="test_create_comment" string="Create Comments" type="object" />
+                        <!-- <button name="test_create_comment" string="Create Comments" type="object" /> -->
                     </page>
                 </xpath>
             </field>

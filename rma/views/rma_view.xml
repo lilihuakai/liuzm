@@ -200,7 +200,7 @@
                         <p>处理方式<span class="os-py-detail" t-esc="claims.deal_method"></span></p>
                     </div>
                     <div class="os-payment-type">
-                        <p>问题类型<span class="os-py-detail" t-esc="claims.claim_origin"></span></p>
+                        <p>问题类型<span class="os-py-detail" t-field="claims.claim_origin"></span></p>
                     </div>
                     <div class="os-payment-type">
                         <p>问题描述<span class="os-py-detail" t-esc="claims.description"></span></p>

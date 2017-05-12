@@ -122,6 +122,9 @@ class MyClaim(http.Controller):
         """由JS触发事件，保存用户界面输入数据"""
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
         res = {}
+
+        value = self.get_after_sale_order_and_claim(order_id)
+        claims = value.get('claims')
         context.update({
             'deal_method': deal_method,
             'claim_origin': claim_origin,
@@ -130,7 +133,7 @@ class MyClaim(http.Controller):
         _logger.info('========== %s(), <%s>   ========== deal_method %s claim_origin %s description %s' % 
             (sys._getframe().f_code.co_name,request.env.user.name, deal_method, claim_origin, description))
 
-        registry.get('sale.advance.rma.claim').set_claim(cr, uid, [order_id], context=context)
+        registry.get('sale.advance.rma.claim').set_claim(cr, uid, [claims.id], context=context)
 
         return res
 
