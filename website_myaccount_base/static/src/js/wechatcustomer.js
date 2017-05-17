@@ -8,17 +8,17 @@ $(document).ready(function(){
         $("#"+id+" .show-answer").css("display","block");
     });
     
-    
-    $(".payment-type input").click(function(){
-        var value = $(this).attr("value");
-        if(value =="alipay"){
-            $(".wechat-payment").css("display","none");
-            $(".alipay-payment").css("display","block");
-        }else{
-            $(".alipay-payment").css("display","none");
-            $(".wechat-payment").css("display","block");
-        }
-    });
+    // delete by Liuzm 20170517
+    // $(".payment-type input").click(function(){
+    //     var value = $(this).attr("value");
+    //     if(value =="alipay"){
+    //         $(".wechat-payment").css("display","none");
+    //         $(".alipay-payment").css("display","block");
+    //     }else{
+    //         $(".alipay-payment").css("display","none");
+    //         $(".wechat-payment").css("display","block");
+    //     }
+    // });
     
     
     //2016-11-28

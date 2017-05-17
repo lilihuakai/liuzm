@@ -262,9 +262,10 @@ class MyAccount(http.Controller):
         return ajax_value
 
 
-    @http.route(['/m/myaccount/distribution/account/WithdrawalAccount'], type='http', auth='user', website=True)
-    def mobile_myaccount_distribution_account_WithdrawalAccount(self, container=None, **post):
-        return request.website.render('website_myaccount_base.mobile_admin_distribution_account_WithdrawalAccount', {'user': request.env.user})
+    # 为了统一提现功能跳转链接，现将此代码注释，将功能转移到mobile_payment模块 add by Liuzm 20170517
+    # @http.route(['/m/myaccount/distribution/account/WithdrawalAccount'], type='http', auth='user', website=True)
+    # def mobile_myaccount_distribution_account_WithdrawalAccount(self, container=None, **post):
+    #     return request.website.render('website_myaccount_base.mobile_admin_distribution_account_WithdrawalAccount', {'user': request.env.user})
 
     @http.route(['/m/myaccount/distribution/customer'], type='http', auth='user', website=True)
     def mobile_myaccount_distribution_customer(self, container=None, **post):

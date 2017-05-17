@@ -527,7 +527,8 @@
                     </div>
                     <div class="wechat-cus-list">
                         <ul>
-                            <li>
+                            <!-- 已转移至mobile_payment模块 edit by Liuzm 20170517 -->
+                            <!-- <li>
                                 <a href="/m/myaccount/distribution/account/WithdrawalAccount"> 
                                     <p class="m-title">
                                         <b class="glyphicon glyphicon-credit-card">
@@ -538,7 +539,7 @@
                                         </i>
                                     </s>         
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="/m/myaccount/distribution/faq">
                                     <p class="m-title" style="border:none;">
@@ -557,7 +558,8 @@
             </t>
         </template>
 
-        <template id="mobile_admin_distribution_account_WithdrawalAccount">
+        <!-- 已转移至mobile_payment模块 edit by Liuzm 20170517 -->
+        <!-- <template id="mobile_admin_distribution_account_WithdrawalAccount">
             <t t-call="website_myaccount_base.mobile_layout">
                 <t t-set="additional_title">提现账户</t>
                 <div class="moblie-wd-account">
@@ -606,7 +608,7 @@
                     </div> 
                 </div>
             </t>
-        </template>
+        </template> -->
 
         <template id="mobile_admin_distribution_customer">
             <t t-call="website_myaccount_base.mobile_layout">
