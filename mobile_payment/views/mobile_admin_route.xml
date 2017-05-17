@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="mobile_admin_distribution" inherit_id="website_myaccount_base.mobile_admin_distribution">
+            <xpath expr="//div[@class='wc-commission']" position="after">
+                <div class="wc-commission">
+                    <table>
+                        <tr>
+                            <td style="border-right:1px solid #e6e6e5;">
+                                <a href="#">未提现佣金
+                                    <br  />
+                                    <span><t t-esc="user.partner_id.commission_today" />
+                                    </span>
+                                </a>
+                            </td>
+                            <td style="padding-left:10px;">
+                                <a t-attf-href="/payment/pay2user/?redirect=/payment/parameters/?redirect=/payment/pay2user/">可提现佣金
+                                    <br  />
+                                    <span><t t-esc="user.partner_id.commission_total" />
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </xpath>
+        </template>
+        <template id="mobile_admin_distribution_account" inherit_id="website_myaccount_base.mobile_admin_distribution_account">
+            <xpath expr="//div[@class='moblie-ws-myaccount']/div[@class='wechat-cus-list']/ul" position="inside">
+                <li>
+                    <a href="/payment/parameters/?redirect=/m/myaccount/distribution/account"> 
+                        <p class="m-title">
+                            <b class="glyphicon glyphicon-credit-card">
+                            </b>提现账户
+                        </p>
+                        <s class="m-arrows">
+                            <i class="icon-arrows-right">
+                            </i>
+                        </s>         
+                    </a>
+                </li>
+            </xpath>
+        </template>
+        <template id="payment_pay2user" name="Payment Pay2user">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <img t-att-src="website.image_url(user.partner_id, 'image_medium')" alt="" title="个人头像" /><br  /><br  />
+                <t t-foreach="commissions or []" t-as="comm">
+                    <t t-esc="comm.id" /><br  />
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>
