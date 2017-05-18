@@ -36,13 +36,24 @@
                         <s class="m-arrows">
                             <i class="icon-arrows-right">
                             </i>
-                        </s>         
+                        </s>
                     </a>
                 </li>
             </xpath>
         </template>
         <template id="payment_pay2user" name="Payment Pay2user">
             <t t-call="website_myaccount_base.mobile_layout">
+                <table style="width:100%;">
+                    <tr>
+                        <td class="head">
+                            <img t-att-src="website.image_url(user.partner_id, 'image_medium')" alt="" title="个人头像" />
+                        </td>
+                        <td class="information">
+                            <p class="name">名称：<t t-esc="user.name" /> </p>
+                            <p class="integral">可提现总额：<t t-esc="user.partner_id.commission_total" />积分</p>
+                        </td>
+                    </tr>
+                </table>
                 <img t-att-src="website.image_url(user.partner_id, 'image_medium')" alt="" title="个人头像" /><br  /><br  />
                 <t t-foreach="commissions or []" t-as="comm">
                     <t t-esc="comm.id" /><br  />

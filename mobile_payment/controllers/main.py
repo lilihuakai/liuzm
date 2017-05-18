@@ -11,6 +11,7 @@ import werkzeug
 import time
 from openerp import http, SUPERUSER_ID
 from openerp.http import request
+from openerp.tools.translate import _
 from openerp import http
 
 _logger = logging.getLogger(__name__)
