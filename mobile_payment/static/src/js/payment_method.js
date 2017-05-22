@@ -21,8 +21,12 @@ $(document).ready(function(){
         openerp.jsonRpc("/payment/pay2user/pay_commission", 'call', {
             'invoice_id':invoice_id
         }).then(function (data) {
-            $(this).addClass("wip-ed");
-            $(this).removeClass("pay_commission");
+            if (data.result=='done'){
+                alert('已提现到您指定的账户，请查收。');
+                window.location.reload(true);
+            }else{
+                alert('提现出错，请联系客服。');
+            }
         });
     });
 });

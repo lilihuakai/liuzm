@@ -79,9 +79,13 @@ class PaymentController(http.Controller):
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
         invoice_id = int(invoice_id)
 
-        _logger.info('===============  payment_pay2user_commission  ============== invoice_id = %s' % invoice_id)
+        # _logger.info('===============  payment_pay2user_commission  ============== invoice_id = %s' % invoice_id)
+        user = pool.get('res.users').browse(cr, SUPERUSER_ID, uid, context=context)
         commission = registry.get('account.invoice').browse(cr, uid, invoice_id, context=context)
-        return commission.pay2user()
+        assert commission.partner_id.id == user.partner_id.id, _('Partner must be the same of current user.')
+
+        res = commission.pay2user()
+        return {'result':res}
 
     # 对具体用户进行佣金结算 add by Liuzm 20170519
     @http.route('/payment/pay2user/compute_commission', type='json', auth='user', website=True)
