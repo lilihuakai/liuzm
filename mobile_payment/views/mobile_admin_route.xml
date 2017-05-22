@@ -26,9 +26,9 @@
             </xpath>
         </template>
         <template id="mobile_admin_distribution_account" inherit_id="website_myaccount_base.mobile_admin_distribution_account">
-            <xpath expr="//div[@class='moblie-ws-myaccount']/div[@class='wechat-cus-list']/ul" position="inside">
+            <xpath expr="//div[@class='moblie-ws-myaccount']/div[@class='wechat-cus-list']/ul/li" position="before">
                 <li>
-                    <a href="/payment/parameters/?redirect=/m/myaccount/distribution/account"> 
+                    <a href="/payment/parameters/?redirect=/m/myaccount/distribution/account">
                         <p class="m-title">
                             <b class="glyphicon glyphicon-credit-card">
                             </b>提现账户
@@ -43,21 +43,48 @@
         </template>
         <template id="payment_pay2user" name="Payment Pay2user">
             <t t-call="website_myaccount_base.mobile_layout">
-                <table style="width:100%;">
-                    <tr>
+                <div class="withdrawal_info_page">
+
+                  <div class="wip-information">
+                    <table style="width:100%;">
+                      <tr>
                         <td class="head">
                             <img t-att-src="website.image_url(user.partner_id, 'image_medium')" alt="" title="个人头像" />
                         </td>
-                        <td class="information">
-                            <p class="name">名称：<t t-esc="user.name" /> </p>
-                            <p class="integral">可提现总额：<t t-esc="user.partner_id.commission_total" />积分</p>
+                        <td>
+                          <p class="wip-name"><t t-esc="user.name" /></p>
+                          <p class="wip-total">可提现总额: <t t-esc="user.partner_id.commission_total" /></p>
                         </td>
-                    </tr>
-                </table>
-                <img t-att-src="website.image_url(user.partner_id, 'image_medium')" alt="" title="个人头像" /><br  /><br  />
-                <t t-foreach="commissions or []" t-as="comm">
-                    <t t-esc="comm.id" /><br  />
-                </t>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="wip-list">
+                    <t t-foreach="commissions" t-as="comm">
+                        <div class="wip-list-info">
+                          <table style="width:100%;">
+                            <tr>
+                                <td colspan="2">单号: <t t-esc="comm.number" /></td>
+                                <td rowspan="2" style="width:10%;">
+                                    <t t-if="comm.payment_tx_state !='done">
+                                        <button class="wip-withdrawal-button pay_commission" t-att-value="comm.id">提现</button>
+                                    </t>
+                                    <t t-if="comm.payment_tx_state =='done">
+                                        <button class="wip-withdrawal-button wip-ed" t-att-value="comm.id">提现</button>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                              <td>日期: <t t-esc="comm.date_invoice" /></td>
+                              <td>金额: <t t-esc="comm.amount_total" /></td>
+                            </tr>
+                          </table>
+                        </div>
+                    </t>
+                  </div>
+                </div>
+                <!-- 此功能暂时注释，留作以后启用 add by Liuzm 20170519 -->
+                <!-- <button id="compute_commission">计算佣金</button>
+                <input type="hidden" id="get_partne_id" t-att-value="user.partner_id.id"/> -->
             </t>
         </template>
     </data>

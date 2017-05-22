@@ -24,7 +24,7 @@ class PaymentController(http.Controller):
         """ Payment Parameters"""
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
 
-        user = pool.get('res.users').browse(cr, uid, uid)
+        user = pool.get('res.users').browse(cr, SUPERUSER_ID, uid)
         acquirer_obj = pool.get('payment.acquirer')
         acquirer_ids = acquirer_obj.search(cr, SUPERUSER_ID, [('website_published','=',True)])
         acquirers = acquirer_obj.browse(cr, SUPERUSER_ID, acquirer_ids, context)
@@ -57,14 +57,37 @@ class PaymentController(http.Controller):
         """ Payment Judgement"""
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
 
-        user = pool.get('res.users').browse(cr, uid, uid)
+        user = pool.get('res.users').browse(cr, uid, uid, context=context)
 
-        _logger.info('========== payment_pay2user ==========post=%s'%post)
+        _logger.info('========== payment_pay2user ==========post=%s user_id = %s partner_id %s'
+            %(post, user.id, user.partner_id.id))
 
         if user.partner_id.name_real and user.partner_id.default_acquirer_id.id:
-            commissions = pool.get('account.invoice').browse(cr, uid, uid)
+            inv_obj = pool.get('account.invoice')
+            ids = inv_obj.search(cr, SUPERUSER_ID, [('partner_id', '=', user.partner_id.id)], context=context)
+            _logger.info('========== payment_pay2user ==========ids=%s user_id = %s, partner_id= %s'%(ids, user.id, user.partner_id.id))
+            commissions = inv_obj.browse(cr, SUPERUSER_ID, ids, context=context)
             return request.website.render("mobile_payment.payment_pay2user", 
                 {'user': user, 'commissions': commissions})
         else:
             redirect = request.params.get('redirect') or '/'
             return http.redirect_with_hash(redirect)
+
+    # 对具体佣金发票进行支付 add by Liuzm 20170519
+    @http.route('/payment/pay2user/pay_commission', type='json', auth='user', website=True)
+    def payment_pay2user_commission(self, invoice_id, **post):
+        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
+        invoice_id = int(invoice_id)
+
+        _logger.info('===============  payment_pay2user_commission  ============== invoice_id = %s' % invoice_id)
+        commission = registry.get('account.invoice').browse(cr, uid, invoice_id, context=context)
+        return commission.pay2user()
+
+    # 对具体用户进行佣金结算 add by Liuzm 20170519
+    @http.route('/payment/pay2user/compute_commission', type='json', auth='user', website=True)
+    def paymeny_pay2user_compute_comm(self, partner_id, **post):
+        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
+        partner_id = int(partner_id)
+
+        _logger.info('==============  paymeny_pay2user_compute_comm  ============== partner_id = %s' % partner_id)
+        return registry.get('res.partner').action_calc_commission(cr, uid, partner_id, context=context)

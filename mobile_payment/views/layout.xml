@@ -2,6 +2,9 @@
 <openerp>
     <data>
         <template id="mobile_chekout_layout" inherit_id="website_myaccount_base.mobile_layout">
+            <xpath expr="//html/head" position="inside">
+                <link href="/mobile_payment/static/src/css/mobile.css" rel="stylesheet"/>
+            </xpath>
             <xpath expr="//html/body" position="inside">
                 <script type="text/javascript" src="/mobile_payment/static/src/js/payment_method.js"/>
             </xpath>

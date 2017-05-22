@@ -8,4 +8,21 @@ $(document).ready(function(){
         $("input[value='" + value + "']").attr("checked","checked");
         $("input[name='default_acquirer_id']").attr("value",value);
     });
+
+    $("#compute_commission").click(function(){
+        var partner_id = $("#get_partne_id").attr("value");
+        openerp.jsonRpc("/payment/pay2user/compute_commission", 'call', {
+            'partner_id':partner_id
+        });
+    });
+
+    $(".pay_commission").click(function(){
+        var invoice_id = $(this).attr("value");
+        openerp.jsonRpc("/payment/pay2user/pay_commission", 'call', {
+            'invoice_id':invoice_id
+        }).then(function (data) {
+            $(this).addClass("wip-ed");
+            $(this).removeClass("pay_commission");
+        });
+    });
 });

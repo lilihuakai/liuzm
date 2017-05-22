@@ -1,4 +1,61 @@
-.wechat_poster img{
-  max-width: 169px;
-  max-height: 300px;
+body{
+  margin:0;
+}
+a{
+  text-decoration:none;
+}
+p{
+  margin:0;
+  padding:0;
+}
+
+.withdrawal_info_page{
+  max-width:750px;
+  margin:0 auto;
+  background:#eeeff4;
+  width:100%;
+  min-height: 500px;
+}
+.wip-information{
+  padding: 2% 5px 2% 20px;
+}
+.wip-information .head{
+  width:20%;
+}
+.wip-information .head img{
+  border-radius: 50%;
+  width: 100%;
+  max-width: 130px;
+}
+.wip-information .wip-name{
+  font-size: 22px;
+  line-height: 30px;
+  padding-bottom:10px;
+}
+.wip-information .wip-name{
+  line-height: 22px;
+}
+.wip-list .wip-list-info{
+  padding: 10px;
+  background: #fff;
+  -moz-box-shadow: 3px 2px 3px #e4e4e7;
+  -webkit-box-shadow: 3px 2px 3px #e4e4e7;
+  box-shadow: 3px 2px 3px #e4e4e7;
+  margin-bottom:15px;
+}
+.wip-list .wip-withdrawal-button{
+  background: #fb6242;
+  margin: 0px 10%;
+  color: #fff;
+  border: none;
+  border-radius: 8px 8px;
+  font-weight: bold;
+  width: 80%;
+  padding: 5px 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+.wip-list .wip-withdrawal-button.wip-ed{
+  cursor: no-drop;
+  background:#717171;
 }
