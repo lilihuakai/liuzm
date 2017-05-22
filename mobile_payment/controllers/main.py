@@ -57,21 +57,21 @@ class PaymentController(http.Controller):
         """ Payment Judgement"""
         cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
 
-        user = pool.get('res.users').browse(cr, uid, uid, context=context)
+        user = pool.get('res.users').browse(cr, SUPERUSER_ID, uid, context=context)
 
-        _logger.info('========== payment_pay2user ==========post=%s user_id = %s partner_id %s'
-            %(post, user.id, user.partner_id.id))
+        # 如果没有设置实名或收款方式，则跳到相应的页面
+        if (not user.partner_id.name_real) or (not user.partner_id.default_acquirer_id):
+            return http.redirect_with_hash('/payment/parameters/?redirect=/payment/pay2user/')
 
-        if user.partner_id.name_real and user.partner_id.default_acquirer_id.id:
-            inv_obj = pool.get('account.invoice')
-            ids = inv_obj.search(cr, SUPERUSER_ID, [('partner_id', '=', user.partner_id.id)], context=context)
-            _logger.info('========== payment_pay2user ==========ids=%s user_id = %s, partner_id= %s'%(ids, user.id, user.partner_id.id))
-            commissions = inv_obj.browse(cr, SUPERUSER_ID, ids, context=context)
-            return request.website.render("mobile_payment.payment_pay2user", 
-                {'user': user, 'commissions': commissions})
-        else:
-            redirect = request.params.get('redirect') or '/'
-            return http.redirect_with_hash(redirect)
+        # 计算'提现中'的佣金
+        if user.partner_id:
+            user.partner_id.action_calc_commission()
+
+        inv_obj = pool.get('account.invoice')
+        ids = inv_obj.search(cr, SUPERUSER_ID, [('partner_id', '=', user.partner_id.id)], context=context)
+        commissions = inv_obj.browse(cr, SUPERUSER_ID, ids, context=context)
+        return request.website.render("mobile_payment.payment_pay2user", 
+            {'user': user, 'commissions': commissions})
 
     # 对具体佣金发票进行支付 add by Liuzm 20170519
     @http.route('/payment/pay2user/pay_commission', type='json', auth='user', website=True)

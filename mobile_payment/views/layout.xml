@@ -11,9 +11,10 @@
         </template>
         <template id="payment_parameters" name="Payment Parameters">
             <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">Receipt Methods</t>
                 <div class="moblie-wd-account">
                     <form method="post">
-                        <div class="wa-prompt">默认的支付方式：
+                        <div class="wa-prompt">默认的收款方式：
                         </div>
                         <div class="wa-payment-type">
                             <t t-foreach="acquirers or []" t-as="acquirer">
@@ -42,7 +43,7 @@
                             <t t-esc="error"/>
                         </p>
                         <!-- <input type="hidden" name="redirect" t-att-value="redirect"/> -->
-                        <input type="hidden" name="default_acquirer_id" t-att-value="partner.default_acquirer_id.id"/>
+                        <input type="hidden" name="default_acquirer_id" t-att-value="(partner.default_acquirer_id.id) or (acquirers and acquirers[0].id)"/>
                         <div class="wa-save-button clearfix oe_login_buttons">
                             <button type="submit" class="btn btn-primary pull-left">保存
                             </button>

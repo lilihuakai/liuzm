@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <template id="mobile_admin_distribution" inherit_id="website_myaccount_base.mobile_admin_distribution">
+        <!-- <template id="mobile_admin_distribution" inherit_id="website_myaccount_base.mobile_admin_distribution">
             <xpath expr="//div[@class='wc-commission']" position="after">
                 <div class="wc-commission">
                     <table>
@@ -24,7 +24,7 @@
                     </table>
                 </div>
             </xpath>
-        </template>
+        </template> -->
         <template id="mobile_admin_distribution_account" inherit_id="website_myaccount_base.mobile_admin_distribution_account">
             <xpath expr="//div[@class='moblie-ws-myaccount']/div[@class='wechat-cus-list']/ul/li" position="before">
                 <li>
@@ -43,6 +43,7 @@
         </template>
         <template id="payment_pay2user" name="Payment Pay2user">
             <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">Withdraw Cash</t>
                 <div class="withdrawal_info_page">
 
                   <div class="wip-information">
@@ -53,7 +54,7 @@
                         </td>
                         <td>
                           <p class="wip-name"><t t-esc="user.name" /></p>
-                          <p class="wip-total">可提现总额: <t t-esc="user.partner_id.commission_total" /></p>
+                          <p class="wip-total">未提现总额: <t t-esc="(user.partner_id.commission_confirmed or 0.0) + (user.partner_id.commission_payable or 0.0)"/></p>
                         </td>
                       </tr>
                     </table>
@@ -63,18 +64,18 @@
                         <div class="wip-list-info">
                           <table style="width:100%;">
                             <tr>
-                                <td colspan="2">单号: <t t-esc="comm.number" /></td>
+                                <td colspan="2">单号: <t t-esc="(comm.payment_tx_state and comm.payment_tx_state == 'done' and comm.payment_tx_id.acquirer_reference) or comm.number" /></td>
                                 <td rowspan="2" style="width:10%;">
-                                    <t t-if="comm.payment_tx_state !='done">
+                                    <t t-if="comm.amount_total &gt;= 1.0 and ((not comm.payment_tx_state) or (comm.payment_tx_state and comm.payment_tx_state !='done'))">
                                         <button class="wip-withdrawal-button pay_commission" t-att-value="comm.id">提现</button>
                                     </t>
-                                    <t t-if="comm.payment_tx_state =='done">
-                                        <button class="wip-withdrawal-button wip-ed" t-att-value="comm.id">提现</button>
+                                    <t t-if="comm.payment_tx_state and comm.payment_tx_state =='done'">
+                                        <button class="wip-withdrawal-button wip-ed" t-att-value="comm.id">已提现</button>
                                     </t>
                                 </td>
                             </tr>
                             <tr>
-                              <td>日期: <t t-esc="comm.date_invoice" /></td>
+                              <td>结算至: <span t-field="comm.date_refresh" /></td>
                               <td>金额: <t t-esc="comm.amount_total" /></td>
                             </tr>
                           </table>

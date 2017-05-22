@@ -1,0 +1,74 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mobile_payment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-20160612\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-20 10:45+0000\n"
+"PO-Revision-Date: 2017-05-20 18:49+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 1.6\n"
+
+#. module: mobile_payment
+#: code:addons/mobile_payment/controllers/main.py:48
+#, python-format
+msgid "Receipt Method and Real Name Required."
+msgstr "收款方式和真实姓名必须填写"
+
+#. module: mobile_payment
+#: view:website:mobile_payment.payment_parameters
+msgid "Receipt Methods"
+msgstr "收款方式"
+
+#. module: mobile_payment
+#: view:website:mobile_payment.payment_parameters
+msgid "The name of the WeChat real name certification"
+msgstr "填写微信支付实名认证的姓名。"
+
+#. module: mobile_payment
+#: view:website:mobile_payment.payment_pay2user
+msgid "Withdraw Cash"
+msgstr "提现"
+
+#. module: mobile_payment
+#: view:website:mobile_payment.payment_pay2user
+msgid "个人头像"
+msgstr "个人头像"
+
+#. module: mobile_payment
+#: view:website:mobile_payment.payment_pay2user
+msgid "可提现总额:"
+msgstr "可提现总额:"
+
+#. module: mobile_payment
+#: view:website:mobile_payment.payment_pay2user
+msgid "已提现"
+msgstr "已提现"
+
+#. module: mobile_payment
+#: view:website:website_myaccount_base.mobile_admin_distribution_account
+msgid "提现账户"
+msgstr "提现账户"
+
+#. module: mobile_payment
+#: view:website:mobile_payment.payment_pay2user
+msgid "结算至:"
+msgstr "结算至:"
+
+#. module: mobile_payment
+#: view:website:mobile_payment.payment_parameters
+msgid "认证姓名："
+msgstr "认证姓名："
+
+#. module: mobile_payment
+#: view:website:mobile_payment.payment_parameters
+msgid "默认的收款方式："
+msgstr "默认的收款方式："
