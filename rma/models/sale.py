@@ -28,6 +28,10 @@ from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FO
 import openerp.addons.decimal_precision as dp
 from openerp import workflow
 
+import sys
+import logging
+_logger = logging.getLogger(__name__)
+
 class sale_order(osv.Model):
     _inherit = "sale.order"
 
@@ -162,7 +166,7 @@ class sale_order(osv.Model):
         if context is None:
             context = {}
         inv = self._prepare_claim(cr, uid, order, lines, context=context)
-        inv_id = inv_obj.create(cr, uid, inv, context=context)
+        inv_id = inv_obj.create(cr, SUPERUSER_ID, inv, context=context)
         return inv_id
 
     def manual_claim(self, cr, uid, ids, context=None):
@@ -360,11 +364,14 @@ class sale_order_line(osv.Model):
                             'product_uom_qty': tmp, 
                             'is_claim': False})
                         break
+                else:
+                    _logger.info('========== %s(),   ========== line_id is %s line.id %s'% 
+                            (sys._getframe().f_code.co_name,items.line_id.id, line.id))
         location_dest_id = line_obj.get_destination_location(
             line.product_id,
             line.order_id.warehouse_id).id
 
-        if not line.claimed:
+        if not line.claimed and quantity:
             res = {
                 'claim_origin': claim_origin,
                 'claim_type': 1,
@@ -393,11 +400,11 @@ class sale_order_line(osv.Model):
 
         create_ids = []
         sales = set()
-        for line in self.browse(cr, uid, ids, context=context):
+        for line in self.browse(cr, SUPERUSER_ID, ids, context=context):
             vals = self._prepare_order_line_claim_line(cr, uid, line, context=context)
             if vals:
-                inv_id = self.pool.get('claim.line').create(cr, uid, vals, context=context)
-                self.write(cr, uid, [line.id], {'claim_lines': [(4, inv_id)]}, context=context)
+                inv_id = self.pool.get('claim.line').create(cr, SUPERUSER_ID, vals, context=context)
+                self.write(cr, SUPERUSER_ID, [line.id], {'claim_lines': [(4, inv_id)]}, context=context)
                 sales.add(line.order_id.id)
                 create_ids.append(inv_id)
         # Trigger workflow events

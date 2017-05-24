@@ -158,7 +158,7 @@ class MyClaim(http.Controller):
             'description': description,
             'deal_method': deal_method,
             'advance_payment_method': advance_payment_method,
-            'item_id': claims.id,
+            'item_ids': claims.id,
         })
 
         crm_claim_id = registry.get('sale.order').crm_claim_create(cr, uid, order_id, context=context)

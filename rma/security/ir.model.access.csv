@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_advance_rma_claim_all,sale.advance.rma.claim.all,model_sale_advance_rma_claim,,1,1,1,1
 access_sale_advance_rma_claim_user,sale.advance.rma.claim.user,model_sale_advance_rma_claim,base.group_user,1,1,1,1
+access_sale_advance_rma_claim_items_all,sale.advance.rma.claim_items.all,model_sale_advance_rma_claim_items,,1,1,1,1
 access_sale_advance_rma_claim_items_user,sale.advance.rma.claim_items.user,model_sale_advance_rma_claim_items,base.group_user,1,1,1,1

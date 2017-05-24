@@ -134,13 +134,13 @@ class sale_advance_rma_claim(osv.osv):
         sale_ids = context.get('active_ids', [])
         claim_origin = wizard.claim_origin
         description = wizard.description
-        item_id = wizard.id
+        item_ids = wizard.id
         advance_payment_method = wizard.advance_payment_method
         context.update({
             'claim_origin': claim_origin,
             'description': description,
             'advance_payment_method': advance_payment_method,
-            'item_id': item_id,
+            'item_ids': item_ids,
         })
 
         if advance_payment_method == "all":
