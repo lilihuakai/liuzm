@@ -44,13 +44,13 @@ class MailMessage(osv.Model):
         ),
     }
 
-    def _prepare_comment(self, cr, uid, lind_id, rating=0, description=None, context=None):
+    def _prepare_comment(self, cr, uid, line_id, rating=0, description=None, context=None):
         line_obj = self.pool.get('sale.order.line')
         if context is None:
             context = {}
 
         values = {}
-        for line in line_obj.browse(cr, uid, lind_id, context=context):
+        for line in line_obj.browse(cr, uid, line_id, context=context):
             values['comment_date'] = time.strftime("%Y-%m-%d %H:%M:%S")
             values['comment_body'] = description
             values['rating'] = rating
@@ -60,7 +60,7 @@ class MailMessage(osv.Model):
         return values
 
 
-    def create_comment(self, cr, uid, lind_id, rating=0, description=None, context=None):
+    def create_comment(self, cr, uid, line_id, rating=0, description=None, context=None):
         """Create the comment by those values
 
             :param line_id: sale order line ID(int)
@@ -69,6 +69,6 @@ class MailMessage(osv.Model):
         """
         if context is None:
             context = {}
-        value = self._prepare_comment(cr, uid, lind_id, rating, description, context=context)
+        value = self._prepare_comment(cr, uid, line_id, rating, description, context=context)
         comm_ids = self.create(cr, uid, value, context=context)
         return comm_ids
