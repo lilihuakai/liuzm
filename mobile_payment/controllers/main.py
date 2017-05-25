@@ -80,8 +80,8 @@ class PaymentController(http.Controller):
         invoice_id = int(invoice_id)
 
         # _logger.info('===============  payment_pay2user_commission  ============== invoice_id = %s' % invoice_id)
-        user = pool.get('res.users').browse(cr, SUPERUSER_ID, uid, context=context)
-        commission = registry.get('account.invoice').browse(cr, uid, invoice_id, context=context)
+        user = registry.get('res.users').browse(cr, SUPERUSER_ID, uid, context=context)
+        commission = registry.get('account.invoice').browse(cr, SUPERUSER_ID, invoice_id, context=context)
         assert commission.partner_id.id == user.partner_id.id, _('Partner must be the same of current user.')
 
         res = commission.pay2user()
