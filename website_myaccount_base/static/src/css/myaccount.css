@@ -43,6 +43,13 @@ p{
   font-size:22px;
   padding-left:10%;
 }
+.information .sm_qrcode{
+  padding-left:10%;
+  margin-top: -10px;
+}
+.cus-personal-information .information .sm_qrcode{
+  margin-top: 0px;
+}
 .information .integral{
   text-align:right;
   padding-right:10%;

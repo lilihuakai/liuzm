@@ -69,17 +69,43 @@ $("div.mobile_orderlist_tag").on("click","div.om-choice",function(event){
 
     //  +end: by jinchao
 
-    //  +begin:  by jinchao ====================description: call weixin_pay window
+//  +begin:  by kenny ====================description: 订单支付 btn
+//     $("div.moblie-order-management").on("click","a.public_btn_goto_checkout_tag",function(event){
+//         console.log('is click() public_btn_goto_checkout_tag');
+//         event.preventDefault();
+//         event.stopPropagation();
+        
+
+//         openerp.jsonRpc("/shop/onestep/checkout", 'call', {'order_id':$(this).data('order-id')})
+//             .then(function (data) {
+//                 $('.os-payment-list').addClass('pm-list-open').animate({bottom:'0px'},'slow');
+//                 $(".modal-pop").css("display","block");
+
+//             });
+
+// });
+//  +end: by kenny
+
+
+    // //  +begin:  by jinchao ====================description: call weixin_pay window
     $("div.moblie-order-management").on("click","a.public_btn_goto_checkout_tag",function(event){
         console.log('is click() public_btn_goto_checkout_tag');
         event.preventDefault();
         event.stopPropagation();
+
+        var order_id = $(this).data("order-id");
+        if (isNaN(order_id)) order_id = 0;
+        $("div#mobile_pay").data("order-id", order_id);
+        // var di_id = $("div#mobile_pay").data("order-id");
+
+        // alert(di_id);
+
         // 弹出支付方式窗口
-        if($('.os-payment-list').hasClass('pm-list-open')){
-            $('.os-payment-list').removeClass('pm-list-open').animate({bottom:-bodyheight},'slow');
+        if($('.os-payment-list').hasClass('public-pop-up-window-open-tag')){
+            $('.os-payment-list').removeClass('public-pop-up-window-open-tag').animate({bottom:-bodyheight},'slow');
             $(".modal-pop").css("display","none");
         }else{
-            $('.os-payment-list').addClass('pm-list-open').animate({bottom:'0px'},'slow');
+            $('.os-payment-list').addClass('public-pop-up-window-open-tag').animate({bottom:'0px'},'slow');
             $(".modal-pop").css("display","block");
         }
 

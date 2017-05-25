@@ -74,6 +74,7 @@
                                         <td class="information">
                                             <p class="name"><t t-esc="user.name" /> </p>
                                             <p class="integral"><t t-esc="user.partner_id.points_balance" />积分</p>
+											<p class="sm_qrcode"><a href="/m/myaccount/distribution/myqrcode"><b class="glyphicon glyphicon-qrcode"></b></a></p>
                                         </td>
                                         <td class="arrows">
                                             <i class="icon-arrows-right"></i>
@@ -335,6 +336,7 @@
                                             </p>
                                             <p class="tel"><t t-esc="user.partner_id.mobile" />
                                             </p>
+                                            <p class="sm_qrcode"><a href="/m/myaccount/distribution/myqrcode"><b class="glyphicon glyphicon-qrcode"></b></a></p>
                                         </td>
                                         <td class="arrows">
                                             <i class="icon-arrows-right">
@@ -347,12 +349,12 @@
                         <div class="trade-information">
                             <table>
                                 <tr>
-                                    <td style="border-right:1px solid #e6e6e5;">交易量:
-                                        <span>0
+                                    <td style="border-right:1px solid #e6e6e5;">订单数:
+                                        <span><t t-esc="user.partner_id.commission_order_count"/>
                                         </span>
                                     </td>
                                     <td>交易额:
-                                        <span><t t-esc="user.partner_id.total_invoiced" />
+                                        <span><t t-esc="user.partner_id.commission_order_amount" />
                                         </span>
                                     </td>
                                 </tr>
@@ -360,7 +362,7 @@
                         </div>
                         <div class="account-money">
                             <div class="wc-myaccount">
-                                <span>0.00
+                                <span><t t-esc="(user.partner_id.commission_confirmed or 0.0) + (user.partner_id.commission_payable or 0.0)"/>
                                 </span>
                                 <a href="/m/myaccount/distribution/account">
                                     <p class="wc-to-account">我的账户
@@ -377,7 +379,7 @@
                                         <td style="border-right:1px solid #e6e6e5;">
                                             <a href="#">今日付款佣金
                                                 <br  />
-                                                <span><t t-esc="user.partner_id.commission_today" />
+                                                <span><t t-esc="user.partner_id.commission_confirmed_today" />
                                                 </span>
                                             </a>
                                         </td>
@@ -397,7 +399,7 @@
                                         <td style="border-right:1px solid #e6e6e5;">
                                             <a href="/m/myaccount/distribution/ordersmanager">返佣订单
                                                 <br  />
-                                                <span><t t-esc="user.partner_id.commission_confirmed_count" />
+                                                <span><t t-esc="user.partner_id.commission_order_count" />
                                                 </span>
                                             </a>
                                         </td>
@@ -477,11 +479,11 @@
                     <div class="wm-head">
                         <p>账户余额(元)
                         </p>
-                        <p class="ac-balance"><t t-esc="user.member_balance" />
+                        <p class="ac-balance"><t t-esc="(user.partner_id.commission_confirmed or 0.0) + (user.partner_id.commission_payable or 0.0)" />
                             <br />
                         </p>
                         <p>
-                            <a href="#">申请提现
+                            <a href="/payment/pay2user/">申请提现
                             </a>
                         </p>
                     </div>
@@ -496,9 +498,9 @@
                                     </a>
                                 </td>
                                 <td style="padding-left:10px;">
-                                    <a href="#">可结算的佣金(元)
+                                    <a href="#">待确认佣金(元)
                                         <br  />
-                                        <span><t t-esc="user.partner_id.commission_payable" />
+                                        <span><t t-esc="user.partner_id.commission_confirmed" />
                                         </span>
                                     </a>
                                 </td>
@@ -509,16 +511,16 @@
                         <table>
                             <tr>
                                 <td style="border-right:1px solid #e6e6e5;">
-                                    <a href="#">可提现佣金(元)
+                                    <a href="#">可提现(元)
                                         <br  />
-                                        <span><t t-esc="user.partner_id.commission_balance" />
+                                        <span><t t-esc="user.partner_id.commission_payable" />
                                         </span>
                                     </a>
                                 </td>
                                 <td style="padding-left:10px;">
-                                    <a href="#">可结算的佣金退款(元)
+                                    <a href="#">已提现(元)
                                         <br  />
-                                        <span><t t-esc="user.partner_id.commission_returnable" />
+                                        <span><t t-esc="user.partner_id.commission_paid" />
                                         </span>
                                     </a>
                                 </td>
@@ -933,7 +935,7 @@
                                     <!-- <span class="to-pay">
                                          <a>去支付
                                          </a>
-                                         </span> -->
+                                    </span> -->
                                 </div>
                             </t>
                         </form>
@@ -1476,7 +1478,7 @@
             <!-- 待付款 -->
             <!-- <a><button>联系卖家</button></a> -->
             <a class="public_btn_draft_cancel_tag" t-att-data-order-id="order.id"><button>取消订单</button></a>
-            <!-- <a class="public_btn_goto_checkout_tag"><button>去支付</button></a> -->
+            <a class="public_btn_goto_checkout_tag" t-att-data-order-id="order.id"><button>去支付</button></a>
             <!-- <div class="row">
                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><a><button>联系卖家</button></a></div>
                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><a class="public_btn_draft_cancel_tag" t-att-data-order-id="order.id"><button>取消订单</button></a></div>

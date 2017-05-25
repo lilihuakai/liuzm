@@ -20,7 +20,7 @@
 ###############################################################################
 
 {
-    'name': 'Website MyAccount',
+    'name': 'Website MyAccount Base',
     'summary': 'website',
     'category': 'website',
     'version': '1.0',

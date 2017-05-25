@@ -297,14 +297,14 @@ class MyAccount(http.Controller):
     def mobile_myaccount_distribution_ordersManager(self,container=None, **post):
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
         partner_id = self.get_partner_company().id
-        _logger.info('========== %s(), <%s>   ==========  partner_id is %s' % (sys._getframe().f_code.co_name,request.env.user.name,partner_id))
+        # _logger.info('========== %s(), <%s>   ==========  partner_id is %s' % (sys._getframe().f_code.co_name,request.env.user.name,partner_id))
         # all ids
         commission_ids = registry.get('sale.commission.agent').search(cr,SUPERUSER_ID,[('state','not in',['draft']),('agent_id','=',partner_id)],order="id desc",context=context)
         commission_lines = registry.get('sale.commission.agent').browse(cr,SUPERUSER_ID,commission_ids,context=context)
-        _logger.info('========== %s(), <%s>   ==========  orders_ids is %s' % (sys._getframe().f_code.co_name,request.env.user.name,commission_ids))
-        _logger.info('========== %s(), <%s>   ==========  commission_line_ids is %s' % (sys._getframe().f_code.co_name,request.env.user.name,commission_lines))
+        # _logger.info('========== %s(), <%s>   ==========  orders_ids is %s' % (sys._getframe().f_code.co_name,request.env.user.name,commission_ids))
+        # _logger.info('========== %s(), <%s>   ==========  commission_line_ids is %s' % (sys._getframe().f_code.co_name,request.env.user.name,commission_lines))
         confirmed_order_count=len(registry.get('sale.commission.agent').search(cr,SUPERUSER_ID,[('state','=','confirmed'),('agent_id','=',partner_id)],context=context))
-        _logger.info('========== %s(), <%s>   ==========  count is %s' % (sys._getframe().f_code.co_name,request.env.user.name,confirmed_order_count))
+        # _logger.info('========== %s(), <%s>   ==========  count is %s' % (sys._getframe().f_code.co_name,request.env.user.name,confirmed_order_count))
         return request.website.render('website_myaccount_base.mobile_myaccount_distribution_ordersManager', {'commission_lines':commission_lines,'confirmed_order_count':confirmed_order_count})
 
 

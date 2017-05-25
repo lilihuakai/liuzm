@@ -170,6 +170,11 @@ p{
     vertical-align: middle;
     border-bottom: 1px solid #d9d9d9;
 }
+
+.m-title .glyphicon {
+    color:#424a54;
+}
+
 .moblie-ws-information{
     padding-top:20px;
 	position:relative;
@@ -435,7 +440,7 @@ p{
     line-height:22px;
 }
 .om-choice-status .om-active span{
-    border-bottom: 1px solid;
+    /*border-bottom: 1px solid;*/
     color:#ff8522;
 }
 .om-choice-status span{
@@ -457,13 +462,14 @@ p{
     padding: 0px 0px;
     /*border: 1px solid #ff8522;*/
     overflow: hidden;
-    color: #FFF !important;
+    color: red !important;
     font: 11px/11px verdana;
     text-align: center;
     min-width: 15px;
     border-radius: 10px;
-    background-color: #ff8522;
-    background-image: linear-gradient(to bottom, #ff8522 0px, #ff8522 100%);
+    /*color: #FFF !important;
+	background-color: #ff8522;
+    background-image: linear-gradient(to bottom, #ff8522 0px, #ff8522 100%);*/
 }
 .mo-order-pd-list{
     background:#fff;
