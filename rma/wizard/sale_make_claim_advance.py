@@ -67,6 +67,8 @@ class sale_advance_rma_claim(osv.osv):
         'deal_method': fields.char('Deal Method', help="How to deal with the claim"),
         'item_ids': fields.one2many('sale.advance.rma.claim_items', 'item_id', 'Items', domain=[('product_id', '!=', False)]),
         'order_id': fields.many2one('sale.order', 'Order Reference'),
+        'partner_shipping_id': fields.many2one('res.partner', 'Delivery Address', readonly=True, required=True, 
+            help="Delivery address for current claims order."),
     }
 
     _defaults = {

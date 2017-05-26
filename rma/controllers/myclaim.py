@@ -177,7 +177,7 @@ class MyClaim(http.Controller):
 
         if order_id:
             claim_ids = []
-            for so in registry.get('sale.order').browse(cr, uid, ids, context=context):
+            for so in registry.get('sale.order').browse(cr, uid, order_id, context=context):
                 claim_ids += [claim.id for claim in so.claim_ids]
             claims = registry.get('crm.claim').browse(cr,uid,claim_ids,context=context)
             return request.website.render('rma.mobile_after_sale_schedule_view', {'claims': claims})
@@ -186,3 +186,24 @@ class MyClaim(http.Controller):
             return request.website.render('rma.mobile_after_sale_detail_view', {'claims': claims})
         else:
             raise exceptions.Warning(_('Error'), _('You are opening a claim view that does not exist.'))
+
+    @http.route(['/m/shop/cart/update_claim_order_shipto'], type='json', auth="public", methods=['POST'], website=True)
+    def mobile_update_claim_order_shipto(self, shipto_id, order_id, **kw):
+        '''设置预售后订单收货地址'''
+        shipto_id=int(shipto_id)
+        order_id=int(order_id)
+        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
+
+        value = self.get_after_sale_order_and_claim(order_id)
+        orders = value.get('orders')
+        claims = value.get('claims')
+        if claims and shipto_id:
+            claims.write({'partner_shipping_id':shipto_id})
+
+        value = {}
+        value['using_shipto'] = request.website._render('rma.checkout_using_shipto', 
+            {'orders': orders, 'claims': claims}).decode('utf-8')
+
+        _logger.info('========== %s(), <%s>   ========== shipto_id %s order_id %s' % 
+            (sys._getframe().f_code.co_name,request.env.user.name, shipto_id, order_id))
+        return value

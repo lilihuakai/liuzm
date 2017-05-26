@@ -8,6 +8,7 @@
                 <link href="/website_myaccount_base/static/src/css/wechatcustomer.css" rel="stylesheet"/>
                 <link href="/rma/static/src/css/audit.css" rel="stylesheet"/>
                 <link href="/rma/static/src/css/after_sales.css" rel="stylesheet"/>
+                <link href="/rma/static/src/css/set_claim_address.css" rel="stylesheet"/>
             </xpath>
 
             <xpath expr="//html/body" position="inside">
@@ -16,6 +17,7 @@
                 <script type="text/javascript" src="/rma/static/src/js/refresh_page_element.js"/>
                 <script type="text/javascript" src="/rma/static/src/js/remove_product.js"/>
                 <script type="text/javascript" src="/rma/static/src/js/after_sales.js"/>
+                <script type="text/javascript" src="/rma/static/src/js/set_claim_address.js"/>
             </xpath>
         </template>
 
@@ -159,21 +161,12 @@
             <t t-call="website_myaccount_base.mobile_layout">
                 <t t-set="additional_title">确认售后申请</t>
 
-                <t t-if="not website_sale_address"><t t-set="website_sale_address" t-value="website.sale_get_address()"/></t>
-                <t t-if="not website_sale_order"><t t-set="website_sale_order" t-value="orders"/></t>
-                <!-- <t t-if="not website_sale_order"><t t-set="website_sale_order" t-value="website.sale_get_order()"/></t> -->
-                <t t-if="not default_shipto"><t t-set="default_shipto" t-value="website_sale_order and website_sale_order.partner_id.get_default_shipto_obj(website_sale_order.partner_id.id)" /></t>
-                <t t-if="website_sale_order and website_sale_order.partner_shipping_id and website_sale_address['shippings']">
-                    <t t-if="not using_shipto"><t t-set="using_shipto" t-value="website_sale_order.partner_shipping_id" /></t>
-                    <t t-if="not using_address"><t t-set="using_address" t-value="using_shipto.address_id.get_address()"/></t>
-                </t>
-
                 <div class="order-submit-page">
                     <div class="os-shipping-info">
-                        <p class="shipping-choose">配送方式<span t-att-class="(website_sale_order and website_sale_order.ship_type == 'delivery') and 'shipping-type os-active' or 'shipping-type' " id="os-st-1"  t-att-data-ship-type="'delivery'">上门取货</span>
-                        <span  t-att-class="(website_sale_order and website_sale_order.ship_type == 'pickup') and 'shipping-type os-active' or 'shipping-type' " id="os-st-2" t-att-data-ship-type="'pickup'">邮寄到商家</span></p>
+                        <p class="shipping-choose">配送方式<span class="shipping-type os-active" id="os-st-1">上门取货</span>
+                        <span class="shipping-type" id="os-st-2">邮寄到商家</span></p>
                         <p class="address-change">
-                            <t t-call="website_cart.checkout_using_shipto"/>
+                            <t t-call="rma.checkout_using_shipto"/>
                         </p>
                     </div>
                     <div class="os-shopping-cart">
@@ -218,13 +211,91 @@
                         </p>
                         <p class="clear"></p>
                     </div>
-                    <t t-call="website_cart.cart_shipto_window"/>
+                    <t t-call="rma.cart_shipto_window"/>
                     <div class="cart_address_edit_tag">
                         <t t-call="website_cart.cart_address_edit_window"/>
                     </div>
                 </div>
                 <div id="shclDefault"></div>
             </t>
+        </template>
+        <template id="checkout_using_shipto" name="mobile checkout using shipto">
+            <t t-if="not website_sale_address"><t t-set="website_sale_address" t-value="website.sale_get_address()"/></t>
+            <!-- 通过销售订单查询客户信息 edit by liuzm 20170526 -->
+            <t t-if="not website_sale_order"><t t-set="website_sale_order" t-value="orders"/></t>
+            <t t-if="not default_shipto"><t t-set="default_shipto" t-value="website_sale_order and website_sale_order.partner_id.get_default_shipto_obj(website_sale_order.partner_id.id)" /></t>
+            <t t-if="website_sale_order and claims.partner_shipping_id and website_sale_address['shippings']">
+                <t t-set="using_shipto" t-value="claims.partner_shipping_id" />
+                <t t-set="using_address" t-value="using_shipto.address_id.get_address()"/>
+            </t>
+
+            收件人:<span class="recipients"> <t t-if="using_shipto"><t t-esc="using_shipto.name" /> </t> <t t-if="not using_shipto and default_shipto"><t t-esc="default_shipto.name" /></t></span>
+            <span class="contact-phone">
+                <t t-if="using_shipto"><t t-esc="using_shipto.mobile" /> </t>
+                <t t-if="not using_shipto and default_shipto"><t t-esc="default_shipto.mobile"/></t>
+            </span> <br />
+            <span class="os-ar-info">
+                <t t-if="using_shipto">
+                    <!-- remove zip -->
+                    <t t-esc="(using_address.get('province') or using_shipto.state_id.name or '') + (using_address.get('city') or using_shipto.city or '') + (using_address.get('county') or '') + (using_shipto.street or '') + (using_shipto.street2 or '')"/>
+                    <!-- <t t-esc="(using_address.get('province') or using_shipto.state_id.name or '') + (using_address.get('city') or using_shipto.city or '') + (using_address.get('county') or '') + (using_shipto.street or '') + (using_shipto.street2 or '') + ' (' + (using_shipto.zip or '') + ')'"/> -->
+                </t>
+                <t t-if="not using_shipto and default_shipto">
+                    <t t-if="not default_address"><t t-set="default_address" t-value="default_shipto.address_id.get_address()"/></t>
+                    <t t-esc="(default_address.get('province') or default_shipto.state_id.name or '') + (default_address.get('city') or default_shipto.city or '') + (default_address.get('county') or '') + (default_shipto.street or '') + (default_shipto.street2 or '')"/></t>
+                    <t t-if="not default_shipto and not using_shipto">
+                        <span style="color:red;">您的收货地址为空,点击这里填写收货地址</span>
+                    </t>
+            </span><s class="m-arrows"><i class="icon-arrows-right"></i></s>
+        </template>
+        <template id="cart_shipto_window" name="Shopping Cart Ship To List Window">
+            <div class="os-adress-list">
+                <p class="os-al-title">选择收货地址<b class="os-cancel-button">X</b></p>
+
+                <div class="consignee-claim_list_tag">
+                    <t t-call="rma.cart_shipto"/>
+                </div>
+                <div class="add-new-adress"><a href="#" class="add-new-adress_tag"><button>新增收货地址</button></a></div>
+            </div>
+
+        </template>
+
+        <template id="cart_shipto" name="Shopping Cart Ship To">
+            <t t-if="not website_sale_address"><t t-set="website_sale_address" t-value="website.sale_get_address()"/></t>
+            <t t-if="not website_sale_order"><t t-set="website_sale_order" t-value="orders"/></t>
+
+
+            <ul id="consignee-list">
+                <t t-if="not website_sale_address['shippings']"><li  class="ui-switchable-panel-selected" >你的收货地址为空~</li></t>
+                <t t-if="website_sale_address and website_sale_address.get('shippings')">
+                    <t t-foreach="website_sale_address['shippings']" t-as="line">
+                        <li  class="ui-switchable-panel-selected" >
+                            <div t-att-data-shipto-id="line.id" t-att-data-order_id="orders.id" t-att-class="(website_sale_order and claims.partner_shipping_id and line.id == claims.partner_shipping_id.id or (not website_sale_order and line.default_shipto)) and 'consignee-item item-selected' or 'consignee-item'">
+                                <span class="adress-list-name" t-esc="line.name"/>
+                                <span class="adress-list-tel" t-esc="line.mobile"/>
+                                <t t-if="not line.default_shipto"><a class="set_default_shipto_btn adress-list-tel" href="#" style="float:right;" t-att-data-shipto-id="line.id"><span>设为默认</span></a></t>
+                                <t t-set="address" t-value="line.address_id.get_address()"/>
+                                <!-- remove zip -->
+                                <div class="adress-detail"><span class="address" t-esc="(address.get('province') or line.state_id.name or '') + (address.get('city') or line.city or '') + (address.get('county') or '') + (line.street or '') + (line.street2 or '')"/></div>
+                                <!-- <div class="adress-detail"><span class="address" t-esc="(address.get('province') or line.state_id.name or '') + (address.get('city') or line.city or '') + (address.get('county') or '') + (line.street or '') + (line.street2 or '') + ' (' + (line.zip or '') + ')'"/></div> -->
+                            </div>
+                            <div class="adress-state">
+                                <table  style="width:100%;">
+                                    <tbody><tr>
+                                        <td style="border-right:1px solid #e6e6e5;">
+                                            <span class="adress-state-edit">
+                                                <a class="adress-state-edit_tag" href="#" t-att-data-shipto-id="line.id"><b class="glyphicon glyphicon-edit"></b>编辑</a>
+                                            </span>
+                                        </td>
+                                        <td><span class="adress-state-delete"><a href="#" class="delete_address_tag" t-att-data-shipto-id="line.id"><b class="glyphicon glyphicon-trash"></b>删除</a></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                    </t>
+                </t>
+            </ul>
         </template>
 
         <!-- 售后申请完成页 -->
