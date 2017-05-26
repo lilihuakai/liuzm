@@ -104,7 +104,7 @@
                             <p><textarea onfocus="if(value=='请您在此详细描述问题') {value=''}" onblur="if (value=='') {value='请您在此详细描述问题'}">请您在此详细描述问题</textarea></p>
                         </div>
 
-                        <div class="submit-next-button" t-att-data-order_id="orders.id"><a t-att-href="'/m/myaccount/order/after_sale/checkout/%s' % orders.id"><button>下一步</button></a></div>
+                        <div class="submit-next-button" t-att-data-order_id="orders.id"><a><button>下一步</button></a></div>
                     </div>
                 </t>
             </t>
@@ -160,7 +160,8 @@
                 <t t-set="additional_title">确认售后申请</t>
 
                 <t t-if="not website_sale_address"><t t-set="website_sale_address" t-value="website.sale_get_address()"/></t>
-                <t t-if="not website_sale_order"><t t-set="website_sale_order" t-value="website.sale_get_order()"/></t>
+                <t t-if="not website_sale_order"><t t-set="website_sale_order" t-value="orders"/></t>
+                <!-- <t t-if="not website_sale_order"><t t-set="website_sale_order" t-value="website.sale_get_order()"/></t> -->
                 <t t-if="not default_shipto"><t t-set="default_shipto" t-value="website_sale_order and website_sale_order.partner_id.get_default_shipto_obj(website_sale_order.partner_id.id)" /></t>
                 <t t-if="website_sale_order and website_sale_order.partner_shipping_id and website_sale_address['shippings']">
                     <t t-if="not using_shipto"><t t-set="using_shipto" t-value="website_sale_order.partner_shipping_id" /></t>
@@ -179,20 +180,22 @@
                         <p><b class="glyphicon glyphicon-list-alt"></b>退货商品</p>
 
                         <t t-foreach="claims.item_ids" t-as="item">
-                            <a class="product-images" title="" t-attf-href="/shop/product/#{ slug(item.product_id.product_tmpl_id) }">
-                                <table>
-                                    <tr>
-                                        <td rowspan="3" class="product-img"><span t-field="item.product_id.image" t-field-options='{"widget": "image"}'/></td>
-                                        <td><span t-esc="item.product_id.name"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span t-esc="item.product_id.with_context(display_default_code=False).display_name"/>/数量<span t-esc="int(item.product_uom_qty)"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="product-price"><span t-field="item.product_id.list_price"/></td>
-                                    </tr>
-                                </table>
-                            </a>
+                            <t t-if="item.is_claim">
+                                <a class="product-images" title="" t-attf-href="/shop/product/#{ slug(item.product_id.product_tmpl_id) }">
+                                    <table>
+                                        <tr>
+                                            <td rowspan="3" class="product-img"><span t-field="item.product_id.image" t-field-options='{"widget": "image"}'/></td>
+                                            <td><span t-esc="item.product_id.name"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span t-esc="item.product_id.with_context(display_default_code=False).display_name"/>/数量<span t-esc="int(item.product_uom_qty)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="product-price"><span t-field="item.product_id.list_price"/></td>
+                                        </tr>
+                                    </table>
+                                </a>
+                            </t>
                         </t>
                         <p class="clear"></p>
                     </div>
@@ -214,6 +217,10 @@
                             </span>
                         </p>
                         <p class="clear"></p>
+                    </div>
+                    <t t-call="website_cart.cart_shipto_window"/>
+                    <div class="cart_address_edit_tag">
+                        <t t-call="website_cart.cart_address_edit_window"/>
                     </div>
                 </div>
                 <div id="shclDefault"></div>

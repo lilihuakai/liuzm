@@ -8,13 +8,15 @@ $(document).ready(function() {
         //获取问题描述的值
         var description  = $('.question-describe textarea').val();
         var order_id = $('.submit-next-button').data('order_id');
-        // var order_id = parseInt($(this).parentNode.parentNode.data('order_id'),10);
-        alert("请选择问题:"+radio_value+"\n 服务类型:"+deal_method+"\n 问题描述:"+description+"\n 问题描述:"+order_id);
+        // alert("请选择问题:"+radio_value+"\n 服务类型:"+deal_method+"\n 问题描述:"+description+"\n 问题描述:"+order_id);
         openerp.jsonRpc("/m/myaccount/order/after_sale/set_claim/", 'call', {
             'order_id': order_id,
             'deal_method': deal_method,
             'claim_origin': 'none',
-            'description': description})
+            'description': description
+        }) .then(function(res) {
+            location.href = "/m/myaccount/order/after_sale/checkout/" + order_id;
+        });
     });
 
 });
