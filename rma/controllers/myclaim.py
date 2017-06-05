@@ -86,7 +86,12 @@ class MyClaim(http.Controller):
         registry.get('sale.advance.rma.claim').write(cr, uid, [claims.id], 
             {'claim_origin': "none",'deal_method': '','description': ''})
 
-        return request.website.render('rma.mobile_order_activist_service_page', {'orders': orders, 'claims': claims})
+        # claim_origins = registry.get('sale.advance.rma.claim')._columns['claim_origin'].selection
+        claim_origins = dict(registry.get('sale.advance.rma.claim')._columns['claim_origin'].selection)
+        _logger.info("================ m_order_after_sale ===============claim_origins = %s" % (claim_origins))
+
+        return request.website.render('rma.mobile_order_activist_service_page', 
+            {'orders': orders, 'claims': claims, 'claim_origins': claim_origins})
 
     @http.route(['/m/myaccount/order/after_sale/delete_line_json'], type='json', auth="public", methods=['POST'], website=True)
     def mobile_after_saler_delete_line_json(self, order_id, item_id, display=True):

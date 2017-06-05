@@ -453,6 +453,18 @@
                                      </a>      
                                      </li> -->
                                 <li>
+                                    <a href="#">
+                                        <p class="m-title">
+                                            <b class="glyphicon glyphicon-book">
+                                            </b>推广政策
+                                        </p>
+                                        <s class="m-arrows">
+                                            <i class="icon-arrows-right">
+                                            </i>
+                                        </s>
+                                    </a>      
+                                </li>
+                                <li>
                                     <a href="/m/myaccount/distribution/faq">
                                         <p class="m-title" style="border:none;">
                                             <b class="glyphicon glyphicon-question-sign">

@@ -93,12 +93,24 @@
                         <div class="select-question">
                             <h4>问题类型</h4>
                             <div class="question-list">
-                                <p><input type="radio" id="rad1" name="rad[]" checked="checked" value="1111111111111111111111" />1111111111111111111111</p>
-                                <p><input type="radio" id="rad2" name="rad[]" value="1222222222222222222222" />1222222222222222222222</p>
-                                <p><input type="radio" id="rad3" name="rad[]" value="3333333333333333333333" />3333333333333333333333</p>
-                                <p><input type="radio" id="rad4" name="rad[]" value="4444444444444444444444" />4444444444444444444444</p>
-                                <p><input type="radio" id="rad5" name="rad[]" value="5555555555555555555555" />5555555555555555555555</p>
-                                <p><input type="radio" id="rad6" name="rad[]" value="6666666666666666666666" />6666666666666666666666</p>
+                                <!-- 因为字段数据经过dict处理，导致取到的数据不能进行翻译，所以暂时以静态数据做展示 -->
+                                <!-- <t t-set="i" t-value="1"/>
+                                <t t-foreach="claim_origins" t-as="line">
+                                    <p><input type="radio" t-att-id="'rad' + str(i)" name="rad[]" t-att-checked="(claims.claim_origin == line) and 'checked' or ''" t-att-value="line" /><t t-esc="claim_origins[line]" /></p>
+                                    <t t-set="i" t-value="i+1"/>
+                                </t> -->
+                                <p><input type="radio" id="rad1" name="rad[]" t-att-checked="(claims.claim_origin == 'none')  and 'checked' or ''" value="none"/>沒特殊原因</p>
+                                <p><input type="radio" id="rad2" name="rad[]" t-att-checked="(claims.claim_origin == 'legal')  and 'checked' or ''" value="legal"/>不合法的</p>
+                                <p><input type="radio" id="rad3" name="rad[]" t-att-checked="(claims.claim_origin == 'cancellation')  and 'checked' or ''" value="cancellation"/>订单取消</p>
+                                <p><input type="radio" id="rad4" name="rad[]" t-att-checked="(claims.claim_origin == 'damaged')  and 'checked' or ''" value="damaged"/>商品损坏</p>
+                                <p><input type="radio" id="rad5" name="rad[]" t-att-checked="(claims.claim_origin == 'error')  and 'checked' or ''" value="error"/>发货错误</p>
+                                <p><input type="radio" id="rad6" name="rad[]" t-att-checked="(claims.claim_origin == 'exchange')  and 'checked' or ''" value="exchange"/>换货</p>
+                                <p><input type="radio" id="rad7" name="rad[]" t-att-checked="(claims.claim_origin == 'lost')  and 'checked' or ''" value="lost"/>在运输过程中丢失</p>
+                                <p><input type="radio" id="rad8" name="rad[]" t-att-checked="(claims.claim_origin == 'perfect_conditions')  and 'checked' or ''" value="perfect_conditions"/>完美的条件</p>
+                                <p><input type="radio" id="rad9" name="rad[]" t-att-checked="(claims.claim_origin == 'imperfection')  and 'checked' or ''" value="imperfection"/>存在缺陷</p>
+                                <p><input type="radio" id="rad10" name="rad[]" t-att-checked="(claims.claim_origin == 'physical_damage_client')  and 'checked' or ''" value="physical_damage_client"/>用户损坏</p>
+                                <p><input type="radio" id="rad11" name="rad[]" t-att-checked="(claims.claim_origin == 'physical_damage_company')  and 'checked' or ''" value="physical_damage_company"/>公司损坏</p>
+                                <p><input type="radio" id="rad12" name="rad[]" t-att-checked="(claims.claim_origin == 'other')  and 'checked' or ''" value="other"/>其他</p>
                             </div>
                         </div>
                         <div class="question-describe">
