@@ -30,10 +30,11 @@ p{
 .moblie-order-management{
     max-width:750px;
     margin:0 auto;
-    background:#eeeff4;
+    background:#f2f2f2;
     width:100%;
 	color:#a4a4a4;
 	min-height:500px;
+    font-family: Microsoft YaHei;
 }
 .cus-personal-information{
     background:url(../images/distribution-information-bg.png) repeat-x;
@@ -438,16 +439,17 @@ p{
     width:20%;
     text-align:center;
     line-height:22px;
+    border-bottom: 1px solid #e6e6e6;
 }
 .om-choice-status .om-active span{
-    /*border-bottom: 1px solid;*/
+    border-bottom: 1px solid;
     color:#ff8522;
 }
 .om-choice-status span{
     line-height: 36px;
     cursor:pointer;
     
-    padding: 10px 5px;
+    padding: 10px;
     position:relative;
 }
 #om-choice-2 .trading-in{
@@ -456,11 +458,12 @@ p{
 .om-choice-status .om-tab-sub{
     position: absolute;
     z-index: 3;
-    right: -10px;
-    top: 1px;
+    right: -8px;
+    top: 3px;
     height: 12px;
     padding: 0px 0px;
     /*border: 1px solid #ff8522;*/
+    border: none !important;
     overflow: hidden;
     color: red !important;
     font: 11px/11px verdana;
@@ -484,7 +487,7 @@ p{
     
 }
 .od-pd-detail{
-    border-bottom:15px solid #eeeff4;
+    border-bottom:15px solid #f2f2f2;
 }
 .mo-order-pd-list .od-pd-detail td p{
     padding:5px 0;
@@ -492,7 +495,7 @@ p{
 .mo-order-pd-list .od-pd-detail table{
     width:100%;
     padding:10px;
-    background:#f5f5f5;
+    background:#e6e6e6;
     margin-bottom:5px;
 }
 .mo-order-pd-list .od-pd-detail .od-pd-status{
@@ -514,5 +517,21 @@ p{
     color:#ff8522;
     padding:0 5px;
 }
+
+.public_mobile_order_top_menu input{
+    font-size: 12px;
+    border: 1px solid #d4d4d4;
+    border-radius: 10px;
+    padding-left: 10px;
+    line-height: 22px;
+}
+.public_mobile_order_top_menu button{
+    font-size: 12px;
+    border: 1px solid #d4d4d4;
+    border-radius: 10px;
+    padding:0 10px;
+    line-height: 22px;
+}
+
 
 

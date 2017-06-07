@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-20160612\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-17 02:45+0000\n"
-"PO-Revision-Date: 2017-04-17 16:57+0800\n"
+"POT-Creation-Date: 2017-06-07 02:59+0000\n"
+"PO-Revision-Date: 2017-06-07 11:00+0800\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,15 +18,25 @@ msgstr ""
 "X-Generator: Poedit 1.8.8\n"
 
 #. module: rma
-#: code:addons/rma/models/sale.py:336
+#: code:addons/rma/models/sale.py:363
 #, python-format
 msgid "%s's quantity %s can't be use!"
 msgstr "%s 的数量 %s 不正确！"
 
 #. module: rma
+#: view:website:rma.mobile_after_sale_detail_view
+msgid "(待处理)"
+msgstr "(待处理)"
+
+#. module: rma
 #: field:sale.order,advance_id:0
 msgid "Advance Rma Claim"
 msgstr "售后申请前置数据"
+
+#. module: rma
+#: field:crm.claim.operation.record,author_id:0
+msgid "Author"
+msgstr "Author"
 
 #. module: rma
 #: field:sale.advance.rma.claim_items,claimed_qty:0
@@ -118,12 +128,14 @@ msgid "Create and View Claim"
 msgstr "创建并查看售后单"
 
 #. module: rma
+#: field:crm.claim.operation.record,create_uid:0
 #: field:sale.advance.rma.claim,create_uid:0
 #: field:sale.advance.rma.claim_items,create_uid:0
 msgid "Created by"
 msgstr "Created by"
 
 #. module: rma
+#: field:crm.claim.operation.record,create_date:0
 #: field:sale.advance.rma.claim,create_date:0
 #: field:sale.advance.rma.claim_items,create_date:0
 msgid "Created on"
@@ -135,7 +147,12 @@ msgid "Credit Note"
 msgstr "冲销发票"
 
 #. module: rma
-#: code:addons/rma/models/sale.py:180
+#: model:ir.model,name:rma.model_crm_claim_operation_record
+msgid "Crm Claim Operation Record"
+msgstr "Crm Claim Operation Record"
+
+#. module: rma
+#: code:addons/rma/models/sale.py:191
 #, python-format
 msgid "Customer Claims"
 msgstr "用户售后单"
@@ -144,6 +161,21 @@ msgstr "用户售后单"
 #: selection:sale.advance.rma.claim,claim_origin:0
 msgid "Damaged delivered product"
 msgstr "商品损坏"
+
+#. module: rma
+#: field:sale.advance.rma.claim,deal_method:0
+msgid "Deal Method"
+msgstr "Deal Method"
+
+#. module: rma
+#: field:sale.advance.rma.claim,partner_shipping_id:0
+msgid "Delivery Address"
+msgstr "Delivery Address"
+
+#. module: rma
+#: help:sale.advance.rma.claim,partner_shipping_id:0
+msgid "Delivery address for current claims order."
+msgstr "Delivery address for current claims order."
 
 #. module: rma
 #: field:sale.advance.rma.claim,description:0
@@ -157,6 +189,7 @@ msgid "Discount (%)"
 msgstr "折扣 (%)"
 
 #. module: rma
+#: field:crm.claim.operation.record,display_name:0
 #: field:sale.advance.rma.claim,display_name:0
 #: field:sale.advance.rma.claim_items,display_name:0
 msgid "Display Name"
@@ -168,15 +201,21 @@ msgid "Draft"
 msgstr "草稿"
 
 #. module: rma
-#: code:addons/rma/wizard/sale_make_claim_advance.py:132
+#: code:addons/rma/wizard/sale_make_claim_advance.py:175
 #, python-format
 msgid "Enter claim details"
 msgstr "售后申请明细"
 
 #. module: rma
+#: code:addons/rma/controllers/myclaim.py:216
+#, python-format
+msgid "Error"
+msgstr "Error"
+
+#. module: rma
 #: code:addons/rma/models/account_invoice.py:106
 #: code:addons/rma/models/account_invoice_refund.py:57
-#: code:addons/rma/models/sale.py:230
+#: code:addons/rma/models/sale.py:244
 #, python-format
 msgid "Error!"
 msgstr "错误！"
@@ -187,7 +226,13 @@ msgid "Exchange request"
 msgstr "换货"
 
 #. module: rma
-#: field:sale.advance.rma.claim,id:0 field:sale.advance.rma.claim_items,id:0
+#: help:sale.advance.rma.claim,deal_method:0
+msgid "How to deal with the claim"
+msgstr "How to deal with the claim"
+
+#. module: rma
+#: field:crm.claim.operation.record,id:0 field:sale.advance.rma.claim,id:0
+#: field:sale.advance.rma.claim_items,id:0
 msgid "ID"
 msgstr "ID"
 
@@ -248,18 +293,21 @@ msgid "Items"
 msgstr "项目"
 
 #. module: rma
+#: field:crm.claim.operation.record,__last_update:0
 #: field:sale.advance.rma.claim,__last_update:0
 #: field:sale.advance.rma.claim_items,__last_update:0
 msgid "Last Modified on"
 msgstr "最后一次修改在"
 
 #. module: rma
+#: field:crm.claim.operation.record,write_uid:0
 #: field:sale.advance.rma.claim,write_uid:0
 #: field:sale.advance.rma.claim_items,write_uid:0
 msgid "Last Updated by"
 msgstr "最后一次更新由"
 
 #. module: rma
+#: field:crm.claim.operation.record,write_date:0
 #: field:sale.advance.rma.claim,write_date:0
 #: field:sale.advance.rma.claim_items,write_date:0
 msgid "Last Updated on"
@@ -295,6 +343,11 @@ msgstr "沒特殊原因"
 #: selection:crm.claim,state:0
 msgid "Open"
 msgstr "打开"
+
+#. module: rma
+#: field:crm.claim,record_ids:0
+msgid "Operation Record"
+msgstr "操作记录"
 
 #. module: rma
 #: field:sale.advance.rma.claim,order_id:0
@@ -345,6 +398,21 @@ msgstr "商品"
 #: field:sale.advance.rma.claim_items,product_uom_qty:0
 msgid "Quantity"
 msgstr "数量"
+
+#. module: rma
+#: field:crm.claim.operation.record,record_date:0
+msgid "Record Date"
+msgstr "操作日期"
+
+#. module: rma
+#: field:crm.claim.operation.record,record_body:0
+msgid "Record Description"
+msgstr "操作描述"
+
+#. module: rma
+#: field:crm.claim.operation.record,claim_id:0
+msgid "Related Crm Claim ID"
+msgstr "关联售后单ID"
 
 #. module: rma
 #: model:ir.model,name:rma.model_sale_advance_rma_claim
@@ -476,8 +544,8 @@ msgid "View Claim"
 msgstr "查看售后单"
 
 #. module: rma
-#: code:addons/rma/models/sale.py:336
-#: code:addons/rma/wizard/sale_make_claim_advance.py:119
+#: code:addons/rma/models/sale.py:363
+#: code:addons/rma/wizard/sale_make_claim_advance.py:162
 #, python-format
 msgid "Warnning!"
 msgstr "警告！"
@@ -493,13 +561,19 @@ msgid "What do you want to claim?"
 msgstr "你想要如何申请售后？"
 
 #. module: rma
-#: code:addons/rma/models/sale.py:231
+#: code:addons/rma/controllers/myclaim.py:216
+#, python-format
+msgid "You are opening a claim view that does not exist."
+msgstr "您正在打开一个不存在或已删除的售后单"
+
+#. module: rma
+#: code:addons/rma/models/sale.py:245
 #, python-format
 msgid "You cannot group sales having different currencies for the same partner."
 msgstr "不能将具有不同货币的销售分组给同一个客户。"
 
 #. module: rma
-#: code:addons/rma/wizard/sale_make_claim_advance.py:119
+#: code:addons/rma/wizard/sale_make_claim_advance.py:162
 #, python-format
 msgid "You have to choice one of them to claim!"
 msgstr "你必须选择至少一件商品进行售后申请！"
@@ -518,6 +592,12 @@ msgstr ""
 "                                    或客户同意这个文档。"
 
 #. module: rma
+#: code:addons/rma/models/sale.py:268
+#, python-format
+msgid "Your service order has been successfully applied. Waiting for the audit!"
+msgstr "您的服务单已申请成功！待售后审核中。。"
+
+#. module: rma
 #: view:account.invoice.refund:rma.view_claim_invoice_refund
 #: view:sale.advance.rma.claim:rma.view_stock_enter_claim_details
 msgid "or"
@@ -529,9 +609,49 @@ msgid "上门取货"
 msgstr "上门取货"
 
 #. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "下一步"
+msgstr "下一步"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "不合法的"
+msgstr "不合法的"
+
+#. module: rma
+#: view:website:rma.cart_shipto
+msgid "你的收货地址为空~"
+msgstr "你的收货地址为空~"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "公司损坏"
+msgstr "公司损坏"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "发货错误"
+msgstr "发货错误"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_list_view
+msgid "售后单列表"
+msgstr "售后单列表"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_detail_view
+msgid "售后单详情"
+msgstr "售后单详情"
+
+#. module: rma
 #: view:website:rma.mobile_after_sale_created
 msgid "售后服务单申请成功"
 msgstr "售后服务单申请成功"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_created
+msgid "售后申请成功"
+msgstr "售后申请成功"
 
 #. module: rma
 #: view:website:rma.mobile_order_activist_service_page
@@ -544,14 +664,111 @@ msgid "售后首页"
 msgstr "售后首页"
 
 #. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "商品损坏"
+msgstr "商品损坏"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_detail_view
+msgid "商家收货"
+msgstr "商家收货"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "在运输过程中丢失"
+msgstr "在运输过程中丢失"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_checkout
+#: view:website:rma.mobile_order_activist_service_page
+msgid "处理方式"
+msgstr "处理方式"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "存在缺陷"
+msgstr "存在缺陷"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "完美的条件"
+msgstr "完美的条件"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_detail_view
+msgid "审核留言"
+msgstr "审核留言"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_record_view
+msgid "审核进度"
+msgstr "审核进度"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_detail_view
+msgid "审核进度:"
+msgstr "审核进度:"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_record_view
+msgid "已解决"
+msgstr "已解决"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_detail_view
+msgid "待客户确认"
+msgstr "待客户确认"
+
+#. module: rma
+#: view:website:rma.checkout_using_shipto
+msgid "您的收货地址为空,点击这里填写收货地址"
+msgstr "您的收货地址为空,点击这里填写收货地址"
+
+#. module: rma
 #: view:website:rma.mobile_myaccount_order_after_sale
 msgid "我的售后"
 msgstr "我的售后"
 
 #. module: rma
-#: view:website:rma.mobile_order_activist_service_page
+#: view:website:rma.mobile_after_sale_detail_view
 msgid "提交申请"
 msgstr "提交申请"
+
+#. module: rma
+#: view:website:rma.checkout_using_shipto
+msgid "收件人:"
+msgstr "收件人:"
+
+#. module: rma
+#: view:website:rma.cart_shipto_window
+msgid "新增收货地址"
+msgstr "新增收货地址"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_record_view
+msgid "是否已解决您的问题? 点击已解释可去评价服务单哦"
+msgstr "是否已解决您的问题? 点击已解释可去评价服务单哦"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_detail_view
+#: view:website:rma.mobile_after_sale_record_view
+msgid "服务单号:"
+msgstr "服务单号:"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_record_view
+msgid "未解决"
+msgstr "未解决"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "沒特殊原因"
+msgstr "沒特殊原因"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "用户损坏"
+msgstr "用户损坏"
 
 #. module: rma
 #: view:website:rma.mobile_myaccount_order_after_sale_list_tab
@@ -560,12 +777,8 @@ msgid "申请售后"
 msgstr "申请售后"
 
 #. module: rma
-#: view:website:rma.mobile_order_activist_service_page
-msgid "申请描述："
-msgstr "申请描述："
-
-#. module: rma
 #: view:website:rma.mobile_after_sale_created
+#: view:website:rma.mobile_after_sale_record_view
 msgid "申请时间:"
 msgstr "申请时间:"
 
@@ -580,9 +793,29 @@ msgid "确认售后申请"
 msgstr "确认售后申请"
 
 #. module: rma
+#: view:website:rma.mobile_after_sale_detail_view
+msgid "第三方供应商审核"
+msgstr "第三方供应商审核"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_record_view
+msgid "经办人:"
+msgstr "经办人:"
+
+#. module: rma
 #: view:website:rma.mobile_order_activist_service_page
-msgid "返回商城"
-msgstr "返回商城"
+msgid "订单取消"
+msgstr "订单取消"
+
+#. module: rma
+#: view:website:rma.cart_shipto
+msgid "设为默认"
+msgstr "设为默认"
+
+#. module: rma
+#: view:website:rma.mobile_order_activist_service_page
+msgid "请您在此详细描述问题"
+msgstr "请您在此详细描述问题"
 
 #. module: rma
 #: view:website:rma.mobile_after_sale_created
@@ -593,6 +826,16 @@ msgstr "进度查询"
 
 #. module: rma
 #: view:website:rma.mobile_after_sale_checkout
+msgid "退货商品"
+msgstr "退货商品"
+
+#. module: rma
+#: view:website:rma.cart_shipto_window
+msgid "选择收货地址"
+msgstr "选择收货地址"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_checkout
 msgid "邮寄到商家"
 msgstr "邮寄到商家"
 
@@ -600,3 +843,16 @@ msgstr "邮寄到商家"
 #: view:website:rma.mobile_after_sale_checkout
 msgid "配送方式"
 msgstr "配送方式"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_checkout
+#: view:website:rma.mobile_after_sale_detail_view
+#: view:website:rma.mobile_order_activist_service_page
+msgid "问题描述"
+msgstr "问题描述"
+
+#. module: rma
+#: view:website:rma.mobile_after_sale_checkout
+#: view:website:rma.mobile_order_activist_service_page
+msgid "问题类型"
+msgstr "问题类型"

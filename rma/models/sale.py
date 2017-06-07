@@ -229,6 +229,7 @@ class sale_order(osv.Model):
             context = {}
         claim = self.pool.get('crm.claim')
         obj_sale_order_line = self.pool.get('sale.order.line')
+        obj_operation_record = self.pool.get('crm.claim.operation.record')
 
         res = False
         claims = {}
@@ -261,6 +262,11 @@ class sale_order(osv.Model):
         for val in claims.values():
             for order, il in val:
                 res = self._make_claim(cr, uid, order, il, context=context)
+                partner_id = self.pool.get('res.users').browse(cr, uid, uid, context=context).partner_id.id
+                record_date = time.strftime("%Y-%m-%d %H:%M:%S")
+                record_body = "您的服务单已申请成功！待售后审核中。。"
+                # record_body = _("Your service order has been successfully applied. Waiting for the audit!")
+                obj_operation_record.create_record(cr, uid, res, partner_id, record_date, record_body, context=context)
                 claim_ids.append(res)
                 cr.execute('insert into sale_order_claim_rel (order_id,claim_id) values (%s,%s)', (order.id, res))
                 # 因为cr在执行 CREATE，UPDATE，DELETE 的 SQL语句之前，清空cache是很有必要的，否则models的调用

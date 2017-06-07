@@ -120,15 +120,15 @@ p{
     margin-top: -1.6em;
 }
 .personal-info .pd-bottom,
-.myaccount-list .pd-bottom{
-   margin-bottom:20px;
+.myaccount-list .pd-bottom{      
+   /*margin-bottom:20px;
    -moz-box-shadow:0px 3px 0px #e4e4e7;
    -webkit-box-shadow:0px 3px 0px #e4e4e7; 
-   box-shadow:0px 3px 0px #e4e4e7;
+   box-shadow:0px 3px 0px #e4e4e7;*/
 }
 .personal-info .pd-bottom .m-title,
 .myaccount-list .pd-bottom .m-title{
-   border:none;
+   /*border:none;*/
 }
 .personal-info a,
 .myaccount-list a{
@@ -165,7 +165,7 @@ p{
     position: absolute;
     top: 75%;
     right: 4.8em;
-    margin-top: -1.6em;
+    margin-top: -1.5em;
 }
 .order-list{min-height: 500px;}
 .order-list .order-head{

@@ -13,6 +13,7 @@ from openerp import http
 from openerp.http import request
 from openerp import SUPERUSER_ID
 from openerp.tools.translate import _
+from openerp import exceptions
 
 # 4: imports from odoo modules
 from openerp.addons.website_sale.controllers.main import website_sale
@@ -169,28 +170,9 @@ class MyClaim(http.Controller):
         crm_claim_id = registry.get('sale.order').crm_claim_create(cr, uid, order_id, context=context)
         if crm_claim_id:
             crm_claim = registry.get('crm.claim').browse(cr,uid,crm_claim_id,context=context)
-            return request.website.render('rma.mobile_after_sale_created', {'claims': crm_claim})
+            return request.website.render('rma.mobile_after_sale_created', {'orders': orders, 'claims': crm_claim})
         else:
             return request.website.render('rma.mobile_order_activist_service_page', {'orders': orders, 'claims': claims})
-
-    @http.route(['/m/myaccount/order/after_sale/claim_view/<int:order_id>',
-                 '/m/myaccount/order/after_sale/claim_view/detail/<int:claim_id>'
-                 ], type='http', auth='user', website=True)
-    def m_order_claim_view(self, order_id=None, **post):
-        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
-        _logger.info('========== %s(), <%s>   ==========' % (sys._getframe().f_code.co_name,request.env.user.name))
-
-        if order_id:
-            claim_ids = []
-            for so in registry.get('sale.order').browse(cr, uid, order_id, context=context):
-                claim_ids += [claim.id for claim in so.claim_ids]
-            claims = registry.get('crm.claim').browse(cr,uid,claim_ids,context=context)
-            return request.website.render('rma.mobile_after_sale_schedule_view', {'claims': claims})
-        elif claim_id:
-            claims = registry.get('crm.claim').browse(cr,uid,claim_id,context=context)
-            return request.website.render('rma.mobile_after_sale_detail_view', {'claims': claims})
-        else:
-            raise exceptions.Warning(_('Error'), _('You are opening a claim view that does not exist.'))
 
     @http.route(['/m/shop/cart/update_claim_order_shipto'], type='json', auth="public", methods=['POST'], website=True)
     def mobile_update_claim_order_shipto(self, shipto_id, order_id, **kw):
@@ -212,3 +194,33 @@ class MyClaim(http.Controller):
         _logger.info('========== %s(), <%s>   ========== shipto_id %s order_id %s' % 
             (sys._getframe().f_code.co_name,request.env.user.name, shipto_id, order_id))
         return value
+
+    @http.route(['/m/myaccount/order/after_sale/claim_view/<int:order_id>'], type='http', auth='user', website=True)
+    def m_order_claim_list_view(self, order_id=None, **post):
+        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
+
+        claim_ids = []
+        value = self.get_after_sale_order_and_claim(order_id)
+        orders = value.get('orders')
+        for so in orders:
+            claim_ids += [claim.id for claim in so.claim_ids]
+        crm_claims = registry.get('crm.claim').browse(cr,uid,claim_ids,context=context)
+        _logger.info('========== %s(), <%s>   ========== crm_claims = %s' % 
+            (sys._getframe().f_code.co_name, request.env.user.name, crm_claims))
+
+        if len(claim_ids) > 1:
+            return request.website.render('rma.mobile_after_sale_list_view', {'claims': crm_claims})
+        if len(claim_ids) == 1:
+            return request.website.render('rma.mobile_after_sale_detail_view', {'claims': crm_claims})
+        else:
+            raise exceptions.Warning(_('Error'), _('You are opening a claim view that does not exist.'))
+
+    @http.route(['/m/myaccount/order/after_sale/claim_view/rercord/<int:claim_id>'], type='http', auth='user', website=True)
+    def m_order_claim_record_view(self, claim_id=None, **post):
+        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
+
+        crm_claims = registry.get('crm.claim').browse(cr,uid,claim_id,context=context)
+        _logger.info('========== %s(), <%s>   ========== crm_claims = %s' % 
+            (sys._getframe().f_code.co_name, request.env.user.name, crm_claims))
+
+        return request.website.render('rma.mobile_after_sale_record_view', {'claims': crm_claims})

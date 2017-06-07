@@ -19,7 +19,7 @@ $(function(){
                 console.log('data='+data.limit);
             });
 
-        if (categary == 0) {
+        if not categary {
             return false;
         }
 

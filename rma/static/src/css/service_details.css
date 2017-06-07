@@ -1,0 +1,208 @@
+@charset "gd2312";
+body{
+  margin:0;
+}
+a{
+  text-decoration:none;
+}
+p{
+  margin:0;
+  padding:0;
+}
+
+.service_details,
+.audit_progress{
+  max-width:750px;
+  margin:0 auto;
+  background:#eeeff4;
+  width:100%;
+  font-family: Microsoft YaHei;
+  min-height:550px;
+}
+
+.service_details .sd_service_info,
+.service_details .problem_description,
+.service_details .audit_message,
+.audit_progress .ap_header,
+.audit_progress .ap_status,
+.audit_progress .ap_detail_list{
+    background:#fff;
+    position:relative;
+    margin-bottom:15px;
+    -moz-box-shadow: 1px 2px 1px #e4e4e7;
+    -webkit-box-shadow: 1px 2px 1px #e4e4e7;
+    box-shadow: 1px 2px 1px #e4e4e7;
+}
+.audit_progress p{
+    position: relative;
+	line-height:24px;
+	padding: 10px 15px;	
+}
+.service_details p{
+    position: relative;
+    margin-left: 15px;
+    border-bottom: 1px solid #eeeff4;
+    padding: 10px 15px 10px 0;
+	line-height:24px;
+}
+.service_details .sd_right{
+  float:right;
+}
+.service_details .sd_red{
+  color:red;
+}
+.service_details .m-arrows{
+    position: absolute;
+    top: 75%;
+    right: .8em;
+    margin-top: -1.9em;
+}
+.icon-arrows-right{
+    display: inline-block;
+    width: 3.2em;
+    height: 2.2em;
+    background: url(http://res.vmall.com/nwap/20150605/images/echannelWap/icon/arrows.png) no-repeat;
+    background-size: 3.2em 7.3em;
+    background-position: 0 0;
+	z-index:99999;
+	cursor:pointer;
+}
+.progress_chart ul{
+    width: 90%;
+    padding: 30px 0 50px;
+    margin: 0 auto;
+}
+.progress_chart ul li{
+    list-style:none;
+	width:11.11%;
+	float:left;
+	text-align:center;
+	min-height: 70px;
+	position:relative;
+}
+.progress_chart .sd_pc_default span{
+    position: absolute;
+    bottom: -35px;
+    width: 100px;
+    left: -10px;
+    text-align: center;
+	height:50px;
+	color:#8b8b8b;
+}
+.progress_chart .sd_pc_done span{
+    color:#50c65f;
+}
+.progress_chart .sd_pc_default{
+    background:url(../images/sd_pc_default.png) no-repeat center center;
+	background-size: 30px;
+}
+.progress_chart .sd_pc_default_line{
+    background:url(../images/sd_pc_default_line.png) no-repeat center center;
+	background-size: 70px;
+}
+.progress_chart .sd_pc_done{
+    background:url(../images/sd_pc_done.png) no-repeat center center;
+	background-size: 30px;
+}
+.progress_chart .sd_pc_done_line{
+    background:url(../images/sd_pc_done_line.png) no-repeat center center;
+	background-size: 70px;
+}
+.progress_chart .sd_pc_ongoing{
+    background:url(../images/sd_pc_ongoing.png) no-repeat center center;
+	background-size: 70px;
+}
+.bubbles {
+    position:relative;
+    height:25px;
+    background:#50c65f;
+    border-radius:5px; 
+    top: -10px;
+	left:-14px;
+    width:100px;
+    color:#fff;
+}
+.bubbles .arrow {
+    position:absolute;
+    bottom: -10px;
+    left: 45%;
+    width:0;
+    height:0;
+    font-size:0;
+    border:solid 5px;
+    border-color:#50c65f #fff #fff #fff;
+}
+.problem_description p span{
+    color:#8b8b8b;
+	font-size:0.9em;
+}
+.ap_status .ap_resolved,
+.ap_status .ap_unsolved{
+    padding: 1.5% 2%;
+    margin: 10px 5% 20px;
+    border: 1px solid #8b8b8b;
+    border-radius: 8px 8px;
+    text-align: center;
+    color: #8b8b8b;
+    width: 34%;
+    float: left;
+}
+.ap_detail_list ul{
+    padding:20px;
+}
+.ap_detail_list ul li{
+    list-style:none;
+	line-height:30px;
+}
+.ap_detail_list b:before{
+    /*content: "●";*/
+    content: "";
+    float:left;
+    text-align:center;
+    font-family:SimHei;
+    width:16px;
+    height: 16px;
+    background-color: #d8d8d8;
+    -webkit-border-radius: 10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+}
+.ap_detail_list .adl-info{
+    background:url(../images/li-bg.png) repeat-y 8px;
+	padding-left:35px;
+	padding-bottom: 10px;
+}
+li:first-child .adl-info{
+    background-repeat:no-repeat !important;
+    background-position:8px 14px !important;
+}
+li:last-child .adl-info{
+    background-repeat:no-repeat !important;
+    background-position:8px -90px !important;
+}
+li:first-child b:before{
+    /*color:red;*/
+    background-color: red;
+}
+.adl-info p{
+    padding:0 0 10px;
+}
+.bottom_border{
+    border-bottom:1px solid #eeeff4;
+}
+li:last-child .adl-info .bottom_border{
+    border-bottom:none;
+}
+
+
+
+
+.clear{
+   clear:both;
+}
+
+
+
+
+
+

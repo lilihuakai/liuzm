@@ -40,7 +40,8 @@ class crm_claim(osv.osv):
                 ('open','Open'),
                 ('paid','Paid'),
                 ('cancel','Cancelled'),
-            ], string='Status'),
+            ], string='Status', default='draft'),
+        'record_ids': fields.one2many("crm.claim.operation.record", 'claim_id', string="Operation Record"),
     }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

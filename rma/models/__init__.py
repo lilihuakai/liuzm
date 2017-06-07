@@ -21,3 +21,4 @@ import website
 import crm_claim
 import account_invoice
 import account_invoice_refund
+import crm_claim_operation_record

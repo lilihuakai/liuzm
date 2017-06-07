@@ -9,6 +9,7 @@
                 <link href="/rma/static/src/css/audit.css" rel="stylesheet"/>
                 <link href="/rma/static/src/css/after_sales.css" rel="stylesheet"/>
                 <link href="/rma/static/src/css/set_claim_address.css" rel="stylesheet"/>
+                <link href="/rma/static/src/css/service_details.css" rel="stylesheet"/>
             </xpath>
 
             <xpath expr="//html/body" position="inside">
@@ -18,6 +19,7 @@
                 <script type="text/javascript" src="/rma/static/src/js/remove_product.js"/>
                 <script type="text/javascript" src="/rma/static/src/js/after_sales.js"/>
                 <script type="text/javascript" src="/rma/static/src/js/set_claim_address.js"/>
+                <script type="text/javascript" src="/rma/static/src/js/operation_record.js"/>
             </xpath>
         </template>
 
@@ -313,6 +315,8 @@
         <!-- 售后申请完成页 -->
         <template id="mobile_after_sale_created" name="mobile after sale created">
             <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">售后申请成功</t>
+
                 <div class="submit-successful">
                     <div class="ss-img"><img src="/rma/static/src/images/submits-s.png" /></div>
                     <div class="ss-title">售后服务单申请成功</div>
@@ -321,28 +325,106 @@
                         <p>申请类型: <span t-esc="claims.name"/></p>
                     </div>
                     <div class="ss-button">
-                        <a href="#"><p>进度查询</p></a><a href="#"><p>售后首页</p></a>
+                        <a t-att-href="'/m/myaccount/order/after_sale/claim_view/%s' % orders.id">
+                            <p>进度查询</p>
+                        </a>
+                        <a href="/m/myaccount/order/after_sale_main/waitting_claim"><p>售后首页</p></a>
                     </div>
                 </div>
             </t>
         </template>
 
         <!-- 售后进度查询页 -->
-        <template id="mobile_after_sale_schedule_view">
+        <template id="mobile_after_sale_list_view">
             <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">售后单列表</t>
                 <t t-if="claims">
-                    <t t-foreach="claims.item_ids" t-as="item">
-                        
+                    <t t-foreach="claims" t-as="claim">
+                        <span t-esc="claim.code" /><br />
+                        <t t-esc="claim.date" /><br />
                     </t>
                 </t>
             </t>
         </template>
         <template id="mobile_after_sale_detail_view">
             <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">售后单详情</t>
                 <t t-if="claims">
-                    <t t-foreach="claims.item_ids" t-as="item">
-                        
-                    </t>
+                    <div class="service_details">
+                      <div class="sd_service_info">
+                        <p>服务单号: 
+                            <t t-esc="claims.code" />
+                            <span class="sd_right sd_red">待客户确认</span>
+                        </p>
+                        <p>审核进度: 
+                            <t t-esc="claims.record_ids[0].record_body" />
+                            <a t-att-href="'/m/myaccount/order/after_sale/claim_view/rercord/%s' % claims.id">
+                                <s class="m-arrows"><i class="icon-arrows-right"></i></s>
+                            </a>
+                        </p>
+                        <div class="progress_chart">
+                          <ul>
+                            <li id="operation1" class="sd_pc_default"><span>提交申请</span></li>
+                            <li id="operation_line1" class="sd_pc_default_line"></li>
+                            <li id="operation2" class="sd_pc_default"><span>第三方供应商审核</span></li>
+                            <li id="operation_line2" class="sd_pc_default_line"></li>
+                            <li id="operation3" class="sd_pc_default"><span>商家收货</span></li>
+                            <li id="operation_line3" class="sd_pc_default_line"></li>
+                            <li id="operation4" class="sd_pc_default"><span>换货</span></li>
+                            <li id="operation_line4" class="sd_pc_default_line"></li>
+                            <li id="operation5" class="sd_pc_default"><span>完成</span></li>
+                            <div class="clear" />
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <div class="problem_description">
+                         <p>问题描述</p>
+                         <p><span t-esc="claims.description"/><br />
+                         <span><span t-esc="claims.date"/></span></p>
+                      </div>
+                      
+                      <div class="audit_message">
+                         <p>审核留言</p>
+                         <p>(待处理)</p>
+                      </div>
+                      <input type="hidden" name="tmp_state_flag" t-att-value="claims.stage_id.name" />
+                    </div>
+                </t>
+            </t>
+        </template>
+        <template id="mobile_after_sale_record_view">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">审核进度</t>
+                <t t-if="claims">
+                    <div class="audit_progress">
+                      <div class="ap_header">
+                        <p>
+                            服务单号: <span t-esc="claims.code" /><br />
+                            申请时间: <span t-esc="claims.date"/>
+                        </p>
+                      </div>
+                      
+                      <div class="ap_status">
+                        <p>是否已解决您的问题? 点击已解释可去评价服务单哦</p>
+                        <a href="#"><div class="ap_resolved">已解决</div></a>
+                        <a href="#"><div class="ap_unsolved">未解决</div></a>
+                        <div class="clear"></div>
+                      </div>
+                      
+                      <div class="ap_detail_list">
+                        <ul>
+                            <t t-foreach="claims.record_ids" t-as="record">
+                                <li><b></b><div class="adl-info">
+                                  <p><t t-esc="record.record_body" /></p>
+                                  <p><t t-esc="record.record_date" /></p>
+                                  <p class="bottom_border">经办人: <t t-esc="record.author_id.name" /></p>
+                                </div></li>
+                            </t>
+                        </ul>
+                      </div>
+                      
+                    </div>
                 </t>
             </t>
         </template>

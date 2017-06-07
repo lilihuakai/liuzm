@@ -198,11 +198,23 @@
                                     </s>
                                 </a>
                             </li>
-                            <li class="pd-bottom">
+                            <li>
                                 <a href="/shop/cart">
                                     <p class="m-title">
                                         <b class="glyphicon glyphicon-shopping-cart">
                                         </b>我的购物车
+                                    </p>
+                                    <s class="m-arrows">
+                                        <i class="icon-arrows-right">
+                                        </i>
+                                    </s>
+                                </a>
+                            </li>
+                            <li class="pd-bottom">
+                                <a href="/">
+                                    <p class="m-title">
+                                        <b class="glyphicon glyphicon-home">
+                                        </b>网站首页
                                     </p>
                                     <s class="m-arrows">
                                         <i class="icon-arrows-right">
@@ -281,10 +293,6 @@
                                 <b class="title-img">
                                     <field t-field="user.image" t-field-options='{"widget": "image"}'/>
                                 </b>
-                                <s class="m-arrows">
-                                    <i class="icon-arrows-right">
-                                    </i>
-                                </s>
                             </a>
                         </li>
                         <li class="pd-bottom">
@@ -292,10 +300,6 @@
                                 <p class="m-title">昵称
                                 </p>
                                 <span class="address-count" t-esc="user.name"/>
-                                <s class="m-arrows">
-                                    <i class="icon-arrows-right">
-                                    </i>
-                                </s>
                             </a>
                         </li>
                         <li class="pd-bottom m_myaccount_address_edit">
@@ -466,9 +470,21 @@
                                 </li>
                                 <li>
                                     <a href="/m/myaccount/distribution/faq">
-                                        <p class="m-title" style="border:none;">
+                                        <p class="m-title">
                                             <b class="glyphicon glyphicon-question-sign">
                                             </b>常见问题
+                                        </p>
+                                        <s class="m-arrows">
+                                            <i class="icon-arrows-right">
+                                            </i>
+                                        </s>
+                                    </a>      
+                                </li>
+                                <li>
+                                    <a href="/">
+                                        <p class="m-title" style="border:none;">
+                                            <b class="glyphicon glyphicon-home">
+                                            </b>网站首页
                                         </p>
                                         <s class="m-arrows">
                                             <i class="icon-arrows-right">
@@ -556,9 +572,21 @@
                             </li> -->
                             <li>
                                 <a href="/m/myaccount/distribution/faq">
-                                    <p class="m-title" style="border:none;">
+                                    <p class="m-title">
                                         <b class="glyphicon glyphicon-question-sign">
                                         </b>常见问题
+                                    </p>
+                                    <s class="m-arrows">
+                                        <i class="icon-arrows-right">
+                                        </i>
+                                    </s>
+                                </a>     
+                            </li>
+                            <li>
+                                <a href="/">
+                                    <p class="m-title" style="border:none;">
+                                        <b class="glyphicon glyphicon-home">
+                                        </b>网站首页
                                     </p>
                                     <s class="m-arrows">
                                         <i class="icon-arrows-right">

@@ -3,3 +3,5 @@ access_sale_advance_rma_claim_all,sale.advance.rma.claim.all,model_sale_advance_
 access_sale_advance_rma_claim_user,sale.advance.rma.claim.user,model_sale_advance_rma_claim,base.group_user,1,1,1,1
 access_sale_advance_rma_claim_items_all,sale.advance.rma.claim_items.all,model_sale_advance_rma_claim_items,,1,1,1,1
 access_sale_advance_rma_claim_items_user,sale.advance.rma.claim_items.user,model_sale_advance_rma_claim_items,base.group_user,1,1,1,1
+access_crm_claim_operation_record_all,crm.claim.operation.record.all,model_crm_claim_operation_record,,1,1,1,1
+access_crm_claim_operation_record_user,crm.claim.operation.record.user,model_crm_claim_operation_record,base.group_user,1,1,1,1
