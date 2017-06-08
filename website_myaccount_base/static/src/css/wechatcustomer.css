@@ -487,7 +487,8 @@ p{
     
 }
 .od-pd-detail{
-    border-bottom:15px solid #f2f2f2;
+    border-bottom:15px solid #f2f2f2;  
+    position: relative;
 }
 .mo-order-pd-list .od-pd-detail td p{
     padding:5px 0;
@@ -532,6 +533,37 @@ p{
     padding:0 10px;
     line-height: 22px;
 }
+.od-pd-detail .opd-number,
+.od-pd-detail .opd-number span{
+    color: #000;
+    font-size: 15px;
+}
+.od-pd-detail .opd-status{
+    margin-top: -10px;
+}
+.od-pd-detail .opd-status span,
+.od-pd-detail .od-pd-status span{
+    font-size: 15px;
+}
+.od-pd-detail .opd-pdname,
+.od-pd-detail .opd-pdprice{
+    color: #000;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

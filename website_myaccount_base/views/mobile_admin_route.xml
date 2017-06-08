@@ -1443,12 +1443,15 @@
                 <t t-set="i" t-value="0"/>
                 <t t-foreach="orders" t-as="order">
                     <!-- 剔除件数为空的订单 -->
-                    <!-- <t t-if="order.product_count">
+                    <t t-if="order.product_count">
                         <div class="od-pd-detail">
                             <t t-call="website_myaccount_base.public_mobile_order_logistics_info"/>
-                            <p>下单时间:<span t-field="order.date_order" /><span class="od-pd-status">
-                                <t t-call="website_myaccount_base.tmp_order_state_translate"/></span></p>
-            
+                            <p>
+                              <span class="opd-number">订单号: <span t-field="order.name" /></span><br />                               
+                              <span class="od-pd-status opd-status"><t t-call="website_myaccount_base.tmp_order_state_translate"/></span>
+                              <span class="opd-date">下单时间: <span t-field="order.date_order" /></span>
+                            </p>
+
                             <a target="_blank" t-att-href="'/m/myaccount/order/detail/%s' % order.id">
                                 <t t-foreach="order.order_line" t-as="line">
                                     <table>
@@ -1456,9 +1459,10 @@
                                             <td rowspan="3" class="product-img">
                                                 <img t-att-src="website.image_url(line.product_id, 'image')" title="" alt="" />
                                             </td>
-                                            <td><p><span t-esc="line.with_context(display_default_code=False).display_name"/>
-                                                <span class="float_right_padding_right_5">￥<t t-esc="line.price_unit"/></span>
+                                            <td><p><span class="opd-pdname" t-esc="line.with_context(display_default_code=False).display_name"/>
+                                                <span class="opd-pdprice float_right_padding_right_5">￥<t t-esc="line.price_unit"/></span>
                                                 <br />
+                                                <span>数量</span>
                                                 <span class="float_right_padding_right_5">x<span t-esc="int(line.product_uom_qty)"/> </span>
                                             </p></td>
                                         </tr>
@@ -1471,16 +1475,15 @@
                                 </t>
                             </a>
                             <p>
-            
+
                                 <span class="od-pd-status">
-                                    共<span style="color:red;" t-field="order.product_count"/>件商品, 合计:<span t-esc="order.cash_amount"/>(含运费<span t-esc="order.freight"/>)</span></p>
+                                    共 <span style="color:red;" t-field="order.product_count"/> 件商品  合计: ￥<span t-esc="order.cash_amount"/>(含运费: ￥<span t-esc="order.freight"/>)</span></p>
                             <p><t t-call="website_myaccount_base.public_mobile_order_btn"/></p>
                             <div class="clear"></div>
                         </div>
-                    </t> -->
-                            <p><t t-call="website_myaccount_base.public_mobile_order_btn"/></p>
+                    </t>
                     <t t-set="i" t-value="i+1"/>
-            
+
                 </t>
             </t>
         </template>

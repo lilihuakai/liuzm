@@ -215,6 +215,16 @@ class MyClaim(http.Controller):
         else:
             raise exceptions.Warning(_('Error'), _('You are opening a claim view that does not exist.'))
 
+    @http.route(['/m/myaccount/order/after_sale/claim_view/detail/<int:claim_id>'], type='http', auth='user', website=True)
+    def m_order_claim_detail_view(self, claim_id=None, **post):
+        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
+
+        crm_claim = registry.get('crm.claim').browse(cr,uid,claim_id,context=context)
+        _logger.info('========== %s(), <%s>   ========== crm_claim = %s' % 
+            (sys._getframe().f_code.co_name, request.env.user.name, crm_claim))
+
+        return request.website.render('rma.mobile_after_sale_detail_view', {'claims': crm_claim})
+
     @http.route(['/m/myaccount/order/after_sale/claim_view/rercord/<int:claim_id>'], type='http', auth='user', website=True)
     def m_order_claim_record_view(self, claim_id=None, **post):
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry

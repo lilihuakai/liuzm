@@ -521,14 +521,25 @@ p{
 }
 
 .public_mobile_order_btn{
-border-top: 1px solid #e6e6e5;
+border-top: 1px solid #9b999a;
 margin: 0 auto;
 text-align: center;
 padding-top: 2%;
 }
 
 .public_mobile_order_btn button{
-margin: 0px 5%;
+    margin: 0px 5%;
+    font-size: 14px;
+    border: 1px solid #ff8522;
+    border-radius: 10px;
+    line-height: 22px;
+    background: #fff;
+    color: #ff8522;
+    padding: 3px 10px;
+}
+.public_btn_draft_cancel_tag button{
+    border: 1px solid #656565;
+    color: #656565;
 }
 .public_mobile_order_top_menu {
     text-align: center;

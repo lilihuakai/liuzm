@@ -14,7 +14,6 @@
 
             <xpath expr="//html/body" position="inside">
                 <script type="text/javascript" src="/rma/static/src/js/claimsubmit.js"/>
-                <script type="text/javascript" src="/rma/static/src/js/orderlist_scroll_loading.js"/>
                 <script type="text/javascript" src="/rma/static/src/js/refresh_page_element.js"/>
                 <script type="text/javascript" src="/rma/static/src/js/remove_product.js"/>
                 <script type="text/javascript" src="/rma/static/src/js/after_sales.js"/>
@@ -339,10 +338,47 @@
             <t t-call="website_myaccount_base.mobile_layout">
                 <t t-set="additional_title">售后单列表</t>
                 <t t-if="claims">
-                    <t t-foreach="claims" t-as="claim">
-                        <span t-esc="claim.code" /><br />
-                        <t t-esc="claim.date" /><br />
-                    </t>
+                    <div class="moblie-order-management">
+                        <div class="mo-order-pd-list om-choice-1 mopl-active">
+                            <t t-foreach="claims" t-as="claim">
+                                <div class="od-pd-detail">
+                                    <t t-call="website_myaccount_base.public_mobile_order_logistics_info"/>
+                                    <p>
+                                      <span class="opd-date">下单时间: <span t-field="claim.date" /></span>
+                                    </p>
+
+                                    <a target="_blank" t-att-href="'/m/myaccount/order/after_sale/claim_view/detail/%s' % claim.id">
+                                        <t t-foreach="claim.claim_line_ids" t-as="line">
+                                            <table>
+                                                <tr>
+                                                    <td rowspan="3" class="product-img">
+                                                        <img t-att-src="website.image_url(line.product_id, 'image')" title="" alt="" />
+                                                    </td>
+                                                    <td><p><span t-esc="line.product_id.display_name"/>
+                                                        <span class="float_right_padding_right_5">￥<t t-esc="line.unit_sale_price"/></span>
+                                                        <br />
+                                                        <span>数量</span>
+                                                        <span class="float_right_padding_right_5">x<span t-esc="int(line.product_returned_quantity)"/> </span>
+                                                    </p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p></p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </t>
+                                    </a>
+                                    <div class="public_mobile_order_btn">
+                                        <a target="_blank" t-att-href="'/m/myaccount/order/after_sale/claim_view/detail/%s' % claim.id">
+                                            <button>售后详情</button>
+                                        </a>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
                 </t>
             </t>
         </template>
@@ -377,13 +413,13 @@
                           </ul>
                         </div>
                       </div>
-                      
+
                       <div class="problem_description">
                          <p>问题描述</p>
                          <p><span t-esc="claims.description"/><br />
                          <span><span t-esc="claims.date"/></span></p>
                       </div>
-                      
+
                       <div class="audit_message">
                          <p>审核留言</p>
                          <p>(待处理)</p>
