@@ -20,6 +20,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+# 3: imports of openerp
 from openerp.osv import osv, fields
 from openerp import api
 

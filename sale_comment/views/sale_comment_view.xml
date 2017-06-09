@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- 评论主界面 -->
+        <template id="mobile_myaccount_order_sale_comment">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">评价中心</t>
+                <t t-call="sale_comment.mobile_myaccount_order_sale_comment_list"/>
+            </t>
+            <xpath expr="//html/body" position="inside">
+                <script type="text/javascript" src="/sale_comment/static/src/js/orderlist_scroll_loading.js"/>
+            </xpath>
+        </template>
+        <template id="mobile_myaccount_order_sale_comment_list">
+            <t t-if="not flag"><t t-set="flag" t-value="value.get('flag')"/></t>
+            <t t-if="not orders">
+                <t t-set="orders_dict" t-value="website.get_order_match_for_field(value.get('fields_list'),value.get('limit'),value.get('offset'))"/>
+                <t t-set="orders" t-value="orders_dict.get('orders')"/>
+            </t>
+            <div class="moblie-order-management mobile_sale_comment_tag">
+                <input type="hidden" name="tmp_orderlist_flag" t-att-value="value.get('flag')" />
+                <!-- <t t-call="website_myaccount_base.public_mobile_order_top_menu"/> -->
+
+                <div class="om-choice-status">
+                    <t t-call="sale_comment.mobile_myaccount_order_sale_comment_list_tab"/>
+                </div>
+
+                <div class="mo-order-pd-list om-choice-1 mopl-active sale_comment_foreach_tag">
+                    <t t-call="website_myaccount_base.public_mobile_foreach_productList"/>
+                </div>
+
+                <!-- <t t-call="website_cart.acquirer_list"/> -->
+
+                <!-- 上拉或下拉加载菊花圈,内容加载完后,菊花圈消失 -->
+                <t t-call="common_code.public_scroll_calling_loader"/>
+
+            </div>
+        </template>
+        <template id="mobile_myaccount_order_sale_comment_list_tab">
+            <t t-if="not flag"><t t-set="flag" t-value="value.get('flag')"/></t>
+            <a href="#">
+                <div id="om-choice-1" t-att-class="(flag == 'waiting_comment') and 'om-choice om-active' or 'om-choice'">
+                    <span>待评价</span>
+                </div>
+            </a>
+            <a href="#">
+                <div id="om-choice-2" t-att-class="(flag == 'waiting_public') and 'om-choice om-active' or 'om-choice'" >
+                    <span>待晒单</span>
+                </div>
+            </a>
+            <a href="#">
+                <div id="om-choice-3" t-att-class="(flag == 'already_comment') and 'om-choice om-active' or 'om-choice'" >
+                    <span>已评价</span>
+                </div>
+            </a>
+            <div class="clear"></div>
+        </template>
+    </data>
+</openerp>

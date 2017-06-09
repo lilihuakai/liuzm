@@ -20,8 +20,16 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp.osv import osv, fields
+# 1: imports of python lib
 import time
+import logging
+
+# 3: imports of openerp
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
+
+# 6: Import of unknown third party lib
+_logger = logging.getLogger(__name__)
 
 
 class MailMessage(osv.Model):
@@ -42,12 +50,17 @@ class MailMessage(osv.Model):
         'website_published': fields.boolean(
             'Published', help="Visible on the website as a comment", copy=False,
         ),
+        'is_anonymous': fields.boolean('Is Anonymous', default=False),
     }
 
-    def _prepare_comment(self, cr, uid, line_id, rating=0, description=None, context=None):
+    def _prepare_comment(self, cr, uid, line_id, context=None):
         line_obj = self.pool.get('sale.order.line')
         if context is None:
             context = {}
+        description = context.get('description')
+        rating = context.get('rating')
+        website_published = context.get('website_published')
+        is_anonymous = context.get('is_anonymous')
 
         values = {}
         for line in line_obj.browse(cr, uid, line_id, context=context):
@@ -57,18 +70,21 @@ class MailMessage(osv.Model):
             values['order_id'] = line.order_id.id
             values['author_id'] = line.order_partner_id.id
             values['product_tmp_id'] = line.product_id.product_tmpl_id.id
+            values['website_published'] = website_published
+            values['is_anonymous'] = is_anonymous
         return values
 
 
-    def create_comment(self, cr, uid, line_id, rating=0, description=None, context=None):
+    def create_comment(self, cr, uid, line_id, context=None):
         """Create the comment by those values
 
             :param line_id: sale order line ID(int)
-            :param rating: the rating of given(int)
-            :param description: values of comment(str)
         """
         if context is None:
             context = {}
-        value = self._prepare_comment(cr, uid, line_id, rating, description, context=context)
+        value = self._prepare_comment(cr, uid, line_id, context=context)
         comm_ids = self.create(cr, uid, value, context=context)
+        _logger.info('========== %s(), <%s>   ========== value = %s comm_ids = %s ' % 
+            (sys._getframe().f_code.co_name,request.env.user.name, value, comm_ids))
+
         return comm_ids

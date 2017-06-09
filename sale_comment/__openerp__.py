@@ -12,7 +12,7 @@
 产品详情页展示用户留言内容
     """,
     "depends": [
-        "website_sale"
+        "website_myaccount_base"
     ],
     "demo": [
     ],

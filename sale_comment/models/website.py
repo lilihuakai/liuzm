@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
@@ -21,14 +21,18 @@
 #
 ##############################################################################
 # 3: imports of openerp
-from openerp.osv import osv, fields
-from openerp import api
+import openerp
+from openerp.osv import orm
 
-class sale_order(osv.Model):
-    _inherit = 'sale.order'
+class website(orm.Model):
+    _inherit = 'website'
 
-    _columns = {
-        'is_commented': fields.boolean('Is Commented', default=False),
-        'is_public': fields.boolean('Is Public', default=False),
-        'sale_comment_ids': fields.one2many("sale.comment", "order_id", string="Website Sale Comments"),
-    }
+    def get_sale_comment_fields_list(self):
+        value = {
+            # 待评价、待晒单、已评价
+            'waiting_comment' : [('state','=','done'), ('is_commented', '=', False)],
+            'waiting_public' : [('state','=','done'), ('is_public', '=', False)],
+            'already_comment' : [('state','=','done'), ('is_commented', '=', True)],
+        }
+
+        return value
