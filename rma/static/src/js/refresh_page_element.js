@@ -6,7 +6,7 @@ $("div.mobile_after_sale_tag").on("click","div.om-choice",function(event){
     var string_id = $(this).attr("id");
     // 确保数据源只有一处
     var categary_source = {
-        "om-choice-1": "waitting_claim",
+        "om-choice-1": "waiting_claim",
         "om-choice-2": "already_claimed",
     };
     var categary = categary_source[string_id];

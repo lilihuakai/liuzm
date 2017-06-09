@@ -132,7 +132,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="/m/myaccount/order/after_sale_main/waitting_claim">
+                                    <a href="/m/myaccount/order/after_sale_main/waiting_claim">
                                         <img src="/website_myaccount_base/static/src/images/order-5.png" />
                                         <br />维权
                                         <!-- <t t-set="count" t-value="get_order_count_list['activist_count']"/> -->

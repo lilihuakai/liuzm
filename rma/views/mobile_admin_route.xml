@@ -6,8 +6,8 @@
             <field name="inherit_id" ref="website_myaccount_base.public_mobile_order_btn"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@class='public_mobile_order_btn']" position="inside">
-                    <t t-if="flag == 'waitting_claim'">
-                        <t t-call="rma.public_mobile_order_btn_waitting_claim"/>
+                    <t t-if="flag == 'waiting_claim'">
+                        <t t-call="rma.public_mobile_order_btn_waiting_claim"/>
                     </t>
                     <t t-if="flag == 'already_claimed'">
                         <t t-call="rma.public_mobile_order_btn_already_claimed"/>
@@ -15,7 +15,7 @@
                 </xpath>
             </field>
         </record>
-        <template id="public_mobile_order_btn_waitting_claim">
+        <template id="public_mobile_order_btn_waiting_claim">
             <a target="_blank" t-att-href="'/m/myaccount/order/after_sale/%s' % order.id">
                 <button>申请售后</button>
             </a>

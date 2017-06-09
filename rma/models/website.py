@@ -38,7 +38,7 @@ class website(orm.Model):
     def get_after_sale_fields_list(self,field_name=None):
         value = {
             # 售后申请、进度查询
-            'waitting_claim' : [('state','=','done'), ('claimed', '=', False)],
+            'waiting_claim' : [('state','=','done'), ('claimed', '=', False)],
             'already_claimed' : [('state','=','done'), ('claim_exists', '=', True)],
         }
         if field_name is not None:

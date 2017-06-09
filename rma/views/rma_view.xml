@@ -3,9 +3,6 @@
     <data>
         <template id="layout" inherit_id="website_myaccount_base.mobile_layout">
             <xpath expr="//html/head" position="inside">
-                <link href="/website_cart/static/src/css/ordersubmit.css" rel="stylesheet"/>
-                <link href="/website_myaccount_base/static/src/css/myaccount.css" rel="stylesheet"/>
-                <link href="/website_myaccount_base/static/src/css/wechatcustomer.css" rel="stylesheet"/>
                 <link href="/rma/static/src/css/audit.css" rel="stylesheet"/>
                 <link href="/rma/static/src/css/after_sales.css" rel="stylesheet"/>
                 <link href="/rma/static/src/css/set_claim_address.css" rel="stylesheet"/>
@@ -29,7 +26,7 @@
                 <t t-call="rma.mobile_myaccount_order_after_sale_list"/>
             </t>
             <xpath expr="//html/body" position="inside">
-                <script type="text/javascript" src="/website_myaccount_base/static/src/js/orderlist_scroll_loading.js"/>
+                <script type="text/javascript" src="/rma/static/src/js/orderlist_scroll_loading.js"/>
             </xpath>
         </template>
         <template id="mobile_myaccount_order_after_sale_list">
@@ -60,7 +57,7 @@
         <template id="mobile_myaccount_order_after_sale_list_tab">
             <t t-if="not flag"><t t-set="flag" t-value="value.get('flag')"/></t>
             <a href="#">
-                <div id="om-choice-1" t-att-class="(flag == 'waitting_claim') and 'om-choice om-active' or 'om-choice'">
+                <div id="om-choice-1" t-att-class="(flag == 'waiting_claim') and 'om-choice om-active' or 'om-choice'">
                     <span>申请售后</span>
                 </div>
             </a>
@@ -327,7 +324,7 @@
                         <a t-att-href="'/m/myaccount/order/after_sale/claim_view/%s' % orders.id">
                             <p>进度查询</p>
                         </a>
-                        <a href="/m/myaccount/order/after_sale_main/waitting_claim"><p>售后首页</p></a>
+                        <a href="/m/myaccount/order/after_sale_main/waiting_claim"><p>售后首页</p></a>
                     </div>
                 </div>
             </t>

@@ -19,9 +19,9 @@ $(function(){
                 console.log('data='+data.limit);
             });
 
-        if not categary {
-            return false;
-        }
+        // if not categary {
+        //     return false;
+        // }
 
         $order_list_flag_input.change(function(){
             console.log('is called  input is change!');
