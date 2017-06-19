@@ -45,3 +45,12 @@ class website(orm.Model):
             return value.get(field_name)
         else:
             return value
+
+    def get_after_sale_order_count_by_field(self,cr,uid,ids, field_name=None, context=None):
+        domain = self.get_after_sale_fields_list(field_name)
+        count = self.get_order_count_by_field(cr,uid,ids,domain).get('count')
+
+        if count:
+            return count
+        else:
+            return 0
