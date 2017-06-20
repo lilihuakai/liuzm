@@ -25,9 +25,10 @@ $("div.mobile_orderlist_tag").on("click","div.om-choice",function(event){
         "om-choice-2": "draft",
         "om-choice-3": "undelivered",
         "om-choice-4": "wait_delivery",
-        "om-choice-5": "wait_comment"
+        // "om-choice-5": "wait_comment"                   评论相关处理已迁移至 sale_comment: add by liuzm 20170620
     };
     var categary = categary_source[string_id];
+    if (!categary) return false;
     var $parent= $(this).closest('div.mobile_orderlist_tag');
     var $order_list_flag_input = $parent.find("input[name='tmp_orderlist_flag']");
     // 使用<input type='hidden' /> 临时存值

@@ -119,29 +119,31 @@
                                         </t>
                                     </a>
                                 </td>
-                                <td>
+                                <!-- 代码已迁移至 sale_comment 模块: add by liuzm 20170620 -->
+                                <!-- <td>
                                     <a href="/m/myaccount/orderlist/wait_comment">
                                         <img src="/website_myaccount_base/static/src/images/order-4.png" />
                                         <br />待评价
-                                        <!-- <t t-set="count" t-value="get_order_count_list['wait_comment_count']"/> -->
+                                        <t t-set="count" t-value="get_order_count_list['wait_comment_count']"/>
                                         <t t-set="count" t-value="get_order_count_list.get('wait_comment_count')"/>
                                         <t t-if="count != 0">
                                             <span class="moi-tab-sub"><t t-esc="count"/></span>
                                         </t>
-
+                                
                                     </a>
-                                </td>
-                                <td>
+                                </td> -->
+                                <!-- 代码已迁移至 rma 模块: add by liuzm 20170620 -->
+                                <!-- <td>
                                     <a href="/m/myaccount/order/after_sale_main/waiting_claim">
                                         <img src="/website_myaccount_base/static/src/images/order-5.png" />
                                         <br />维权
-                                        <!-- <t t-set="count" t-value="get_order_count_list['activist_count']"/> -->
-                                        <!-- <t t-set="count" t-value="get_order_count_list.get('activist_count')"/>
+                                        <t t-set="count" t-value="get_order_count_list['activist_count']"/>
+                                        <t t-set="count" t-value="get_order_count_list.get('activist_count')"/>
                                              <t t-if="count != 0">
                                              <span class="moi-tab-sub"><t t-esc="count"/></span>
-                                             </t> -->
+                                             </t>
                                     </a>
-                                </td>
+                                </td> -->
                             </tr>
                         </table>
                         <div style="clear:both">
@@ -1390,14 +1392,15 @@
                     <span class="om-tab-sub"><t t-esc="count"/></span>
                 </t>
             </span></div></a>
-            <a href="#"><div id="om-choice-5" t-att-class="(flag == 'wait_comment') and 'om-choice om-active' or 'om-choice'"><span>待评价
+            <!-- 代码已迁移至 sale_comment 模块: add by liuzm 20170620 -->
+            <!-- <a href="#"><div id="om-choice-5" t-att-class="(flag == 'wait_comment') and 'om-choice om-active' or 'om-choice'"><span>待评价
 
                 <t t-set="count" t-value="get_order_count_list.get('wait_comment_count')"/>
                 <t t-if="count != 0">
                     <span class="om-tab-sub"><t t-esc="count"/></span>
                 </t>
 
-            </span></div></a>
+            </span></div></a> -->
             <div class="clear"></div>
         </template>
 
@@ -1547,20 +1550,22 @@
             </a>
         </template>
 
-        <template id="public_mobile_order_btn_wait_comment">
-            <!-- 待评价 -->
+        <!-- 代码已迁移至 sale_comment 模块: add by liuzm 20170620 -->
+        <!-- <template id="public_mobile_order_btn_wait_comment">
+            待评价
             <a target="_blank" t-att-href="'/m/myaccount/order/logistics_detail/%s' % order.id">
                 <button>查看物流</button>
             </a>
-            <!-- <a><button>评价</button></a> -->
-        </template>
+            <a><button>评价</button></a>
+        </template> -->
 
-        <template id="public_mobile_order_btn_activist">
-            <!-- 维权 -->
+        <!-- 代码已迁移至 rma 模块: add by liuzm 20170620 -->
+        <!-- <template id="public_mobile_order_btn_activist">
+            维权
             <a target="_blank" t-att-href="'/m/myaccount/order/after_sale/%s' % order.id">
                 <button>申请售后</button>
             </a>
-        </template>
+        </template> -->
 
 
         <template id="public_mobile_order_btn">
@@ -1571,7 +1576,7 @@
                     <t t-if="order.client_state == 'waiting_payment'"> <t t-call="website_myaccount_base.public_mobile_order_btn_draft"/> </t>
                     <t t-if="order.client_state == 'waiting_send'"> <t t-call="website_myaccount_base.public_mobile_order_btn_undelivered"/> </t>
                     <t t-if="order.client_state == 'waiting_sign'"> <t t-call="website_myaccount_base.public_mobile_order_btn_wait_delivery"/> </t>
-                    <t t-if="order.client_state == 'waiting_comment'"> <t t-call="website_myaccount_base.public_mobile_order_btn_wait_comment"/> </t>
+                    <!-- <t t-if="order.client_state == 'waiting_comment'"> <t t-call="website_myaccount_base.public_mobile_order_btn_wait_comment"/> </t> -->
                 </t>
 
                 <t t-if="flag == 'draft'">
@@ -1586,15 +1591,15 @@
                     <t t-call="website_myaccount_base.public_mobile_order_btn_wait_delivery"/>
                 </t>
 
-                <t t-if="flag == 'wait_comment' and order.logistics_state == 'signed'">
+                <!-- <t t-if="flag == 'wait_comment' and order.logistics_state == 'signed'">
                     <t t-call="website_myaccount_base.public_mobile_order_btn_wait_comment"/>
-                    <!-- 待评价 -->
-                </t>
+                    待评价
+                </t> -->
 
-                <t t-if="flag == 'activist'">
+                <!-- <t t-if="flag == 'activist'">
                     <t t-call="website_myaccount_base.public_mobile_order_btn_activist"/>
-                    <!-- 维权 -->
-                </t>
+                    维权
+                </t> -->
             </div>
         </template>
         <template id="tmp_order_state_translate">

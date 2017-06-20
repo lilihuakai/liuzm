@@ -23,6 +23,8 @@
         "views/templates.xml",
         "views/sale_comment.xml",
         "views/sale_order_view.xml",
+        "views/mobile_admin_route.xml",
+        "views/sale_comment_view.xml",
     ],
     "test": [],
     "js": [],

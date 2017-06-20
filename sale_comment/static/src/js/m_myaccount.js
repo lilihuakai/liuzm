@@ -1,17 +1,15 @@
-// 评论列表,局部刷新
-
-$("div.mobile_sale_comment_tag").on("click","div.om-choice",function(event){
+$("div.mobile_orderlist_tag").on("click","div.om-choice",function(event){
     event.preventDefault();
     event.stopPropagation();
     var string_id = $(this).attr("id");
+    console.log('string_id is',string_id);
     // 确保数据源只有一处
     var categary_source = {
-        "om-choice-1": "waiting_comment",
-        // "om-choice-2": "waiting_public",                取消待晒单
-        "om-choice-3": "already_comment",
+        "om-choice-5": "waiting_comment"
     };
     var categary = categary_source[string_id];
-    var $parent= $(this).closest('div.mobile_sale_comment_tag');
+    if (!categary) return false;
+    var $parent= $(this).closest('div.mobile_orderlist_tag');
     var $order_list_flag_input = $parent.find("input[name='tmp_orderlist_flag']");
     // 使用<input type='hidden' /> 临时存值
     $order_list_flag_input.val(categary);
@@ -23,12 +21,12 @@ $("div.mobile_sale_comment_tag").on("click","div.om-choice",function(event){
     var offset = 0;
     openerp.jsonRpc("/m/myaccount/order/sale_comment/ajax/"+categary, 'call', {
         'categary': categary,
-        'ajax': 1,
+        'ajax': 2,
         'limit':limit,
         'offset':offset})
         .then(function (data) {
-            $("div.sale_comment_foreach_tag").addClass("mopl-active"); 
+            $("div.orderlist_foreach_tag").addClass("mopl-active"); 
             $("div.om-choice-status").html(data.categary_tab);
-            $("div.sale_comment_foreach_tag").html(data.orderlist);
+            $("div.orderlist_foreach_tag").html(data.orderlist);
         });
 });

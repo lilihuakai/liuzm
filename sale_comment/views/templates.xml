@@ -61,5 +61,9 @@
                 </section>
             </xpath>
         </template>
+
+        <template id="product_comment" name="Product Comment">
+            <t t-call="website.pager" />
+        </template>
     </data>
 </openerp>

@@ -37,7 +37,11 @@ $(function(){
             }
 
             categary = $order_list_flag_input.val();
-            openerp.jsonRpc("/m/myaccount/order/sale_comment/ajax/"+categary, 'call', {'categary': categary,'limit':limit,'offset':offset})
+            openerp.jsonRpc("/m/myaccount/order/sale_comment/ajax/"+categary, 'call', {
+                'categary': categary,
+                'ajax': 3,
+                'limit':limit,
+                'offset':offset})
                 .then(function (data) {
 
                     console.log('in post() offset= ,limit= '+offset+'  '+limit);

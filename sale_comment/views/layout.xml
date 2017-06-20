@@ -4,8 +4,8 @@
             <xpath expr="." position="inside">
                 <script type="text/javascript" src="/sale_comment/static/src/js/star_rate.js"></script>
                 <script type="text/javascript" src="/sale_comment/static/src/js/set_current_rating.js"></script>
-                <script type="text/javascript" src="/sale_comment/static/src/js/orderlist_scroll_loading.js"></script>
                 <script type="text/javascript" src="/sale_comment/static/src/js/refresh_page_element.js"></script>
+                <script type="text/javascript" src="/sale_comment/static/src/js/m_myaccount.js"></script>
                 <!-- <script type="text/javascript" src="/sale_comment/static/src/js/test_comments.js"></script> -->
             </xpath>
         </template>

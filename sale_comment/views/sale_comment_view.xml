@@ -40,19 +40,35 @@
             <t t-if="not flag"><t t-set="flag" t-value="value.get('flag')"/></t>
             <a href="#">
                 <div id="om-choice-1" t-att-class="(flag == 'waiting_comment') and 'om-choice om-active' or 'om-choice'">
-                    <span>待评价</span>
+                    <span>待评价
+                        <t t-set="count" t-value="website.get_comments_order_count_by_field('waiting_comment')"/>
+                        <t t-if="count != 0">
+                            <span class="om-tab-sub"><t t-esc="count"/></span>
+                        </t>
+                    </span>
                 </div>
             </a>
-            <a href="#">
+            <!-- 取消待晒单 -->
+            <!-- <a href="#">
                 <div id="om-choice-2" t-att-class="(flag == 'waiting_public') and 'om-choice om-active' or 'om-choice'" >
                     <span>待晒单</span>
                 </div>
-            </a>
+            </a> -->
             <a href="#">
                 <div id="om-choice-3" t-att-class="(flag == 'already_comment') and 'om-choice om-active' or 'om-choice'" >
-                    <span>已评价</span>
+                    <span>已评价
+                        <t t-set="count" t-value="website.get_comments_order_count_by_field('already_comment')"/>
+                        <t t-if="count != 0">
+                            <span class="om-tab-sub"><t t-esc="count"/></span>
+                        </t>
+                    </span>
                 </div>
             </a>
+            <!-- <a href="#">
+                <div id="om-choice-4" t-att-class="(flag == '') and 'om-choice om-active' or 'om-choice'" >
+                    <span>服务评价</span>
+                </div>
+            </a> -->
             <div class="clear"></div>
         </template>
     </data>

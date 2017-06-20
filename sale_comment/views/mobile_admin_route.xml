@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="mobile_admin_index_extend_for_comment" model="ir.ui.view">
+            <field name="name">Mobile admin index Extend For Comment</field>
+            <field name="inherit_id" ref="website_myaccount_base.mobile_admin_index"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='myaccount-order-information']/table/tr" position="inside">
+                    <td>
+                        <a href="/m/myaccount/order/sale_comment/waiting_comment">
+                            <img src="/sale_comment/static/src/images/order-4.png" />
+                            <br />评价
+                            <!-- <t t-set="count" t-value="website.get_comments_order_count_by_field('waiting_comment')"/>
+                            <t t-if="count != 0">
+                                <span class="moi-tab-sub"><t t-esc="count"/></span>
+                            </t> -->
+                        </a>
+                    </td>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="public_mobile_order_category_tab_extend_for_comment" model="ir.ui.view">
+            <field name="name">Public Mobile Order Category Tab Extend For Comment</field>
+            <field name="inherit_id" ref="website_myaccount_base.public_mobile_order_category_tab"/>
+            <field name="arch" type="xml">
+                <xpath expr="//a[last()]" position="after">
+                    <a href="#"><div id="om-choice-5" t-att-class="(flag == 'waiting_comment') and 'om-choice om-active' or 'om-choice'"><span>待评价
+
+                        <t t-set="count" t-value="website.get_comments_order_count_by_field('waiting_comment')"/>
+                        <t t-if="count != 0">
+                            <span class="om-tab-sub"><t t-esc="count"/></span>
+                        </t>
+
+                    </span></div></a>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="public_mobile_order_btn_extend_for_comment" model="ir.ui.view">
+            <field name="name">Public Mobile Order Btn Extend For Comment</field>
+            <field name="inherit_id" ref="website_myaccount_base.public_mobile_order_btn"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='public_mobile_order_btn']" position="inside">
+                    <t t-if="flag == 'waiting_comment'">
+                        <t t-call="sale_comment.public_mobile_order_btn_waiting_comment"/>
+                    </t>
+                    <!-- 取消待晒单 -->
+                    <!-- <t t-if="flag == 'waiting_public'">
+                        <t t-call="sale_comment.public_mobile_order_btn_waiting_public"/>
+                    </t> -->
+                    <t t-if="flag == 'already_comment'">
+                        <t t-call="sale_comment.public_mobile_order_btn_already_comment"/>
+                    </t>
+                </xpath>
+            </field>
+        </record>
+        <template id="public_mobile_order_btn_waiting_comment">
+            <a target="_blank" t-att-href="'/m/myaccount/order/comment_view/create_and_public %s' % order.id">
+                <button>评价晒单</button>
+            </a>
+        </template>
+        <template id="public_mobile_order_btn_waiting_public">
+            <a target="_blank" t-att-href="'/m/myaccount/order/comment_view/public/%s' % order.id">
+                <button>去晒单</button>
+            </a>
+        </template>
+        <template id="public_mobile_order_btn_already_comment">
+            <a target="_blank" t-att-href="'/m/myaccount/order/comment_view/check/%s' % order.id">
+                <button>查看评价</button>
+            </a>
+        </template>
+    </data>
+</openerp>

@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <record id="mobile_admin_index_extend_for_rma" model="ir.ui.view">
+            <field name="name">Mobile admin index Extend For Rma</field>
+            <field name="inherit_id" ref="website_myaccount_base.mobile_admin_index"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='myaccount-order-information']/table/tr/td[last()]" position="after">
+                    <td>
+                        <a href="/m/myaccount/order/after_sale_main/waiting_claim">
+                            <img src="/rma/static/src/images/order-5.png" />
+                            <br />维权
+                            <!-- <t t-set="count" t-value="website.get_after_sale_order_count_by_field('waiting_claim')"/>
+                            <t t-if="count != 0">
+                                <span class="om-tab-sub"><t t-esc="count"/></span>
+                            </t> -->
+                        </a>
+                    </td>
+                </xpath>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="public_mobile_order_btn_extend">
             <field name="name">Public Mobile Order Btn Extend</field>
             <field name="inherit_id" ref="website_myaccount_base.public_mobile_order_btn"/>
