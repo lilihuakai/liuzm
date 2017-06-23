@@ -44,7 +44,7 @@ class website(orm.Model):
             # 'draft' : [('state','in',['draft'])],  # 待支付
             'undelivered' : ['|','&',('state','in',['manual','progress','done']),('logistics_state', '=', 'waiting_send'),'&',('state','in',['manual','progress']),('logistics_state', '=', 'sent')],  # 待卖家发货
             'wait_delivery' : [('state','=','done'),('logistics_state','=','sent')],  # 待收货
-            'waiting_comment' : [('state','=','done'), ('is_commented', '=', False)],  # 待评价
+            'waiting_comment' : [('state','=','done'), ('is_complete_comment', '=', False)],  # 待评价
         }
         if field_name is not None:
             return value.get(field_name)
@@ -54,7 +54,7 @@ class website(orm.Model):
     def get_sale_comment_fields_list(self):
         value = {
             # 待评价、待晒单、已评价
-            'waiting_comment' : [('state','=','done'), ('is_commented', '=', False)],
+            'waiting_comment' : [('state','=','done'), ('is_complete_comment', '=', False)],
             # 'waiting_public' : [('state','=','done'), ('is_public', '=', False)],             #取消待晒单
             'already_comment' : [('state','=','done'), ('is_commented', '=', True)],
         }
@@ -95,12 +95,13 @@ class website(orm.Model):
     # 获取评论总数
     def get_comments_count(self, cr, uid, ids, domain, context=None):
         comment_count = self.pool.get('sale.comment').search_count(cr, uid, domain, context=context)
-        _logger.info('======= %s(), <%s>======= comment_count = %s' % (sys._getframe().f_code.co_name, request.env.user.name, comment_count))
+        _logger.info('======= %s(), <%s>======= domain is %s, comment_count = %s' % 
+            (sys._getframe().f_code.co_name, request.env.user.name, domain, comment_count))
 
         return comment_count
 
-    def get_comments_count_by_field(self, cr, uid, ids, domain, context=None):
-        fields_list = self.get_product_sale_comment_fields_list()
+    def get_comments_count_by_field(self, cr, uid, ids, product_tmp_id, field_name, context=None):
+        fields_list = self.get_product_sale_comment_fields_list(product_tmp_id)
         domain = fields_list.get(field_name)
         count = self.get_comments_count(cr, uid, ids, domain, context=context)
 
@@ -123,8 +124,9 @@ class website(orm.Model):
             'pager':pager,
             'limit':10,
             'offset':0,
+            'product_tmp_id':product_tmp_id,
         }
-        _logger.info('======= %s(), <%s>======= value = %s' % (sys._getframe().f_code.co_name, requeste.env.user.name, value))
+        _logger.info('======= %s(), <%s>======= value = %s' % (sys._getframe().f_code.co_name, request.env.user.name, value))
 
         return value
 

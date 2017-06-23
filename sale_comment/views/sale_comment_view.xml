@@ -71,5 +71,248 @@
             </a> -->
             <div class="clear"></div>
         </template>
+
+        <!-- 评价晒单 -->
+        <template id="mobile_choose_order_for_comment">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">选择商品</t>
+
+                <t t-if="orders and orders.order_line">
+                    <div class="moblie-write-evaluation shopping-cart-page">
+                        <div class="mwe-score sc-product-list">
+                            <t t-foreach="orders.order_line" t-as="line">
+                                <table>
+                                    <tr>
+                                        <td rowspan="2" class="ms-product-img">
+                                            <span t-field="line.product_id.image" t-field-options='{"widget": "image"}'/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_id.with_context(display_default_code=False).display_name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <t t-if="categary == 'create_and_public'">
+                                                <p><a t-att-href="'/m/myaccount/order_line/comment_view/create_and_public/%s' % line.id">进行评价</a></p>
+                                            </t>
+                                            <t t-if="categary == 'check'">
+                                                <p><a t-att-href="'/m/myaccount/order_line/comment_view/check/%s' % line.id">查看评价</a></p>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <p class="end-cart-product" />
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+        <template id="mobile_order_write_comment">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-set="additional_title">评价内容</t>
+
+                <t t-if="line">
+                    <div class="moblie-write-evaluation shopping-cart-page">
+                        <div class="mwe-score sc-product-list">
+                            <table>
+                                <tr>
+                                    <td rowspan="2" class="ms-product-img">
+                                        <span t-field="line.product_id.image" t-field-options='{"widget": "image"}'/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_id.with_context(display_default_code=False).display_name"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- <td>评分:<span id="ms-raty"></span></td> -->
+                                    <td>评分:
+                                        <div class="row lead pull-right o_rating_star_card">
+                                            <div id="stars-existing" class="starrr stars" data-rating='4' name="rating"></div>
+                                            <input type="hidden" id="count-existing" name="rating" value="4" class="form-control"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p class="end-cart-product" />
+                        </div>
+                        <div class="mwe-comments">
+                            <textarea id="mwe-comments" placeholder="请填写相关评论..."></textarea>
+                        </div>
+                        <div class="mwe-attachment">
+                            上传图片
+                        </div>
+                        <div class="mwe-evaluation-status">
+                            <input type="checkbox" id="checkbox_mwe_a1" class="chk_mwe_1" checked="checked" />
+                            <label for="checkbox_mwe_a1"></label><span>匿名</span>
+                        </div>
+                        <input type="hidden" id="line_id_flag" t-att-value="line.id"/>
+                        <div class="mwe-submit-button">
+                            <p><a href="#">提交评价</a></p>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <!-- 产品评论详情 -->
+        <template id="mobile_myaccount_order_product_comment_list">
+            <t t-call="website_myaccount_base.mobile_layout">
+                <t t-if="not value">
+                    <t t-set="value" t-value="website.get_product_comments_init_value(product.id)"/>
+                </t>
+                <t t-if="not product_tmp_id"><t t-set="product_tmp_id" t-value="value.get('product_tmp_id')"/></t>
+                <t t-if="not flag"><t t-set="flag" t-value="value.get('flag')"/></t>
+                <t t-if="not comments">
+                    <t t-set="comments" t-value="website.get_product_comments(value.get('domain'), value.get('limit'), value.get('offset'))"/>
+                </t>
+                <div class="moblie-order-management mobile_product_comment_tag product-info-evaluation">
+                    <input type="hidden" name="tmp_orderlist_flag" t-att-value="value.get('flag')" />
+                    <input type="hidden" name="tmp_product_tmp_id_flag" t-att-value="product_tmp_id" />
+                    <!-- <t t-call="website_myaccount_base.public_mobile_order_top_menu"/> -->
+
+                    <div class="pie-evaluation-status">
+                        <t t-call="sale_comment.product_sale_comment_list_tab"/>
+                    </div>
+
+                    <div class="mo-order-pd-list om-choice-1 mopl-active product_comment_foreach_tag">
+                        <t t-call="sale_comment.public_foreach_commentList"/>
+                    </div>
+
+                    <t class="public_foreach_pager" t-call="sale_comment.public_foreach_pager" />
+                </div>
+            </t>
+        </template>
+        <template id="product_sale_comment_list_tab">
+            <t t-if="not flag"><t t-set="flag" t-value="value.get('flag')"/></t>
+            <t t-if="not product_tmp_id"><t t-set="product_tmp_id" t-value="value.get('product_tmp_id')"/></t>
+
+            <div id="pes-choice-1" t-att-class="(flag == 'all_comment') and 'pes-choice pes-active' or 'pes-choice'">
+                <span>全部(
+                    <t t-set="count" t-value="website.get_comments_count_by_field(product_tmp_id, 'all_comment')"/>
+                        <span class="om-tab-sub"><t t-esc="count"/></span>
+                    )
+                </span>
+            </div>
+            <div id="pes-choice-2" t-att-class="(flag == 'good_comment') and 'pes-choice pes-active' or 'pes-choice'" >
+                <span>好评(
+                    <t t-set="count" t-value="website.get_comments_count_by_field(product_tmp_id, 'good_comment')"/>
+                        <span class="om-tab-sub"><t t-esc="count"/></span>
+                    )
+                </span>
+            </div>
+            <div id="pes-choice-3" t-att-class="(flag == 'no_bed_comment') and 'pes-choice pes-active' or 'pes-choice'" >
+                <span>中评(
+                    <t t-set="count" t-value="website.get_comments_count_by_field(product_tmp_id, 'no_bed_comment')"/>
+                        <span class="om-tab-sub"><t t-esc="count"/></span>
+                    )
+                </span>
+            </div>
+            <div id="pes-choice-4" t-att-class="(flag == 'bed_comment') and 'pes-choice pes-active' or 'pes-choice'" >
+                <span>差评(
+                    <t t-set="count" t-value="website.get_comments_count_by_field(product_tmp_id, 'bed_comment')"/>
+                        <span class="om-tab-sub"><t t-esc="count"/></span>
+                    )
+                </span>
+            </div>
+            <div class="clear"></div>
+        </template>
+        <template id="public_foreach_commentList">
+            <t t-if="not comments">
+                <t t-set="comments" t-value="website.get_product_comments(value.get('domain'), value.get('limit'), value.get('offset'))"/>
+            </t>
+            <div class="pie-evaluation-list pel-active">
+                <t t-foreach="comments" t-as="comment">
+                    <table class="pel-evaluation-info">
+                        <tr>
+                            <t t-if="not comment.is_anonymous">
+                                <td class="pei-img">
+                                    <img t-att-src="website.image_url(comment.author_id, 'image_small')"/>
+                                </td>
+                                <td><span t-field="comment.author_id"/></td>
+                            </t>
+                            <t t-if="comment.is_anonymous">
+                                <td class="pei-img"><img src="images/wechat.png" alt="" title="" /></td>
+                                <td>匿名用名</td>
+                            </t>
+                            <td class="pie-right">
+                                <div class="row lead pull-right o_rating_star_card">
+                                    <!-- <div id="stars-existing" class="starrr stars" t-att-data-rating='comment.rating' name="rating"></div> -->
+                                    <div class="stars" t-att-data-rating='comment.rating' name="rating">
+                                        <t t-call="sale_comment.product_show_stars" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="pie-content">
+                                <div t-field="comment.comment_body"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="pie-font-color"><span t-field="comment.comment_date"/></td>
+                            <td class="pie-font-color pie-right">
+                                <span t-field="comment.order_line_id.with_context(display_default_code=False).display_name"/> /<span t-field="comment.order_line_id.product_uom_qty"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <t t-if="comment.seller_reply_date">
+                                <td colspan="3">
+                                    <div class="pie-reply">
+                                        <div class="arrow"/><span t-field="comment.seller_reply_body" />
+                                    </div>
+                                </td>
+                            </t>
+                        </tr>
+                    </table>
+                </t>
+            </div>
+        </template>
+        <template id="public_foreach_pager">
+            <t t-if="not pager">
+                <t t-set="pager" t-value="value.get('pager')"/>
+            </t>
+            <t t-call="website.pager" />
+        </template>
+        <template id="product_show_stars">
+            <t t-if="not rating">
+                <t t-set="rating" t-value="comment.rating"/>
+            </t>
+            <t t-if="rating == 5">
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+            </t>
+            <t t-if="rating == 4">
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star-o'></span>
+            </t>
+            <t t-if="rating == 3">
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star-o'></span>
+                <span class='fa fa-star-o'></span>
+            </t>
+            <t t-if="rating == 2">
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star-o'></span>
+                <span class='fa fa-star-o'></span>
+                <span class='fa fa-star-o'></span>
+            </t>
+            <t t-if="rating == 1">
+                <span class='fa fa-star'></span>
+                <span class='fa fa-star-o'></span>
+                <span class='fa fa-star-o'></span>
+                <span class='fa fa-star-o'></span>
+                <span class='fa fa-star-o'></span>
+            </t>
+        </template>
     </data>
 </openerp>

@@ -45,12 +45,14 @@ class MailMessage(osv.Model):
         'chase_comment_body': fields.html('Chase Comment Contents', help='Automatically sanitized HTML contents'),
         'rating': fields.integer("Rating"),
         'order_id': fields.many2one('sale.order', "Related Sale Order ID"),
+        'order_line_id': fields.many2one('sale.order.line', "Related Sale Order Line ID"),
         'author_id': fields.many2one('res.partner', 'Author', help="Author of the comment."),
         'product_tmp_id': fields.many2one('product.template', "Related Product Template ID"),
         'website_published': fields.boolean(
             'Published', help="Visible on the website as a comment", copy=False,
         ),
         'is_anonymous': fields.boolean('Is Anonymous', default=False),
+        'wait_business_reply': fields.boolean('Wait for the business reply', default=True),
     }
 
     def _prepare_comment(self, cr, uid, line_id, context=None):
@@ -68,10 +70,12 @@ class MailMessage(osv.Model):
             values['comment_body'] = description
             values['rating'] = rating
             values['order_id'] = line.order_id.id
+            values['order_line_id'] = line.id
             values['author_id'] = line.order_partner_id.id
             values['product_tmp_id'] = line.product_id.product_tmpl_id.id
             values['website_published'] = website_published
             values['is_anonymous'] = is_anonymous
+            values['wait_business_reply'] = True
         return values
 
 
@@ -84,7 +88,5 @@ class MailMessage(osv.Model):
             context = {}
         value = self._prepare_comment(cr, uid, line_id, context=context)
         comm_ids = self.create(cr, uid, value, context=context)
-        _logger.info('========== %s(), <%s>   ========== value = %s comm_ids = %s ' % 
-            (sys._getframe().f_code.co_name,request.env.user.name, value, comm_ids))
 
         return comm_ids

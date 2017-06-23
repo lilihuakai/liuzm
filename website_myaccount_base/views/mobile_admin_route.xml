@@ -1446,12 +1446,12 @@
                 <t t-set="i" t-value="0"/>
                 <t t-foreach="orders" t-as="order">
                     <!-- 剔除件数为空的订单 -->
-                    <t t-if="order.product_count">
+                    <!-- <t t-if="order.product_count"> -->
                         <div class="od-pd-detail">
                             <t t-call="website_myaccount_base.public_mobile_order_logistics_info"/>
                             <p>
                               <span class="opd-number">订单号: <span t-field="order.name" /></span><br />                               
-                              <span class="od-pd-status opd-status"><t t-call="website_myaccount_base.tmp_order_state_translate"/></span>
+                              <!-- <span class="od-pd-status opd-status"><t t-call="website_myaccount_base.tmp_order_state_translate"/></span> -->
                               <span class="opd-date">下单时间: <span t-field="order.date_order" /></span>
                             </p>
 
@@ -1477,14 +1477,10 @@
                                     </table>
                                 </t>
                             </a>
-                            <p>
-
-                                <span class="od-pd-status">
-                                    共 <span style="color:red;" t-field="order.product_count"/> 件商品  合计: ￥<span t-esc="order.cash_amount"/>(含运费: ￥<span t-esc="order.freight"/>)</span></p>
                             <p><t t-call="website_myaccount_base.public_mobile_order_btn"/></p>
                             <div class="clear"></div>
                         </div>
-                    </t>
+                    <!-- </t> -->
                     <t t-set="i" t-value="i+1"/>
 
                 </t>

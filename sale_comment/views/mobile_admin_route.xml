@@ -56,17 +56,17 @@
             </field>
         </record>
         <template id="public_mobile_order_btn_waiting_comment">
-            <a target="_blank" t-att-href="'/m/myaccount/order/comment_view/create_and_public %s' % order.id">
+            <a target="_blank" t-att-href="'/m/myaccount/order/comment_list/create_and_public/%s' % order.id">
                 <button>评价晒单</button>
             </a>
         </template>
         <template id="public_mobile_order_btn_waiting_public">
-            <a target="_blank" t-att-href="'/m/myaccount/order/comment_view/public/%s' % order.id">
+            <a target="_blank" t-att-href="'/m/myaccount/order/comment_list/public/%s' % order.id">
                 <button>去晒单</button>
             </a>
         </template>
         <template id="public_mobile_order_btn_already_comment">
-            <a target="_blank" t-att-href="'/m/myaccount/order/comment_view/check/%s' % order.id">
+            <a target="_blank" t-att-href="'/m/myaccount/order/comment_list/check/%s' % order.id">
                 <button>查看评价</button>
             </a>
         </template>

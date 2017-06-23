@@ -4,7 +4,7 @@
         <template id="product_sale_comment" inherit_id="website_sale.product" active="True" customize_show="True" name="Sale Comment">
             <xpath expr="//div[@t-field='product.website_description']" position="after">
                 <hr class="mb32"/>
-                <section class="container">
+                <!-- <section class="container">
                     <div class="row col-md-10 col-md-offset-1">
                         <div class="text-muted">
                             <h3 class="fa fa-comment-o">
@@ -37,7 +37,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <!-- <div class="css_editable_mode_hidden" t-if="user_id.login != 'public'">
+                        <div class="css_editable_mode_hidden" t-if="user_id.login != 'public'">
                             <form id="comment" t-attf-action="/shop/product/comment/#{product.id}" method="POST">
                                 <img class="img pull-left img-rounded" t-att-src="website.image_url(user_id.partner_id, 'image_small')" style="width: 50px; margin-right: 10px;"/>
                                 <div class="pull-left mb32" style="width: 75%%">
@@ -56,14 +56,11 @@
                             <p groups="base.group_public"> You need to be logged in to post comments
                                 <a class='btn btn-primary' t-if="not partner" t-attf-href="/web?redirect=#{ request.httprequest.url }">Sign in</a>
                             </p>
-                        </div> -->
+                        </div>
                     </div>
-                </section>
+                </section> -->
+                <t t-call="sale_comment.mobile_myaccount_order_product_comment_list"/>
             </xpath>
-        </template>
-
-        <template id="product_comment" name="Product Comment">
-            <t t-call="website.pager" />
         </template>
     </data>
 </openerp>

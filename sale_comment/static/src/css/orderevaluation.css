@@ -1,0 +1,280 @@
+body{
+    margin:0;
+}
+a{
+    text-decoration:none;
+	color:#424a54;
+}
+a:hover{
+    text-decoration:none;
+}
+p{
+    margin:0;
+    padding:0;
+}
+
+.moblie-order-evaluation,
+.moblie-write-evaluation,
+.product-info-evaluation{
+    max-width:750px;
+    margin:0 auto;
+    background:#eeeff4;
+    width:100%;
+	color:#a4a4a4;
+	min-height:500px;
+    font-family: Microsoft YaHei;
+}
+.moblie-order-evaluation .moe-banner img{
+    width:100%;
+}
+
+.moe-order-status{
+    background:#fff;
+}
+.moe-order-status .mos-choice{
+    float: left;
+    width: 25%;
+    text-align: center;
+    line-height: 22px;
+}
+.moe-order-status .mos-choice span{
+    line-height: 50px;
+    cursor: pointer;
+    padding: 15px 5px;
+	color:#000;
+	position:relative;
+}
+.moe-order-status .mos-active span{
+    border-bottom: 1px solid;
+	color:red;
+}
+.moe-order-status .mos-tab-sub{
+    position: absolute !important;
+    z-index: 3;
+    right: -10px;
+    top: 7px;
+    height: 15px;
+    padding: 0px 0px !important;
+    overflow: hidden;
+    color: red !important;
+    font: 11px/11px verdana;
+    text-align: center;
+    min-width: 15px;
+    border-radius: 10px;
+	line-height:15px !important; 
+    border:none !important;
+}
+.moe-order-list{
+    background:#fff;
+	margin-top:15px;
+	display:none;
+}
+.moe-order-list.mol-active{
+    display:block;
+}
+.moe-order-list table{
+   width:100%;
+   padding: 10px 10px 20px;
+   border-bottom:1px solid #eeeff4;
+}
+.moe-order-list .moe-product-img{
+    width: 30%;
+    max-width: 150px;
+    text-align: center;
+}
+.moe-order-list .moe-product-name{
+    color:#000;
+	font-size:1.2em;
+}
+.moe-order-list .moe-product-button{
+    text-align:right;
+}
+.moe-product-button a{
+    border: 1px solid red;
+    padding: 5px 15px;
+    color: red;
+	border-radius:5px;
+}
+.mwe-score{
+    background:#fff;
+}
+.mwe-score table{
+    width:100%;
+	padding:10px;
+	color:#000;
+}
+.mwe-score .ms-product-img{
+    width: 30%;
+    max-width: 150px;
+    text-align: center;
+}
+.mwe-his-problem{
+   background:#fff;
+   padding:0 10px 10px;
+}
+.mwe-comments textarea{
+    border: none;
+    outline: none;
+    line-height: 30px;
+    font-size: 16px;
+	width:98%;
+	background:#f8f8f8;
+	padding:1%;
+	min-height:150px;
+	font-family: Microsoft YaHei;
+}
+.mwe-attachment,
+.mwe-evaluation-status,
+.mwe-submit-button{
+    background:#fff;
+    padding:10px;
+}
+.mwe-evaluation-status{
+   color:#000;
+   line-height:19px;
+}
+.mwe-submit-button p{
+    padding:10px;
+}
+.mwe-submit-button a{
+    background: red;
+    color: #fff;
+    border: none;
+    border-radius: 8px 8px;
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.pie-evaluation-status .pes-choice{
+    float: left;
+    width: 23%;
+    text-align: center;
+    line-height: 22px;
+	padding:1%;
+}
+.pie-evaluation-status .pes-choice span{
+    line-height: 50px;
+    cursor: pointer;
+    padding: 5px 20px;
+	color:#666666;
+	position:relative;
+	border:1px solid #d6d6d6;
+	border-radius: 5px;
+	background:#fff;
+}
+.pie-evaluation-status .pes-active span{
+	background:red;
+	border:1px solid red;
+	color:#fff;
+}
+.pie-evaluation-list{
+    background:#fff;
+	padding:0 10px;
+	display:none;
+}
+.pie-evaluation-list.pel-active{
+    display:block;
+}
+.pie-evaluation-list .pel-evaluation-info{
+    border-bottom:1px solid #eeeff4;
+	padding:10px 0;
+	width:100%;
+	color:#000;
+}
+.pel-evaluation-info .pei-img{
+    width:10%;
+	max-width:50px;
+	text-align: center;
+}
+.pel-evaluation-info .pei-img img{
+    width:90%;
+	border-radius: 50%;
+}
+.pel-evaluation-info .pie-right{
+    width:50%;
+	text-align: right;
+}
+.pel-evaluation-info .pie-content{
+    color:#666;
+	padding:10px 5px;
+	font-size:16px;
+}
+.pel-evaluation-info .pie-font-color{
+    color:#a2a2a2;
+	font-size:0.8em;
+}
+.pel-evaluation-info .pie-reply{
+    padding:10px;
+	background:#eeeff4;
+	margin-top:10px;
+	color:#666;
+	font-size:0.9em;
+	border-radius: 10px;
+	position:relative;
+}
+.pel-evaluation-info .pie-reply .arrow{
+    position: absolute;
+    top: -10px;
+    left: 5%;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    border: solid 5px;
+    border-color: #fff #fff #eeeff4 #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+.clear{
+    clear:both;
+}
+
+.chk_mwe_1 { 
+    display: none; 
+} 
+ 
+.chk_mwe_1 + label {
+	background-color: #FFF;
+	border: 1px solid #C1CACA;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+	padding: 10px;
+	border-radius: 11px;
+	display: inline-block;
+	position: relative;
+	margin-right: 10px;
+	float:left;
+}
+.chk_mwe_1 + label:active {
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.chk_mwe_1:checked + label {
+	background-color: red;
+	border: 1px solid red;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+	color: #243441;
+}
+
+.chk_mwe_1:checked + label:after {
+	content: '\2714';
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	color: #fff;
+	width: 100%;
+	text-align: center;
+	font-size: 1.1em;
+	padding: 1px 0 0 0;
+	vertical-align: text-top;
+}
+
+

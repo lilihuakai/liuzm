@@ -62,8 +62,9 @@ class MyComment(http.Controller):
             'domain': domain,
             'flag':categary,
             'pager':pager,
-            'limit':10,
+            'limit':CPG,
             'offset':pager['offset'],
+            'product_tmp_id':product_tmp_id,
         }
         _logger.info('========== %s(), <%s>   ========== categary is %s, ajax is %s,value is %s' % (
             sys._getframe().f_code.co_name,request.env.user.name,categary,ajax,value))
@@ -104,10 +105,11 @@ class MyComment(http.Controller):
             {'value':value}).decode('utf-8')
         return ajax_value
 
-    @http.route(['/m/myaccount/order/sale_comment/create_comment/'], type='json', auth='user', methods=['post'], website=True)
+    @http.route(['/m/myaccount/order_line/sale_comment/create_comment/'], type='json', auth='user', methods=['post'], website=True)
     def m_order_sale_comment_create(self, line_id, rating=4, description=None, website_published=False, is_anonymous=False):
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
         res = {}
+        line_id = int(line_id)
 
         context.update({
             'rating':rating,
@@ -147,18 +149,34 @@ class MyComment(http.Controller):
 
         return self.get_product_sale_comment_by_categary(product_tmp_id, categary, page, ajax=1)
 
-    @http.route(['/m/myaccount/order/comment_view/<categary>/<order_id>'], type='http', auth='user', website=True)
-    def m_order_comment_view_by_categary(self,categary,order_id):
+    @http.route(['/m/myaccount/order/comment_list/<categary>/<order_id>'], type='http', auth='user', website=True)
+    def m_order_comment_list_by_categary(self,categary,order_id):
         cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
         categary = str(categary)
         order_id = int(order_id)
+        _logger.info('======= %s(), <%s> ======= categary is %s, order_id is %s' % (
+            sys._getframe().f_code.co_name, request.env.user.name, categary, order_id))
 
         orders = registry.get('sale.order').browse(cr, uid, order_id, context=context)
-        if categary == 'create_and_public':
-            return request.website.render("", {'orders':orders})
-        elif categary == 'public':
-            return request.website.render("", {'orders':orders})
-        elif categary == 'check':
-            return request.website.render("", {'orders':orders})
+        return request.website.render("sale_comment.mobile_choose_order_for_comment", {'orders':orders,'categary':categary})
+        # if categary == 'create_and_public':
+        #     return request.website.render("", {'orders':orders})
+        # elif categary == 'public':
+        #     return request.website.render("", {'orders':orders})
+        # elif categary == 'check':
+        #     return request.website.render("", {'orders':orders})
 
-    # @http.route(['/m/myaccount/order/comments/create'])
+    @http.route(['/m/myaccount/order_line/comment_view/<categary>/<line_id>'], type='http', auth='user', website=True)
+    def m_order_line_comment_view_by_categary(self,categary,line_id):
+        cr, uid, context, registry = request.cr, request.uid, request.context, request.registry
+        categary = str(categary)
+        line_id = int(line_id)
+        _logger.info('======= %s(), <%s> ======= categary is %s, line_id is %s' % (
+            sys._getframe().f_code.co_name, request.env.user.name, categary, line_id))
+
+        line = registry.get('sale.order.line').browse(cr, uid, line_id, context=context)
+        if categary == 'create_and_public':
+            return request.website.render("sale_comment.mobile_order_write_comment", {'line':line})
+        elif categary == 'check':
+            return request.website.render("", {'line':line})
+

@@ -38,10 +38,10 @@ class sale_order(osv.Model):
     # 判断是否存在售后订单
     def _claim_exists(self, cursor, user, ids, name, arg, context=None):
         res = {}
-        for claim in self.browse(cursor, user, ids, context=context):
-            res[claim.id] = False
-            if claim.claim_ids:
-                res[claim.id] = True
+        for sale in self.browse(cursor, user, ids, context=context):
+            res[sale.id] = False
+            if sale.claim_ids:
+                res[sale.id] = True
         return res
 
     # 判断是否全部产品都申请了售后订单
